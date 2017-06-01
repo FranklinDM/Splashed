@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+
+<!--
+********************************************************************************
+PROJECT:      Splash!
+FILE:         options.xul
+DESCRIPTION:  XUL overlay for the splash's options
+AUTHOR:       aldreneo aka slyfox and mrtech
+LICENSE:      GNU GPL (General Public License)
+
+Copyright (c) 2007 aldreneo aka slyfox and mrtech
+********************************************************************************
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://splash/content/options.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://splash/locale/options.dtd">
+ 
+<prefwindow id="splash-prefs"
+     title="&splash.title;"
+     buttons="accept,extra1,extra2"	 
+     ondialogextra1="splash.previewSplashScreen();"
+     buttonlabelextra1="&splash.preview;"	 
+     ondialogextra2="splash.resetToDefault();"
+     buttonlabelextra2="&splash.reset;"
+     onload="splash.initSettings();"
+     persist="lastSelected screenX screenY"
+     type="prefwindow"
+     centerWindowOnScreen="true" 
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />
+  <script type="application/x-javascript" src="chrome://splash/content/splash.js" />
+  
+  <stringbundleset id="splashSet">
+    <stringbundle id="splashStrings" src="chrome://splash/locale/splash.properties" />
+  </stringbundleset>
+
+  <prefpane id="splash-pane1" label="&splash.panel_general;">
+    <preferences>
+      <preference id="pref_splash.enabled"             name="splash.enabled"      			instantApply="true" type="bool"/>
+      <preference id="pref_splash.closeWithMainWindow" name="splash.closeWithMainWindow" instantApply="true" type="bool"/>
+      <preference id="pref_splash.timeout"             name="splash.timeout"            instantApply="true" type="int"/>
+      <preference id="pref_splash.bgcolor"             name="splash.bgcolor"         	  instantApply="true" type="string"/>
+      <preference id="pref_splash.windowStyle"         name="splash.windowStyle"     	  instantApply="true" type="string"/>
+	    <preference id="pref_splash.trans"               name="splash.trans"           		instantApply="true" type="bool"/>
+	    <preference id="pref_splash.transvalue_img"      name="splash.transvalue_img" 		instantApply="true" type="string"/>
+	    <preference id="pref_splash.transvalue_txt"      name="splash.transvalue_txt" 		instantApply="true" type="string"/>
+	    <preference id="pref_splash.transvalue_box"      name="splash.transvalue_box"  		instantApply="true" type="string"/>
+	    <preference id="pref_splash.transvalue_mtr"      name="splash.transvalue_mtr"  		instantApply="true" type="string"/>
+	  </preferences>
+   
+    <groupbox flex="1">
+      <caption label="&splash.startuptweaks;" />
+      <checkbox id="splash.enabled" 
+                preference="pref_splash.enabled" label="&splash.enabled;" />
+      <checkbox id="splash.closeWithMainWindow" 
+                preference="pref_splash.closeWithMainWindow" label="&splash.closeWithMainWindow;" 
+                onclick="toggleTimeout(!this.checked);" />                
+      <hbox align="center">
+        <label control="splash.timeout" value="&splash.timeout;"/>
+        <textbox preference="pref_splash.timeout" id="splash.timeout" size="4" maxlength="5" />
+      </hbox>
+    </groupbox>
+		
+    <groupbox flex="1">  
+      <caption label="&splash.background;" />
+      <hbox align="center">
+        <label control="splash.bgcolor" value="&splash.bgcolor;"/>
+        <textbox preference="pref_splash.bgcolor" id="splash.bgcolor" size="10" maxlength="500" />
+	      <button label="&splash.morecolors;" class="url" onclick="splash.opencsseditor('splash.bgcolor')"/>
+      </hbox>                
+      <label control="splash.windowStyle" value="&splash.windowStyle;"/>
+      <textbox preference="pref_splash.windowStyle" id="splash.windowStyle" multiline="true" rows="4" />
+    </groupbox>
+    <groupbox orient="vertical">
+      <caption label="&splash.importexport.label;" />
+		  <hbox pack="center" flex="1">
+        <spacer flex="1"/>
+        <image id="splash.exportimage" src="images/left.png" onclick="splash.exportData();" />
+        <button id="li-export" label="&splash.export;" oncommand="splash.exportData();" />
+        <spacer flex="1"/>
+        <button id="li-import" label="&splash.import;" oncommand="splash.importData();" />
+        <image id="splash.importimage" src="images/right.png" onclick="splash.importData();"/>
+        <spacer flex="1"/>
+      </hbox>
+    </groupbox>
+    
+  </prefpane>
+
+  <prefpane id="splash-pane2" label="&splash.panel_image;">
+    <preferences>
+      <preference id="pref_splash.imageURL"          name="splash.imageURL"     instantApply="true" type="string"/>
+      <preference id="pref_splash.windowWidth"       name="splash.windowWidth"  instantApply="true" type="int"/>
+      <preference id="pref_splash.windowHeight"      name="splash.windowHeight" instantApply="true" type="int"/>
+    </preferences>
+
+    <groupbox flex="1">
+      <caption label="&splash.imageParameters;" />
+      <label control="splash.imageURL" value="&splash.imageURL;"/>
+      <hbox>
+        <textbox preference="pref_splash.imageURL" id="splash.imageURL" flex="1" />
+        <button onclick="splash.getImageFile();" label="&splash.browse;" style="min-width:6px;"/>
+        <button onclick="splash.setDefaultImage();" label="&splash.default;" accesskey="&splash.default_key;" />
+      </hbox>                
+      <hbox align="center">
+        <label value="&splash.imageDemensions;" />
+        <textbox preference="pref_splash.windowHeight" id="splash.windowHeight" readonly="true" size="2"/>
+        <label value="x" />
+        <textbox preference="pref_splash.windowWidth" id="splash.windowWidth" readonly="true" size="2" />
+      </hbox>
+    </groupbox>
+    <groupbox flex="1">
+      <caption label="&splash.preview;" />
+      <vbox align="center" style="overflow:auto;" flex="1">
+        <image id="splash.previewImage" onload="setTimeout(splash.getDimensions, 500);" onerror="splash.setDefaultImage();" />
+      </vbox>
+    </groupbox>
+  </prefpane>
+
+  <prefpane id="splash-pane4" label="&splash.panel_text;">
+    <preferences>
+      <preference id="pref_splash.textHide" name="splash.textHide" instantApply="true" type="bool"/>
+      <preference id="pref_splash.progressMeterHide" name="splash.progressMeterHide" instantApply="true" type="bool"/>
+      <preference id="pref_splash.textOverride" name="splash.textOverride" instantApply="true" type="string"/>
+      <preference id="pref_splash.textStyle" name="splash.textStyle" instantApply="true" type="string"/>
+	  <preference id="pref_splash.txtcolor" name="splash.txtcolor" instantApply="true" type="string"/>
+    </preferences>
+
+    <groupbox>
+      <caption label="&splash.textSettings;" />    
+      <checkbox id="splash.textHide" 
+                preference="pref_splash.textHide" 
+                label="&splash.textHide;" 
+                onclick="toggleText(!this.checked);" />
+      <checkbox id="splash.progressMeterHide" 
+                preference="pref_splash.progressMeterHide" 
+                label="&splash.progressMeterHide;" />
+      <separator />                
+      <label control="splash.textOverride" value="&splash.textOverride;"/>
+      <textbox preference="pref_splash.textOverride" id="splash.textOverride" />
+      <separator />                
+      <hbox align="center">
+	      <label control="splash.txtcolor" value="&splash.txtcolor;"/>
+        <textbox preference="pref_splash.txtcolor" id="splash.txtcolor" size="10" maxlength="500" />
+	      <button label="&splash.morecolors;" class="url" onclick="disabled_button()"/>
+      </hbox>
+      <separator />
+      <label control="splash.textStyle" value="&splash.textStyle;"/>
+      <textbox preference="pref_splash.textStyle" id="splash.textStyle" multiline="true" rows="4" />
+    </groupbox>
+	</prefpane>
+	  
+  <prefpane id="splash-pane3" label="&splash.panel_misc;">
+    <preferences>
+      <preference id="pref_splash.soundEnabled" name="splash.soundEnabled" instantApply="true" type="bool" />
+      <preference id="pref_splash.soundURL" name="splash.soundURL" instantApply="true" type="string" />
+	    <preference id="pref_splash.trans" name="splash.trans" instantApply="true" type="bool"/>
+	    <preference id="pref_splash.transvalue_img" name="splash.transvalue_img" instantApply="true" type="string"/>
+	    <preference id="pref_splash.transvalue_txt" name="splash.transvalue_txt" instantApply="true" type="string"/>
+	    <preference id="pref_splash.transvalue_box" name="splash.transvalue_box" instantApply="true" type="string"/>
+	    <preference id="pref_splash.transvalue_mtr" name="splash.transvalue_mtr" instantApply="true" type="string"/>
+    </preferences>
+
+    <groupbox>
+      <caption label="&splash.sound;" />
+      <checkbox id="splash.soundEnabled" 
+                preference="pref_splash.soundEnabled" label="&splash.soundEnabled;" />
+      <separator />                
+      <label control="splash.soundURL" value="&splash.soundURL;"/>
+      <hbox>
+        <textbox preference="pref_splash.soundURL" id="splash.soundURL" flex="1" />
+        <button onclick="splash.getSoundFile();" label="&splash.browse;" style="min-width:6px;margin-left:0;"/>
+        <button onclick="splash.playSound(true);" label="&splash.play;" accesskey="&splash.play_key;" />      
+      </hbox>
+      <separator />
+    </groupbox>
+
+	  <groupbox>
+      <caption label="&splash.trans;" />
+      <checkbox id="splash.trans" preference="pref_splash.trans" label="&splash.usetrans;" onclick="toggleTran(!this.checked);" />
+      <grid>
+        <columns>
+          <column />
+          <column />
+        </columns>
+        <rows>
+          <row class="indent" align="center">
+            <label control="splash.trans.img" value="&splash.transval1;"/>
+            <textbox preference="pref_splash.transvalue_img" id="splash.trans.img" size="3" maxlength="3" />
+          </row>
+          <row class="indent" align="center">          
+            <label control="splash.trans.txt" value="&splash.transval2;"/>
+            <textbox preference="pref_splash.transvalue_txt" id="splash.trans.txt" size="3" maxlength="3" />
+          </row>      
+          <row class="indent" align="center">
+            <label control="splash.trans.box" value="&splash.transval3;"/>
+            <textbox preference="pref_splash.transvalue_box" id="splash.trans.box" size="3" maxlength="3" />
+          </row>          
+          <row class="indent" align="center">
+            <label control="splash.trans.prg" value="&splash.transval4;"/>
+            <textbox preference="pref_splash.transvalue_mtr" id="splash.trans.prg" size="3" maxlength="3" />	  
+          </row>
+        </rows>
+      </grid>                  
+    </groupbox>
+
+  </prefpane>
+
+  <script><![CDATA[ 
+    function toggleTimeout(isChecked) {
+      //var myCloseWithMainWindow = document.getElementById('splash.closeWithMainWindow');
+      document.getElementById('splash.timeout').disabled = isChecked; //myCloseWithMainWindow.checked;
+    }
+
+    function toggleText(isChecked) {
+      //var myTextHide = document.getElementById('splash.textHide');
+      document.getElementById('splash.textOverride').disabled = isChecked; //myTextHide.checked;
+      document.getElementById('splash.textStyle').disabled = isChecked; //myTextHide.checked;
+	    document.getElementById('splash.txtcolor').disabled = isChecked; //myTextHide.checked;
+    }
+
+    function toggleTran(isChecked2) {
+      if (!isChecked2) {
+        document.getElementById('splash.trans.img').disabled = true; //myTextHide.checked;
+        document.getElementById('splash.trans.txt').disabled = true; //myTextHide.checked;
+        document.getElementById('splash.trans.box').disabled = true; //myTextHide.checked;
+        document.getElementById('splash.trans.prg').disabled = true; //myTextHide.checked;
+      } else {
+        document.getElementById('splash.trans.img').disabled = false; //myTextHide.checked;
+        document.getElementById('splash.trans.txt').disabled = false; //myTextHide.checked;
+        document.getElementById('splash.trans.box').disabled = false; //myTextHide.checked;
+        document.getElementById('splash.trans.prg').disabled = false; //myTextHide.checked;
+    }
+	}
+
+	function disabled_button () {
+    if(!(nsPreferences.getBoolPref("splash.textHide"))) {
+      splash.opencsseditor('splash.txtcolor');
+  	}
+	}
+	
+  toggleTimeout(nsPreferences.getBoolPref("splash.closeWithMainWindow"));
+  toggleText(nsPreferences.getBoolPref("splash.textHide"));
+  toggleTran(nsPreferences.getBoolPref("splash.trans"));
+
+  ]]></script>
+
+</prefwindow>
+

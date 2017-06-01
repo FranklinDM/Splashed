@@ -1,0 +1,17 @@
+<!ENTITY splash.window.title "جعبه رنگ">
+<!ENTITY splash.sortbyname.label "چینش بر اساس نام">
+<!ENTITY splash.sortbycolor.label "چینش بر اساس رنگ">
+<!ENTITY splash.colorname.label "نام">
+<!ENTITY splash.colorvalue.label "ارزش">
+<!ENTITY splash.colorsample.label "رنگ">
+<!ENTITY splash.redvalue.label "قرمز">
+<!ENTITY splash.greenvalue.label "سبز">
+<!ENTITY splash.bluevalue.label "آبی">
+<!ENTITY splash.setvalue.accesskey "ا">
+<!ENTITY splash.setvalue.label "تائید">
+<!ENTITY splash.cancel.accesskey "ا">
+<!ENTITY splash.cancel.label "انصراف">
+<!ENTITY splash.copyredvalue.tooltiptext "رونوشت ارزش رنگ قرمز">
+<!ENTITY splash.copygreenvalue.tooltiptext "رونوشت ارزش رنگ قرمز">
+<!ENTITY splash.copybluevalue.tooltiptext "رونوشت ارزش رنگ قرمز">
+<!ENTITY texttranswarning "خطا : نوشته نمی تواند پنهان شود.در صورتی که نمی خواهید نوشته ای داشته باشید در تنظیمات برنامه آن گزینه نوشته را غیر فعال کنید.">

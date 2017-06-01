@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Splash - Einstellungen">
+<!ENTITY splash.panel_general "Allgemein">
+<!ENTITY splash.panel_image "Grafik">
+<!ENTITY splash.panel_misc "Verschiedenes">
+<!ENTITY splash.panel_text "Text">
+<!ENTITY splash.startuptweaks "Startverhalten">
+<!ENTITY splash.enabled "Startbildschirm beim Programmstart anzeigen">
+<!ENTITY splash.closeWithMainWindow "Startbildschirm schließen, wenn das Hauptfenster geladen wird">
+<!ENTITY splash.timeout "Automatisch schließen nach (in Millisekunden, 1000ms = 1s):">
+<!ENTITY splash.background "Aussehen des Startbildschirms">
+<!ENTITY splash.bgcolor "Hintergrundfarbe">
+<!ENTITY splash.morecolors "Farbe wählen...">
+<!ENTITY splash.windowStyle "Fensterstil:">
+<!ENTITY splash.importexport.label "Eintellungen exportieren/importieren">
+<!ENTITY splash.export "Exportieren...">
+<!ENTITY splash.import "Importieren...">
+<!ENTITY splash.imageParameters "Grafikvorgaben">
+<!ENTITY splash.imageURL "Pfad zur Grafikdatei (z.B. file:///c:/grafik.jpg)">
+<!ENTITY splash.browse "Durchsuchen...">
+<!ENTITY splash.default "Standard">
+<!ENTITY splash.default_key "S">
+<!ENTITY splash.imageDemensions "Grafikgröße:">
+<!ENTITY splash.preview "Vorschau">
+<!ENTITY splash.sound "Sound">
+<!ENTITY splash.soundEnabled "Klang beim Starten abspielen">
+<!ENTITY splash.soundURL "Pfad zur Audiodatei (z.B. file:///c:/klang.wav)">
+<!ENTITY splash.play "Abspielen">
+<!ENTITY splash.play_key "A">
+<!ENTITY splash.trans "Transparenz">
+<!ENTITY splash.usetrans "Transparenz anwenden (Wert von 0-1, z.B. &quot;.4&quot;)">
+<!ENTITY splash.transval1 "Grafiktransparenz">
+<!ENTITY splash.transval2 "Schrifttransparenz">
+<!ENTITY splash.transval3 "Transparenz des Hauptschirms">
+<!ENTITY splash.transval4 "Transparenz der Fortschrittsanzeige">
+<!ENTITY splash.textSettings "Texteinstellungen">
+<!ENTITY splash.textHide "Text im Startbildschirm ausblenden">
+<!ENTITY splash.progressMeterHide "Fortschrittsanzeige ausblenden">
+<!ENTITY splash.textOverride "Starttext &quot;Laden...&quot; überschreiben (leer lassen für Standard):">
+<!ENTITY splash.txtcolor "Schriftfarbe:">
+<!ENTITY splash.textStyle "Schriftstil:">
+<!ENTITY splash.reset "Alles zurücksetzen">

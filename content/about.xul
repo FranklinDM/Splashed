@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+********************************************************************************
+PROJECT:      Splash!
+FILE:         about.xul
+DESCRIPTION:  XUL overlay for the splash's about screen
+AUTHOR:       aldreneo aka slyfox and mrtech
+LICENSE:      GNU GPL (General Public License)
+
+Copyright (c) 2007 aldreneo aka slyfox and mrtech
+********************************************************************************
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://splash/content/about.css" type="text/css"?> 
+
+<!DOCTYPE overlay SYSTEM "chrome://splash/locale/about.dtd">
+<dialog id="splash-about" 
+        buttons="accept" 
+        title="&windowTitle.label;" 
+        onload="splash.playSound(true);"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />
+  <script type="application/x-javascript" src="chrome://splash/content/splash.js" />
+
+  <vbox style="background-color: white; border: 1px solid gray; padding: 8px; margin: 4px; ">
+    <hbox>
+      <spacer flex="1"/><image src="chrome://splash/content/icon.png"/><spacer flex="1"/>
+    </hbox>
+
+    <description value="&tagLine.label;" style="font: italic 12px Tahoma, sans-serif; margin-top: 12px;" />
+
+    <separator />
+
+    <label value="&authorName.label;" class="header" />
+		<description value="Aldreneo and mrtech" />
+
+  	<separator flex="1" />
+
+		<label value="&contrib.label;" class="header" />
+		<description value="Pike" />
+    <label value="mcdavis941 (Images)" class="url" onclick="splash.openURL('http://www.knology.net/~mcdavis941/411design/');"/>
+    <label value="badassfeline (More Images)" class="url" onclick="splash.openURL('http://www.badassfeline.co.uk/');"/>
+    <label value="Andrea Binello (Color Picker)" class="url" onclick="splash.openURL('https://addons.mozilla.org/firefox/399/');"/>
+  	<separator flex="1" />
+
+    <label class="header" value="&homepage.label;"/>
+    <label id="sitelink" value="http://paperprogs.berlios.de/splash/" class="url" onclick="splash.openURL('http://paperprogs.berlios.de/splash/');"/>
+  </vbox>
+</dialog>

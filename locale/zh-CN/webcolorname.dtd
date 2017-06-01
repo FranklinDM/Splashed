@@ -1,0 +1,17 @@
+<!ENTITY splash.window.title "取色">
+<!ENTITY splash.sortbyname.label "按名称排列">
+<!ENTITY splash.sortbycolor.label "按颜色排列">
+<!ENTITY splash.colorname.label "名称">
+<!ENTITY splash.colorvalue.label "值">
+<!ENTITY splash.colorsample.label "颜色">
+<!ENTITY splash.redvalue.label "红">
+<!ENTITY splash.greenvalue.label "绿">
+<!ENTITY splash.bluevalue.label "蓝">
+<!ENTITY splash.setvalue.accesskey "O">
+<!ENTITY splash.setvalue.label "确定">
+<!ENTITY splash.cancel.accesskey "C">
+<!ENTITY splash.cancel.label "取消">
+<!ENTITY splash.copyredvalue.tooltiptext "复制红色值到粘贴板">
+<!ENTITY splash.copygreenvalue.tooltiptext "复制绿色值到粘贴板">
+<!ENTITY splash.copybluevalue.tooltiptext "复制蓝色值到粘贴板">
+<!ENTITY texttranswarning "错误：文字不能透明，如果不希望看到文字，请在选项中选中[完全隐藏启动画面文字]。">

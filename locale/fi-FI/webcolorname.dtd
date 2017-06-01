@@ -1,0 +1,17 @@
+<!ENTITY splash.window.title "Värivalitsin">
+<!ENTITY splash.sortbyname.label "Listaa nimen mukaan">
+<!ENTITY splash.sortbycolor.label "Listaa värin mukaan">
+<!ENTITY splash.colorname.label "Nimi">
+<!ENTITY splash.colorvalue.label "Arvo">
+<!ENTITY splash.colorsample.label "Väri">
+<!ENTITY splash.redvalue.label "Punainen">
+<!ENTITY splash.greenvalue.label "Vihreä">
+<!ENTITY splash.bluevalue.label "Sininen">
+<!ENTITY splash.setvalue.accesskey "O">
+<!ENTITY splash.setvalue.label "Ok">
+<!ENTITY splash.cancel.accesskey "P">
+<!ENTITY splash.cancel.label "Peruuta">
+<!ENTITY splash.copyredvalue.tooltiptext "Kopioi punaisen arvo leikepöydälle">
+<!ENTITY splash.copygreenvalue.tooltiptext "Kopioi vihreän arvo leikepöydälle">
+<!ENTITY splash.copybluevalue.tooltiptext "Kopioi sinisen arvo leikepöydälle">
+<!ENTITY texttranswarning "VIRHE: Teksti ei voi olla kokonaan läpinäkyvä... Jos et halua yhtään tekstiä, valitse &apos;Piilota lataus teksti kokonaan.&apos;">

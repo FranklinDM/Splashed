@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Latauskuvan asetukset">
+<!ENTITY splash.panel_general "Yleiset">
+<!ENTITY splash.panel_image "Kuva">
+<!ENTITY splash.panel_misc "Sekalaiset">
+<!ENTITY splash.panel_text "Teksti">
+<!ENTITY splash.startuptweaks "Käynnistys Parannukset">
+<!ENTITY splash.enabled "Näytä latauskuva käynnistettäessä">
+<!ENTITY splash.closeWithMainWindow "Sulje latauskuva kun pääikkuna latautuu">
+<!ENTITY splash.timeout "Automaattisen sulkeutumisen aika (1000 = 1 sec):">
+<!ENTITY splash.background "Latauskuvan Tausta">
+<!ENTITY splash.bgcolor "Väri:">
+<!ENTITY splash.morecolors "Lisää Värejä">
+<!ENTITY splash.windowStyle "Ikkunan Tyyli:">
+<!ENTITY splash.importexport.label "Tuo/Vie Asetukset">
+<!ENTITY splash.export "Vie">
+<!ENTITY splash.import "Tuo">
+<!ENTITY splash.imageParameters "Kuvan Tiedot">
+<!ENTITY splash.imageURL "Kuvan URL (esim: file:///c:/kuva.png):">
+<!ENTITY splash.browse "Selaa...">
+<!ENTITY splash.default "Oletus">
+<!ENTITY splash.default_key "L">
+<!ENTITY splash.imageDemensions "Kuvan mitat:">
+<!ENTITY splash.preview "Esikatselu">
+<!ENTITY splash.sound "Ääni">
+<!ENTITY splash.soundEnabled "Toista ääni käynnistettäessä">
+<!ENTITY splash.soundURL "Äänen URL (esim: file:///c:/ääni.wav):">
+<!ENTITY splash.play "Toista">
+<!ENTITY splash.play_key "t">
+<!ENTITY splash.trans "Läpinäkyvyys">
+<!ENTITY splash.usetrans "Käytä läpinäkyvyyttä (arvo alue on 0-1 esim. &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Kuva">
+<!ENTITY splash.transval2 "Teksti">
+<!ENTITY splash.transval3 "Pää Laatikko">
+<!ENTITY splash.transval4 "Tilanne Palkki">
+<!ENTITY splash.textSettings "Teksti Asetukset">
+<!ENTITY splash.textHide "Piilota latauskuva teksti kokonaan">
+<!ENTITY splash.progressMeterHide "Piilota tilanne palkki">
+<!ENTITY splash.textOverride "Vaihda &quot;ladataan...&quot; teksti(jätä tyhjäksi oletusta varten):">
+<!ENTITY splash.txtcolor "Tekstin Väri:">
+<!ENTITY splash.textStyle "Tekstin Tyyli:">
+<!ENTITY splash.reset "Nollaa Kaikki">

@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Splash instellingen">
+<!ENTITY splash.panel_general "Algemeen">
+<!ENTITY splash.panel_image "Afbeelding">
+<!ENTITY splash.panel_misc "Diversen">
+<!ENTITY splash.panel_text "Tekst">
+<!ENTITY splash.startuptweaks "Opstartaanpassingen">
+<!ENTITY splash.enabled "Splashvenster bij opstarten weergeven">
+<!ENTITY splash.closeWithMainWindow "Splashvenster sluiten bij laden hoofdvenster">
+<!ENTITY splash.timeout "Tijdsduur voor automatisch sluiten (1000 = 1 sec):">
+<!ENTITY splash.background "Splashachtergrond">
+<!ENTITY splash.bgcolor "Kleur:">
+<!ENTITY splash.morecolors "Meer kleuren">
+<!ENTITY splash.windowStyle "Vensterstijl:">
+<!ENTITY splash.importexport.label "Instellingen exporteren/importeren">
+<!ENTITY splash.export "Exporteren">
+<!ENTITY splash.import "Importeren">
+<!ENTITY splash.imageParameters "Afbeeldingsparameters">
+<!ENTITY splash.imageURL "Afbeeldings-URL (b.v.: file:///c:/image.png):">
+<!ENTITY splash.browse "Bladeren...">
+<!ENTITY splash.default "Standaard">
+<!ENTITY splash.default_key "S">
+<!ENTITY splash.imageDemensions "Afbeeldingsafmetingen:">
+<!ENTITY splash.preview "Voorbeeld">
+<!ENTITY splash.sound "Geluid">
+<!ENTITY splash.soundEnabled "Geluid afspelen bij opstarten">
+<!ENTITY splash.soundURL "URL van geluidsfragment (b.v.: file:///c:/sound.wav):">
+<!ENTITY splash.play "Afspelen">
+<!ENTITY splash.play_key "A">
+<!ENTITY splash.trans "Opaciteit">
+<!ENTITY splash.usetrans "Opaciteit gebruiken (in een waarde tussen 0 en 1, b.v. &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Afbeelding">
+<!ENTITY splash.transval2 "Tekst">
+<!ENTITY splash.transval3 "Hoofdveld">
+<!ENTITY splash.transval4 "Voortgangsmeter">
+<!ENTITY splash.textSettings "Tekstinstellingen">
+<!ENTITY splash.textHide "Splashtekst volledig verbergen">
+<!ENTITY splash.progressMeterHide "Voortgangsmeter verbergen">
+<!ENTITY splash.textOverride "&quot;Laden...&quot;-tekst onderdrukken (standaard leeg):">
+<!ENTITY splash.txtcolor "Tekstkleur:">
+<!ENTITY splash.textStyle "Tekststijl:">
+<!ENTITY splash.reset "Alles resetten">

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>splashed@franklindm</em:id>
+    <em:name>Splashed!</em:name>
+    <em:version>1.0.0</em:version>
+    <em:description>Need a splash screen while you wait?</em:description>
+    <em:creator>FranklinDM</em:creator>
+    <em:aboutURL>chrome://splash/content/about.xul</em:aboutURL>
+    <!-- optional items -->
+    <em:homepageURL>http://www.mrtech.com/extensions/</em:homepageURL>
+    <em:iconURL>chrome://splash/content/images/icon.png</em:iconURL>
+    <em:optionsURL>chrome://splash/content/options.xul</em:optionsURL>
+
+    <em:contributor>aldreneo and mrtech (creator of Splash!)</em:contributor>
+	
+    <em:targetApplication> <!-- Pale Moon -->
+      <Description>
+        <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+        <em:minVersion>27.0.0b3</em:minVersion>
+        <em:maxVersion>27.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

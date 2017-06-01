@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Impostazioni di Splash">
+<!ENTITY splash.panel_general "Generali">
+<!ENTITY splash.panel_image "Immagine">
+<!ENTITY splash.panel_misc "Varie">
+<!ENTITY splash.panel_text "Testo">
+<!ENTITY splash.startuptweaks "Impostazioni di avvio">
+<!ENTITY splash.enabled "Mostra la schermata all&apos;avvio">
+<!ENTITY splash.closeWithMainWindow "Chiudi la schermata quando la finestra principale è caricata">
+<!ENTITY splash.timeout "Tempo di visualizzazione della schermata (1000 = 1 sec):">
+<!ENTITY splash.background "Sfondo della schermata di caricamento">
+<!ENTITY splash.bgcolor "Colore:">
+<!ENTITY splash.morecolors "Altri colori...">
+<!ENTITY splash.windowStyle "Stile della finestra:">
+<!ENTITY splash.importexport.label "Esportazione/importazione delle impostazioni">
+<!ENTITY splash.export "Esporta">
+<!ENTITY splash.import "Importa">
+<!ENTITY splash.imageParameters "Impostazioni dell&apos;immagine">
+<!ENTITY splash.imageURL "Percorso dell&apos;immagine (es: file:///c:/immagine.png):">
+<!ENTITY splash.browse "Sfoglia...">
+<!ENTITY splash.default "Predefinito">
+<!ENTITY splash.default_key "P">
+<!ENTITY splash.imageDemensions "Dimensioni dell&apos;immagine:">
+<!ENTITY splash.preview "Anteprima">
+<!ENTITY splash.sound "Suono">
+<!ENTITY splash.soundEnabled "Emetti un suono all&apos;avvio">
+<!ENTITY splash.soundURL "Percorso del file audio (es: file:///c:/suono.wav):">
+<!ENTITY splash.play "Riproduci">
+<!ENTITY splash.play_key "R">
+<!ENTITY splash.trans "Opacità">
+<!ENTITY splash.usetrans "Utilizza opacità">
+<!ENTITY splash.transval1 "Valore di opacità dell&apos;immagine (da 0 a 1. Es: &apos;.4&apos;)">
+<!ENTITY splash.transval2 "Valore di opacità del testo (da 0 a 1. Es: &apos;.4&apos;)">
+<!ENTITY splash.transval3 "Valore di opacità dell&apos;area principale (da 0 a 1. Es: &apos;.4&apos;)">
+<!ENTITY splash.transval4 "Valore di opacità della barra di avanzamento (da 0 a 1. Es: &apos;.4&apos;)">
+<!ENTITY splash.textSettings "Impostazioni del testo">
+<!ENTITY splash.textHide "Nascondi il testo della schermata">
+<!ENTITY splash.progressMeterHide "Nascondi la barra di avanzamento">
+<!ENTITY splash.textOverride "Testo &quot;Caricamento in corso...&quot; (lasciare vuoto per il testo predefinito):">
+<!ENTITY splash.txtcolor "Colore del testo:">
+<!ENTITY splash.textStyle "Stile del testo:">
+<!ENTITY splash.reset "Impostazioni predefinite">

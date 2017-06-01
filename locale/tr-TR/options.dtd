@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Açılış Ekranı Ayarları">
+<!ENTITY splash.panel_general "Genel">
+<!ENTITY splash.panel_image "Resim">
+<!ENTITY splash.panel_misc "Çeşitli">
+<!ENTITY splash.panel_text "Metin">
+<!ENTITY splash.startuptweaks "Başlangıç Ayarları">
+<!ENTITY splash.enabled "Açılışta Ekranı Göster">
+<!ENTITY splash.closeWithMainWindow "Ana pencere yüklendiğinde açılış ekranını kapat">
+<!ENTITY splash.timeout "Otomatik Kapanma Zaman Aşımı (1000 = 1 sn):">
+<!ENTITY splash.background "Açılış Ekranı Arkaplanı">
+<!ENTITY splash.bgcolor "Renk:">
+<!ENTITY splash.morecolors "Daha Fazla Renk">
+<!ENTITY splash.windowStyle "Pencere Stili:">
+<!ENTITY splash.importexport.label "Ayarları Al/Ver">
+<!ENTITY splash.export "Dışa Aktar">
+<!ENTITY splash.import "İçe Aktar">
+<!ENTITY splash.imageParameters "Resim Parametreleri">
+<!ENTITY splash.imageURL "Resim Konumu (örn: file:///c:/resim.png):">
+<!ENTITY splash.browse "Gözat...">
+<!ENTITY splash.default "Varsayılan">
+<!ENTITY splash.default_key "D">
+<!ENTITY splash.imageDemensions "Resim boyutları:">
+<!ENTITY splash.preview "Önizleme">
+<!ENTITY splash.sound "Ses">
+<!ENTITY splash.soundEnabled "Açılışta ses çal">
+<!ENTITY splash.soundURL "Ses Konumu (örn: file:///c:/sound.wav):">
+<!ENTITY splash.play "Çal">
+<!ENTITY splash.play_key "P">
+<!ENTITY splash.trans "Saydamlık">
+<!ENTITY splash.usetrans "Saydamlık Kullan (0-1 arasında bir değer. Örn. &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Resim">
+<!ENTITY splash.transval2 "Metin">
+<!ENTITY splash.transval3 "Ana Kutu">
+<!ENTITY splash.transval4 "İşlem Çubuğu">
+<!ENTITY splash.textSettings "Metin Ayarları">
+<!ENTITY splash.textHide "Açılış metnini tamamen gizle">
+<!ENTITY splash.progressMeterHide "İşlem çubuğunu gizle">
+<!ENTITY splash.textOverride "&quot;yükleniyor...&quot; yazısı (varsayılan için boş bırakın):">
+<!ENTITY splash.txtcolor "Metin Rengi:">
+<!ENTITY splash.textStyle "Metin Stili:">
+<!ENTITY splash.reset "Tümünü Sıfırla">

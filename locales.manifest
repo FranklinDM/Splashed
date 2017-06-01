@@ -1,0 +1,26 @@
+# This file contains a list of locales present in the package
+
+locale	splash	en-US	locale/en-US/
+
+# unused locales (not updated)
+#locale	splash	cs-CZ	jar:chrome/splash.jar!/locale/cs-CZ/
+#locale	splash	de-DE	jar:chrome/splash.jar!/locale/de-DE/
+#locale	splash	es-AR	jar:chrome/splash.jar!/locale/es-AR/
+#locale	splash	es-ES	jar:chrome/splash.jar!/locale/es-ES/
+#locale	splash	fa-IR	jar:chrome/splash.jar!/locale/fa-IR/
+#locale	splash	fi-FI	jar:chrome/splash.jar!/locale/fi-FI/
+#locale	splash	fr-FR	jar:chrome/splash.jar!/locale/fr-FR/
+#locale	splash	he-IL	jar:chrome/splash.jar!/locale/he-IL/
+#locale	splash	it-IT	jar:chrome/splash.jar!/locale/it-IT/
+#locale	splash	ja		jar:chrome/splash.jar!/locale/ja/
+#locale	splash	ko-KR	jar:chrome/splash.jar!/locale/ko-KR/
+#locale	splash	nl-NL	jar:chrome/splash.jar!/locale/nl-NL/
+#locale	splash	pl-PL	jar:chrome/splash.jar!/locale/pl-PL/
+#locale	splash	pt-BR	jar:chrome/splash.jar!/locale/pt-BR/
+#locale	splash	ru-RU	jar:chrome/splash.jar!/locale/ru-RU/
+#locale	splash	sk-SK	jar:chrome/splash.jar!/locale/sk-SK/
+#locale	splash	sv-SE	jar:chrome/splash.jar!/locale/sv-SE/
+#locale	splash	tr-TR	jar:chrome/splash.jar!/locale/tr-TR/
+#locale	splash	uk-UA	jar:chrome/splash.jar!/locale/uk-UA/
+#locale	splash	zh-CN	jar:chrome/splash.jar!/locale/zh-CN/
+#locale	splash	zh-TW	jar:chrome/splash.jar!/locale/zh-TW/

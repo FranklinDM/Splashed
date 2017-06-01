@@ -1,0 +1,17 @@
+<!ENTITY splash.window.title "顏色選擇器">
+<!ENTITY splash.sortbyname.label "依名稱排序">
+<!ENTITY splash.sortbycolor.label "依顏色排序">
+<!ENTITY splash.colorname.label "名稱">
+<!ENTITY splash.colorvalue.label "值">
+<!ENTITY splash.colorsample.label "顏色">
+<!ENTITY splash.redvalue.label "紅">
+<!ENTITY splash.greenvalue.label "綠">
+<!ENTITY splash.bluevalue.label "藍">
+<!ENTITY splash.setvalue.accesskey "O">
+<!ENTITY splash.setvalue.label "確定">
+<!ENTITY splash.cancel.accesskey "C">
+<!ENTITY splash.cancel.label "取消">
+<!ENTITY splash.copyredvalue.tooltiptext "複製紅色值到剪貼簿">
+<!ENTITY splash.copygreenvalue.tooltiptext "複製綠色值到剪貼簿">
+<!ENTITY splash.copybluevalue.tooltiptext "複製藍色值到剪貼簿">
+<!ENTITY texttranswarning "錯誤：字型色彩不可為透明。如果您不想顯示文字的話，請在字型設定中勾選「隱藏啟動畫面的文字」。">

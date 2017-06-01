@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Splash - ustawienia">
+<!ENTITY splash.panel_general "Ogólne">
+<!ENTITY splash.panel_image "Obrazek">
+<!ENTITY splash.panel_misc "Różne">
+<!ENTITY splash.panel_text "Tekst">
+<!ENTITY splash.startuptweaks "Opcje dopasowania">
+<!ENTITY splash.enabled "Wyświetl ekran powitalny podczas uruchamiania programu">
+<!ENTITY splash.closeWithMainWindow "Zamknij ekran powitalny po wczytaniu okna programu">
+<!ENTITY splash.timeout "Zamknij ekran powitalny po (1000 = 1 sekunda):">
+<!ENTITY splash.background "Tło">
+<!ENTITY splash.bgcolor "Kolor:">
+<!ENTITY splash.morecolors "Więcej kolorów">
+<!ENTITY splash.windowStyle "Wygląd okna:">
+<!ENTITY splash.importexport.label "Eksport/Import - ustawienia">
+<!ENTITY splash.export "Eksportuj">
+<!ENTITY splash.import "Importuj">
+<!ENTITY splash.imageParameters "Parametry obrazka">
+<!ENTITY splash.imageURL "Adres URL obrazka (np.: file:///c:/obrazek.png):">
+<!ENTITY splash.browse "Przeglądaj...">
+<!ENTITY splash.default "Domyślny">
+<!ENTITY splash.default_key "D">
+<!ENTITY splash.imageDemensions "Wymiary obrazka:">
+<!ENTITY splash.preview "Podgląd">
+<!ENTITY splash.sound "Dźwięk">
+<!ENTITY splash.soundEnabled "Odtwórz dźwięk podczas uruchamiania programu">
+<!ENTITY splash.soundURL "Adres URL pliku dźwiękowego (np.: file:///c:/dzwiek.wav):">
+<!ENTITY splash.play "Odtwórz">
+<!ENTITY splash.play_key "O">
+<!ENTITY splash.trans "Przeźroczystość">
+<!ENTITY splash.usetrans "Włącz przeźroczystość (wartości między 0-1 np. &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Obrazek">
+<!ENTITY splash.transval2 "Tekst">
+<!ENTITY splash.transval3 "Główny pojemnik (Box)">
+<!ENTITY splash.transval4 "Pasek postępu">
+<!ENTITY splash.textSettings "Ustawienia tekstu">
+<!ENTITY splash.textHide "Nie wyświetlaj tekstu">
+<!ENTITY splash.progressMeterHide "Nie wyświetlaj paska postępu">
+<!ENTITY splash.textOverride "Tekst powitalny (&quot;Uruchamianie...&quot;, gdy pole pozostanie puste):">
+<!ENTITY splash.txtcolor "Kolor tekstu:">
+<!ENTITY splash.textStyle "Wygląd tekstu:">
+<!ENTITY splash.reset "Przywróć domyślne">

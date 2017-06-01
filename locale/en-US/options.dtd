@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Splash Settings">
+<!ENTITY splash.panel_general "General">
+<!ENTITY splash.panel_image "Image">
+<!ENTITY splash.panel_misc "Miscellaneous">
+<!ENTITY splash.panel_text "Text">
+<!ENTITY splash.startuptweaks "Startup Tweaks">
+<!ENTITY splash.enabled "Show Splash on Startup">
+<!ENTITY splash.closeWithMainWindow "Close splash when main window loads">
+<!ENTITY splash.timeout "Auto-close Timeout (1000 = 1 sec):">
+<!ENTITY splash.background "Splash Background">
+<!ENTITY splash.bgcolor "Color: ">
+<!ENTITY splash.morecolors "More Colors ">
+<!ENTITY splash.windowStyle "Window Style:">
+<!ENTITY splash.importexport.label "Export/Import Settings">
+<!ENTITY splash.export "Export">
+<!ENTITY splash.import "Import">
+<!ENTITY splash.imageParameters "Image Parameters">
+<!ENTITY splash.imageURL "Image URL (ex: file:///c:/image.png):">
+<!ENTITY splash.browse "Browse...">
+<!ENTITY splash.default "Default">
+<!ENTITY splash.default_key "D">
+<!ENTITY splash.imageDemensions "Image demensions:">
+<!ENTITY splash.preview "Preview">
+<!ENTITY splash.sound "Sound">
+<!ENTITY splash.soundEnabled "Play sound on startup">
+<!ENTITY splash.soundURL "Sound URL (ex: file:///c:/sound.wav):">
+<!ENTITY splash.play "Play">
+<!ENTITY splash.play_key "P">
+<!ENTITY splash.trans "Opacity">
+<!ENTITY splash.usetrans "Use Opacity (value range is from 0-1 Ex. &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Image">
+<!ENTITY splash.transval2 "Text">
+<!ENTITY splash.transval3 "Main Box">
+<!ENTITY splash.transval4 "Progress Bar">
+<!ENTITY splash.textSettings "Text Settings">
+<!ENTITY splash.textHide "Hide splash text completely">
+<!ENTITY splash.progressMeterHide "Hide progress meter">
+<!ENTITY splash.textOverride "Override &quot;loading...&quot; text (leave blank for default):">
+<!ENTITY splash.txtcolor "Text Color:">
+<!ENTITY splash.textStyle "Text Style:">
+<!ENTITY splash.reset "Reset All">

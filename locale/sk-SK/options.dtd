@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Nastavenia úvodnej obrazovky">
+<!ENTITY splash.panel_general "Všeobecné">
+<!ENTITY splash.panel_image "Obrázok">
+<!ENTITY splash.panel_misc "Rôzne">
+<!ENTITY splash.panel_text "Text">
+<!ENTITY splash.startuptweaks "Nastavenie spustenia">
+<!ENTITY splash.enabled "Zobraziť úvodnú obrazovku po spustení">
+<!ENTITY splash.closeWithMainWindow "Po načítaní okna skryť obrázok úvodnej obrazovky">
+<!ENTITY splash.timeout "Dĺžka zobrazenia (1000 = 1 sek):">
+<!ENTITY splash.background "Pozadie úvodnej obrazovky">
+<!ENTITY splash.bgcolor "Farba pozadia:">
+<!ENTITY splash.morecolors "Ďalšie farby">
+<!ENTITY splash.windowStyle "Štýl okna:">
+<!ENTITY splash.importexport.label "Export/import nastavení">
+<!ENTITY splash.export "Export">
+<!ENTITY splash.import "Import">
+<!ENTITY splash.imageParameters "Parametre obrázka">
+<!ENTITY splash.imageURL "URL obrázka (napr.: file:///c:/image.png):">
+<!ENTITY splash.browse "Prehľadávať...">
+<!ENTITY splash.default "Predvolené">
+<!ENTITY splash.default_key "d">
+<!ENTITY splash.imageDemensions "Rozmery obrázka:">
+<!ENTITY splash.preview "Ukážka">
+<!ENTITY splash.sound "Zvuk">
+<!ENTITY splash.soundEnabled "Pri zobrazení prehrať zvuk:">
+<!ENTITY splash.soundURL "URL zvukového súboru (napr.: file:///c:/sound.wav):">
+<!ENTITY splash.play "Prehrať">
+<!ENTITY splash.play_key "P">
+<!ENTITY splash.trans "Priehľadnosť">
+<!ENTITY splash.usetrans "Použiť priehľadnosť (hodnota v rozmedzí 0-1, napr. &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Obrázok">
+<!ENTITY splash.transval2 "Text">
+<!ENTITY splash.transval3 "Hlavné okno">
+<!ENTITY splash.transval4 "Stav načítania">
+<!ENTITY splash.textSettings "Nastavenia textu">
+<!ENTITY splash.textHide "Skryť text na úvodnej obrazovke">
+<!ENTITY splash.progressMeterHide "Skryť zobrazovanie priebehu načítania">
+<!ENTITY splash.textOverride "Text &quot;načítava sa...&quot; (pre predvolený text nechajte prázdne)">
+<!ENTITY splash.txtcolor "Farba textu:">
+<!ENTITY splash.textStyle "Štýl textu:">
+<!ENTITY splash.reset "Obnoviť všetko">

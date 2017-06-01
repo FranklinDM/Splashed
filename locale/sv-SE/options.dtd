@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Splash inställningar">
+<!ENTITY splash.panel_general "Generella">
+<!ENTITY splash.panel_image "Bild">
+<!ENTITY splash.panel_misc "Blandat">
+<!ENTITY splash.panel_text "Text">
+<!ENTITY splash.startuptweaks "Uppstartsinställningar">
+<!ENTITY splash.enabled "Visa Splash vi uppstart">
+<!ENTITY splash.closeWithMainWindow "Stäng Splash när huvudfönstret laddas">
+<!ENTITY splash.timeout "Timeout auto-stäng (1000 = 1 sek):">
+<!ENTITY splash.background "Splash bakgrund">
+<!ENTITY splash.bgcolor "Färg:">
+<!ENTITY splash.morecolors "Fler färger">
+<!ENTITY splash.windowStyle "Fönsterstil:">
+<!ENTITY splash.importexport.label "Exportera/Importera inställningar">
+<!ENTITY splash.export "Exportera">
+<!ENTITY splash.import "Importera">
+<!ENTITY splash.imageParameters "Bildinställningar">
+<!ENTITY splash.imageURL "URL för bild (t.ex: file:///c:/image.png):">
+<!ENTITY splash.browse "Bläddra...">
+<!ENTITY splash.default "Standard">
+<!ENTITY splash.default_key "S">
+<!ENTITY splash.imageDemensions "Bildstorlek:">
+<!ENTITY splash.preview "Förhandsvisning">
+<!ENTITY splash.sound "Ljud">
+<!ENTITY splash.soundEnabled "Spela upp ett ljud vid uppstart">
+<!ENTITY splash.soundURL "URL för ljud (ex: file:///c:/sound.wav):">
+<!ENTITY splash.play "Spela upp">
+<!ENTITY splash.play_key "p">
+<!ENTITY splash.trans "Genomskinlighet">
+<!ENTITY splash.usetrans "Använd genomskinlighet (värde från 0-1. T.ex. &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Bild">
+<!ENTITY splash.transval2 "Text">
+<!ENTITY splash.transval3 "Huvudruta">
+<!ENTITY splash.transval4 "Förloppsmätare">
+<!ENTITY splash.textSettings "Textinställningar">
+<!ENTITY splash.textHide "Göm Splash-text">
+<!ENTITY splash.progressMeterHide "Göm förloppsmätare">
+<!ENTITY splash.textOverride "Använd texten &quot;laddar...&quot; (blank=standard):">
+<!ENTITY splash.txtcolor "Textfärg:">
+<!ENTITY splash.textStyle "Textstil:">
+<!ENTITY splash.reset "Återställ allt">

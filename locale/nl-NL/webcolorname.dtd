@@ -1,0 +1,17 @@
+<!ENTITY splash.window.title "Kleurselectie">
+<!ENTITY splash.sortbyname.label "Gesorteerd op naam">
+<!ENTITY splash.sortbycolor.label "Gesorteerd op kleur">
+<!ENTITY splash.colorname.label "Naam">
+<!ENTITY splash.colorvalue.label "Waarde">
+<!ENTITY splash.colorsample.label "Kleur">
+<!ENTITY splash.redvalue.label "Rood">
+<!ENTITY splash.greenvalue.label "Groen">
+<!ENTITY splash.bluevalue.label "Blauw">
+<!ENTITY splash.setvalue.accesskey "O">
+<!ENTITY splash.setvalue.label "OK">
+<!ENTITY splash.cancel.accesskey "A">
+<!ENTITY splash.cancel.label "Annuleren">
+<!ENTITY splash.copyredvalue.tooltiptext "Roodwaarde naar klembord kopiëren">
+<!ENTITY splash.copygreenvalue.tooltiptext "Groenwaarde naar klembord kopiëren">
+<!ENTITY splash.copybluevalue.tooltiptext "Blauwwaarde naar klembord kopiëren">
+<!ENTITY texttranswarning "FOUT: Tekst kan niet transparant zijn... Als u geen tekst wilt weergeven selecteer dan a.u.b. &apos;Splashtekst volledig verbergen&apos; in het optiesmenu.">

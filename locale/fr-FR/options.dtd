@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Paramètres de Splash">
+<!ENTITY splash.panel_general "Général">
+<!ENTITY splash.panel_image "Image">
+<!ENTITY splash.panel_misc "Divers">
+<!ENTITY splash.panel_text "Texte">
+<!ENTITY splash.startuptweaks "Optimisations du démarrage">
+<!ENTITY splash.enabled "Afficher la fenêtre de bienvenue au démarrage">
+<!ENTITY splash.closeWithMainWindow "Fermer la fenêtre de bienvenue au chargement de la fenêtre principale">
+<!ENTITY splash.timeout "Délai d&apos;affichage (1000 = 1 sec) :">
+<!ENTITY splash.background "Couleur de fond">
+<!ENTITY splash.bgcolor "Couleur :">
+<!ENTITY splash.morecolors "Plus de couleurs">
+<!ENTITY splash.windowStyle "Style de la fenêtre :">
+<!ENTITY splash.importexport.label "Exporter/Importer les paramètres">
+<!ENTITY splash.export "Exporter">
+<!ENTITY splash.import "Importer">
+<!ENTITY splash.imageParameters "Paramètres de l&apos;image">
+<!ENTITY splash.imageURL "URL de l&apos;image (ex : file:///c:/image.png) :">
+<!ENTITY splash.browse "Parcourir...">
+<!ENTITY splash.default "Défault">
+<!ENTITY splash.default_key "D">
+<!ENTITY splash.imageDemensions "Dimensions de l&apos;image :">
+<!ENTITY splash.preview "Aperçu">
+<!ENTITY splash.sound "Son">
+<!ENTITY splash.soundEnabled "Jouer un son au démarrage">
+<!ENTITY splash.soundURL "URL du fichier &apos;son&apos; (ex : file:///c:/son.wav) :">
+<!ENTITY splash.play "Jouer">
+<!ENTITY splash.play_key "J">
+<!ENTITY splash.trans "Opacité">
+<!ENTITY splash.usetrans "Utiliser l&apos;opacité (valeur comprise entre 0 et 1, par exemple :&apos;.4&apos;)">
+<!ENTITY splash.transval1 "Image">
+<!ENTITY splash.transval2 "Texte">
+<!ENTITY splash.transval3 "Boite principale">
+<!ENTITY splash.transval4 "Barre de progression">
+<!ENTITY splash.textSettings "Paramètres du texte">
+<!ENTITY splash.textHide "Masquer complètement le texte de bienvenue">
+<!ENTITY splash.progressMeterHide "Masquer la barre de progression">
+<!ENTITY splash.textOverride "Remplacer le texte &quot;Chargement...&quot; (laisser vide par défaut) :">
+<!ENTITY splash.txtcolor "Couleur du texte :">
+<!ENTITY splash.textStyle "Style du texte :">
+<!ENTITY splash.reset "Tout réinitialiser">

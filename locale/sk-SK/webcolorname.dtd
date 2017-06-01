@@ -1,0 +1,17 @@
+<!ENTITY splash.window.title "Výber farby">
+<!ENTITY splash.sortbyname.label "Usporiadané podľa názvu">
+<!ENTITY splash.sortbycolor.label "Usporiadané podľa farby">
+<!ENTITY splash.colorname.label "Názov">
+<!ENTITY splash.colorvalue.label "Hodnota">
+<!ENTITY splash.colorsample.label "Farba">
+<!ENTITY splash.redvalue.label "Červená">
+<!ENTITY splash.greenvalue.label "Zelená">
+<!ENTITY splash.bluevalue.label "Modrá">
+<!ENTITY splash.setvalue.accesskey "O">
+<!ENTITY splash.setvalue.label "OK">
+<!ENTITY splash.cancel.accesskey "Z">
+<!ENTITY splash.cancel.label "Zrušiť">
+<!ENTITY splash.copyredvalue.tooltiptext "Kopírovať hodnotu červenej do schránky">
+<!ENTITY splash.copygreenvalue.tooltiptext "Kopírovať hodnotu zelenej do schránky">
+<!ENTITY splash.copybluevalue.tooltiptext "Kopírovať hodnotu modrej do schránky">
+<!ENTITY texttranswarning "CHYBA: Text nemôže byť priehľadný...Ak si neprajete vidieť text, označte možnosť &apos;Skryť text na úvodnej obrazovke&apos; v nastaveniach rozšírenia.">

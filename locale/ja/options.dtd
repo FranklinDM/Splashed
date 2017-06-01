@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Splash 設定">
+<!ENTITY splash.panel_general "一般">
+<!ENTITY splash.panel_image "画像">
+<!ENTITY splash.panel_misc "その他">
+<!ENTITY splash.panel_text "テキスト">
+<!ENTITY splash.startuptweaks "起動時の調整">
+<!ENTITY splash.enabled "起動時にスプラッシュを表示">
+<!ENTITY splash.closeWithMainWindow "メインウィンドウが読み込まれたらスプラッシュを閉じる">
+<!ENTITY splash.timeout "自動終了タイムアウト (1000 = 1秒):">
+<!ENTITY splash.background "スプラッシュ背景">
+<!ENTITY splash.bgcolor "色:">
+<!ENTITY splash.morecolors "追加の色">
+<!ENTITY splash.windowStyle "ウィンドウスタイル:">
+<!ENTITY splash.importexport.label "書き出し・読み込み設定">
+<!ENTITY splash.export "書き出す">
+<!ENTITY splash.import "読み込む">
+<!ENTITY splash.imageParameters "画像要素">
+<!ENTITY splash.imageURL "画像 URL (例: file:///c:/image.png):">
+<!ENTITY splash.browse "参照...">
+<!ENTITY splash.default "既定">
+<!ENTITY splash.default_key "D">
+<!ENTITY splash.imageDemensions "画像寸法:">
+<!ENTITY splash.preview "プレビュー">
+<!ENTITY splash.sound "音">
+<!ENTITY splash.soundEnabled "起動時に音を鳴らす">
+<!ENTITY splash.soundURL "音 URL (例: file:///c:/sound.wav):">
+<!ENTITY splash.play "再生">
+<!ENTITY splash.play_key "P">
+<!ENTITY splash.trans "不透明度">
+<!ENTITY splash.usetrans "不透明を利用する (値の範囲は 0 から 1 まで。例 &apos;.4&apos;)">
+<!ENTITY splash.transval1 "画像">
+<!ENTITY splash.transval2 "テキスト">
+<!ENTITY splash.transval3 "メインボックス">
+<!ENTITY splash.transval4 "プログレスバー">
+<!ENTITY splash.textSettings "テキスト設定">
+<!ENTITY splash.textHide "スプラッシュテキストを完全に非表示にする">
+<!ENTITY splash.progressMeterHide "プログレスメーターを非表示にする">
+<!ENTITY splash.textOverride "「読み込み中……」を上書きするテキスト (空欄で既定):">
+<!ENTITY splash.txtcolor "テキスト色:">
+<!ENTITY splash.textStyle "テキストスタイル:">
+<!ENTITY splash.reset "すべて初期化">

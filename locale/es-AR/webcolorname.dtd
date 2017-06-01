@@ -1,0 +1,17 @@
+<!ENTITY splash.window.title "Color Picker">
+<!ENTITY splash.sortbyname.label "Sorted by Name">
+<!ENTITY splash.sortbycolor.label "Sorted by Color">
+<!ENTITY splash.colorname.label "Name">
+<!ENTITY splash.colorvalue.label "Value">
+<!ENTITY splash.colorsample.label "Color">
+<!ENTITY splash.redvalue.label "Red">
+<!ENTITY splash.greenvalue.label "Green">
+<!ENTITY splash.bluevalue.label "Blue">
+<!ENTITY splash.setvalue.accesskey "O">
+<!ENTITY splash.setvalue.label "Ok">
+<!ENTITY splash.cancel.accesskey "C">
+<!ENTITY splash.cancel.label "Cancel">
+<!ENTITY splash.copyredvalue.tooltiptext "Copy red value into clipboard">
+<!ENTITY splash.copygreenvalue.tooltiptext "Copy green value into clipboard">
+<!ENTITY splash.copybluevalue.tooltiptext "Copy blue value into clipboard">
+<!ENTITY texttranswarning "ERROR: Text cannot be transparent...If you wish not to have text please select &apos;Hide splash text completely&apos; under the options.">

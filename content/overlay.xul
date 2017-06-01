@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+********************************************************************************
+PROJECT:        Splash!
+FILE:           overlay.xul
+DESCRIPTION:    XUL browser overlay for Splash!
+AUTHOR:			aldreneo aka slyfox and mrtech
+LICENSE:        GNU GPL (General Public License)
+
+Copyright (c) 2006 aldreneo aka slyfox and mrtech
+********************************************************************************
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<overlay id="splashoverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />
+  <script type="application/x-javascript" src="chrome://splash/content/splash.js" />
+
+  <script><![CDATA[ 
+    function closeSplash() {
+      var mainWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                         .getService(Components.interfaces.nsIWindowMediator)
+                         .getMostRecentWindow("splash:window");
+      if (mainWindow) {
+        mainWindow.close();
+      }
+    }
+
+    if (nsPreferences.getBoolPref("splash.closeWithMainWindow")) {
+      setTimeout(closeSplash, 500);
+    }
+
+  ]]></script>
+</overlay>

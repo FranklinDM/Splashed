@@ -1,0 +1,17 @@
+<!ENTITY splash.window.title "Selezione colore">
+<!ENTITY splash.sortbyname.label "Ordinato per nome">
+<!ENTITY splash.sortbycolor.label "Ordinato per colore">
+<!ENTITY splash.colorname.label "Nome">
+<!ENTITY splash.colorvalue.label "Valore">
+<!ENTITY splash.colorsample.label "Colore">
+<!ENTITY splash.redvalue.label "Rosso">
+<!ENTITY splash.greenvalue.label "Verde">
+<!ENTITY splash.bluevalue.label "Blu">
+<!ENTITY splash.setvalue.accesskey "O">
+<!ENTITY splash.setvalue.label "OK">
+<!ENTITY splash.cancel.accesskey "A">
+<!ENTITY splash.cancel.label "Annulla">
+<!ENTITY splash.copyredvalue.tooltiptext "Copia il valore di rosso negli appunti">
+<!ENTITY splash.copygreenvalue.tooltiptext "Copia il valore di verde negli appunti">
+<!ENTITY splash.copybluevalue.tooltiptext "Copia il valore di blu negli appunti">
+<!ENTITY texttranswarning "Errore: il testo non può essere trasparente. Per non visualizzare il testo selezionare &apos;Nascondi il testo della schermata&apos; nella finestra delle impostazioni">

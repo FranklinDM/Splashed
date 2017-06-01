@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Splash 設定">
+<!ENTITY splash.panel_general "一般">
+<!ENTITY splash.panel_image "影像">
+<!ENTITY splash.panel_misc "雜項">
+<!ENTITY splash.panel_text "字型">
+<!ENTITY splash.startuptweaks "啟動設定">
+<!ENTITY splash.enabled "顯示啟動畫面">
+<!ENTITY splash.closeWithMainWindow "主視窗開啟時，關閉啟動畫面">
+<!ENTITY splash.timeout "自動關閉時間 (1000 = 1 秒)：">
+<!ENTITY splash.background "啟動畫面背景設定">
+<!ENTITY splash.bgcolor "背景顏色：">
+<!ENTITY splash.morecolors "其他顏色">
+<!ENTITY splash.windowStyle "視窗樣式：">
+<!ENTITY splash.importexport.label "匯出/匯入 設定">
+<!ENTITY splash.export "匯出">
+<!ENTITY splash.import "匯入">
+<!ENTITY splash.imageParameters "影像參數">
+<!ENTITY splash.imageURL "影像檔位置：　(例如：file:///c:/image.png)">
+<!ENTITY splash.browse "瀏覽...">
+<!ENTITY splash.default "預設值">
+<!ENTITY splash.default_key "D">
+<!ENTITY splash.imageDemensions "影像維度:">
+<!ENTITY splash.preview "預覽">
+<!ENTITY splash.sound "聲音">
+<!ENTITY splash.soundEnabled "啟動時，播放聲音檔">
+<!ENTITY splash.soundURL "聲音檔位置：　(例如：file:///c:/sound.wav)">
+<!ENTITY splash.play "播放">
+<!ENTITY splash.play_key "P">
+<!ENTITY splash.trans "透明度">
+<!ENTITY splash.usetrans "使用透明效果 ( 範圍值 0~1；如：「.4」 )">
+<!ENTITY splash.transval1 "影像透明度">
+<!ENTITY splash.transval2 "字型透明度">
+<!ENTITY splash.transval3 "主畫面透明度">
+<!ENTITY splash.transval4 "進度列透明度">
+<!ENTITY splash.textSettings "字型設定">
+<!ENTITY splash.textHide "隱藏啟動畫面的文字">
+<!ENTITY splash.progressMeterHide "隱藏進度列">
+<!ENTITY splash.textOverride "替換 「載入中...」文字為：　（註：下欄預設為空字串）">
+<!ENTITY splash.txtcolor "字型色彩：">
+<!ENTITY splash.textStyle "字型樣式：">
+<!ENTITY splash.reset "全部重置">

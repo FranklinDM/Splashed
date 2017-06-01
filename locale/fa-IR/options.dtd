@@ -1,0 +1,41 @@
+<!ENTITY splash.title "تنظیمات Splash">
+<!ENTITY splash.panel_general "عمومی">
+<!ENTITY splash.panel_image "تصویر">
+<!ENTITY splash.panel_misc "گوناگون">
+<!ENTITY splash.panel_text "نوشته">
+<!ENTITY splash.startuptweaks "Startup Tweaks">
+<!ENTITY splash.enabled "نمایش Splash هنگام شروع فایرفاکس">
+<!ENTITY splash.closeWithMainWindow "بستن Splash وقتی که صفحه اصلی بارگذاری می شود.">
+<!ENTITY splash.timeout "زمان بسته شدن خودکار (1000 = 1sec)">
+<!ENTITY splash.background "پس زمینه">
+<!ENTITY splash.bgcolor "رنگ پس زمینه">
+<!ENTITY splash.morecolors "رنگ های بیشتر">
+<!ENTITY splash.windowStyle "نوع پنجره">
+<!ENTITY splash.importexport.label "اکسپورت/ایمپورت تنظیمات">
+<!ENTITY splash.export "اکسپورت">
+<!ENTITY splash.import "ایمپورت">
+<!ENTITY splash.imageParameters "پارامترهای تصویر">
+<!ENTITY splash.imageURL "آدرس تصویر (نمونه file:///c:/image.png)">
+<!ENTITY splash.browse "جستجو...">
+<!ENTITY splash.default "پیش فرض">
+<!ENTITY splash.default_key "پ">
+<!ENTITY splash.imageDemensions "اندازه تصویر">
+<!ENTITY splash.preview "پیش نمایش">
+<!ENTITY splash.sound "صدا">
+<!ENTITY splash.soundEnabled "پخش صدا هنگام راه اندازی فایرفاکس">
+<!ENTITY splash.soundURL "(file:///c:/sound.wav آدرس فایل صوتی (مثال">
+<!ENTITY splash.play "پخش">
+<!ENTITY splash.play_key "پ">
+<!ENTITY splash.trans "ابهام">
+<!ENTITY splash.usetrans "استفاده از ابهام (حدود مقادیر از ۰ تا ۱ مثلا ۰.۴)">
+<!ENTITY splash.transval1 "تصویر">
+<!ENTITY splash.transval2 "متن">
+<!ENTITY splash.transval3 "جعبه اصلی">
+<!ENTITY splash.transval4 "نوار پیشرفت">
+<!ENTITY splash.textSettings "تنظیمات متن">
+<!ENTITY splash.textHide "پنهان شدن کامل متن splash">
+<!ENTITY splash.progressMeterHide "پنهان کردن نوار وضعیت پیشرفت">
+<!ENTITY splash.textOverride "به صورت پیش فرض &quot;درحال بارگذاری...&quot; (برای اجرای متن پیش فرض فیلد را خالی بگذارید)">
+<!ENTITY splash.txtcolor "رنگ متن :">
+<!ENTITY splash.textStyle "نوع متن">
+<!ENTITY splash.reset "تنظیمات اولیه">
