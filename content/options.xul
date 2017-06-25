@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-
 <!--
 ********************************************************************************
 PROJECT:      Splash!
 FILE:         options.xul
-DESCRIPTION:  XUL overlay for the splash's options
-AUTHOR:       aldreneo aka slyfox and mrtech
+DESCRIPTION:  XUL window for options
+AUTHOR:       aldreneo aka slyfox, mrtech, FranklinDM
 LICENSE:      GNU GPL (General Public License)
 
-Copyright (c) 2007 aldreneo aka slyfox and mrtech
+Original copyright (c) 2007 aldreneo aka slyfox and mrtech
+Copyright (c) 2017 FranklinDM
 ********************************************************************************
 
 This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://splash/content/options.css" type="text/css"?>
+
 <!DOCTYPE window SYSTEM "chrome://splash/locale/options.dtd">
  
 <prefwindow id="splash-prefs"
@@ -52,16 +53,16 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   <prefpane id="splash-pane1" label="&splash.panel_general;">
     <preferences>
       <preference id="pref_splash.enabled"             name="splash.enabled"      			instantApply="true" type="bool"/>
-      <preference id="pref_splash.closeWithMainWindow" name="splash.closeWithMainWindow" instantApply="true" type="bool"/>
-      <preference id="pref_splash.timeout"             name="splash.timeout"            instantApply="true" type="int"/>
-      <preference id="pref_splash.bgcolor"             name="splash.bgcolor"         	  instantApply="true" type="string"/>
-      <preference id="pref_splash.windowStyle"         name="splash.windowStyle"     	  instantApply="true" type="string"/>
-	    <preference id="pref_splash.trans"               name="splash.trans"           		instantApply="true" type="bool"/>
-	    <preference id="pref_splash.transvalue_img"      name="splash.transvalue_img" 		instantApply="true" type="string"/>
-	    <preference id="pref_splash.transvalue_txt"      name="splash.transvalue_txt" 		instantApply="true" type="string"/>
-	    <preference id="pref_splash.transvalue_box"      name="splash.transvalue_box"  		instantApply="true" type="string"/>
-	    <preference id="pref_splash.transvalue_mtr"      name="splash.transvalue_mtr"  		instantApply="true" type="string"/>
-	  </preferences>
+      <preference id="pref_splash.closeWithMainWindow" name="splash.closeWithMainWindow" 	instantApply="true" type="bool"/>
+      <preference id="pref_splash.timeout"             name="splash.timeout"            	instantApply="true" type="int"/>
+      <preference id="pref_splash.bgcolor"             name="splash.bgcolor"         	  	instantApply="true" type="string"/>
+      <preference id="pref_splash.windowStyle"         name="splash.windowStyle"     	  	instantApply="true" type="string"/>
+	  <preference id="pref_splash.trans"               name="splash.trans"           		instantApply="true" type="bool"/>
+	  <preference id="pref_splash.transvalue_img"      name="splash.transvalue_img" 		instantApply="true" type="string"/>
+	  <preference id="pref_splash.transvalue_txt"      name="splash.transvalue_txt" 		instantApply="true" type="string"/>
+	  <preference id="pref_splash.transvalue_box"      name="splash.transvalue_box"  		instantApply="true" type="string"/>
+	  <preference id="pref_splash.transvalue_mtr"      name="splash.transvalue_mtr"  		instantApply="true" type="string"/>
+	</preferences>
    
     <groupbox flex="1">
       <caption label="&splash.startuptweaks;" />
@@ -69,7 +70,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                 preference="pref_splash.enabled" label="&splash.enabled;" />
       <checkbox id="splash.closeWithMainWindow" 
                 preference="pref_splash.closeWithMainWindow" label="&splash.closeWithMainWindow;" 
-                onclick="toggleTimeout(!this.checked);" />                
+                onclick="toggleTimeout(!this.checked);" />
       <hbox align="center">
         <label control="splash.timeout" value="&splash.timeout;"/>
         <textbox preference="pref_splash.timeout" id="splash.timeout" size="4" maxlength="5" />
@@ -88,13 +89,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
     </groupbox>
     <groupbox orient="vertical">
       <caption label="&splash.importexport.label;" />
-		  <hbox pack="center" flex="1">
+	  <hbox pack="center" flex="1">
         <spacer flex="1"/>
-        <image id="splash.exportimage" src="images/left.png" onclick="splash.exportData();" />
         <button id="li-export" label="&splash.export;" oncommand="splash.exportData();" />
-        <spacer flex="1"/>
         <button id="li-import" label="&splash.import;" oncommand="splash.importData();" />
-        <image id="splash.importimage" src="images/right.png" onclick="splash.importData();"/>
         <spacer flex="1"/>
       </hbox>
     </groupbox>

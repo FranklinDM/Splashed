@@ -1,5 +1,28 @@
-/* Most of the contents of this file were based on DOM Inspector's component for command line handling */
+/*
+********************************************************************************
+PROJECT:      Splash!
+FILE:         splash.js
+DESCRIPTION:  Main JS component for startup
+AUTHOR:  	  aldreneo aka slyfox, mrtech, FranklinDM
+LICENSE:      GNU GPL (General Public License)
+------------------------------------------------------------------------------
+Original copyright (c) 2006 aldreneo aka slyfox and mrtech
+Copyright (c) 2017 FranklinDM
+******************************************************************************
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 
 const nsICommandLineHandler = Components.interfaces.nsICommandLineHandler;
@@ -44,11 +67,10 @@ SplashCmdLineHandler.prototype = {
         gSound.play(url);
       }
 
-      var args = null;
       var wwatch = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(nsIWindowWatcher);
       var myModal = "modal=" + (prefService.getBoolPref("splash.closeWithMainWindow") ? "no" : "yes")
-
-      wwatch.openWindow(null, "chrome://splash/content/splash.xul", "_blank", "chrome,centerscreen,alwaysRaised=yes,titlebar=no," + myModal, args);
+	  
+	  wwatch.openWindow(null, "chrome://splash/content/splash.xul", "_blank", "chrome,centerscreen,alwaysRaised=yes," + myModal, null);
       this.firstTime = false;
     }
   },

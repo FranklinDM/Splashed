@@ -8,18 +8,25 @@
     <em:creator>FranklinDM</em:creator>
     <em:aboutURL>chrome://splash/content/about.xul</em:aboutURL>
     <!-- optional items -->
-    <em:homepageURL>http://www.mrtech.com/extensions/</em:homepageURL>
+    <em:homepageURL>https://franklindm.github.io/</em:homepageURL>
     <em:iconURL>chrome://splash/content/images/icon.png</em:iconURL>
     <em:optionsURL>chrome://splash/content/options.xul</em:optionsURL>
 
-    <em:contributor>aldreneo and mrtech (creator of Splash!)</em:contributor>
+    <em:contributor>aldreneo and mrtech (creators of Splash!)</em:contributor>
 	
-    <em:targetApplication> <!-- Pale Moon -->
+    <em:targetApplication>
+	<!-- Pale Moon -->
       <Description>
         <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
         <em:minVersion>27.0.0b3</em:minVersion>
         <em:maxVersion>27.*</em:maxVersion>
       </Description>
+	<!-- Thunderbird/FossaMail -->
+	  <Description>
+		<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+		<em:minVersion>27.0.0</em:minVersion>
+		<em:maxVersion>50.*</em:maxVersion>
+	  </Description>
     </em:targetApplication>
   </Description>
 </RDF>

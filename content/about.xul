@@ -3,11 +3,13 @@
 ********************************************************************************
 PROJECT:      Splash!
 FILE:         about.xul
-DESCRIPTION:  XUL overlay for the splash's about screen
-AUTHOR:       aldreneo aka slyfox and mrtech
+DESCRIPTION:  XUL window for about screen
+AUTHOR:		  FranklinDM
+ORIGINAL AUTHOR:       aldreneo aka slyfox and mrtech
 LICENSE:      GNU GPL (General Public License)
 
-Copyright (c) 2007 aldreneo aka slyfox and mrtech
+Original copyright (c) 2007 aldreneo aka slyfox and mrtech
+Copyright (c) 2017 FranklinDM
 ********************************************************************************
 
 This program is free software; you can redistribute it and/or modify
@@ -42,24 +44,23 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
     <hbox>
       <spacer flex="1"/><image src="chrome://splash/content/icon.png"/><spacer flex="1"/>
     </hbox>
-
-    <description value="&tagLine.label;" style="font: italic 12px Tahoma, sans-serif; margin-top: 12px;" />
+	
+    <description value="Splashed!" style="font: bold 15px Tahoma, sans-serif; text-align: center;" />
+    <description value="&tagLine.label;" style="font: italic 12px Tahoma, sans-serif;" />
+    <description value="&forkedfrom.label;" style="text-align: center;" />
 
     <separator />
+	
+	<label value="&authorName.label;" class="header" />
+		<description value="FranklinDM" class="url" onclick="splash.openURL('https://franklindm.github.io/');"/>
+	
+    <label value="&authL.label;" class="header" />
+		<description value="Aldreneo and mrtech" class="url" onclick="splash.openURL('http://paperprogs.berlios.de/splash/');"/>
 
-    <label value="&authorName.label;" class="header" />
-		<description value="Aldreneo and mrtech" />
-
-  	<separator flex="1" />
-
-		<label value="&contrib.label;" class="header" />
+	<label value="&contrib.label;" class="header" />
 		<description value="Pike" />
     <label value="mcdavis941 (Images)" class="url" onclick="splash.openURL('http://www.knology.net/~mcdavis941/411design/');"/>
     <label value="badassfeline (More Images)" class="url" onclick="splash.openURL('http://www.badassfeline.co.uk/');"/>
     <label value="Andrea Binello (Color Picker)" class="url" onclick="splash.openURL('https://addons.mozilla.org/firefox/399/');"/>
-  	<separator flex="1" />
-
-    <label class="header" value="&homepage.label;"/>
-    <label id="sitelink" value="http://paperprogs.berlios.de/splash/" class="url" onclick="splash.openURL('http://paperprogs.berlios.de/splash/');"/>
   </vbox>
 </dialog>

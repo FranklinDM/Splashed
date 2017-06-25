@@ -1,4 +1,4 @@
-pref("extensions.splash@aldreneo.com.description", "chrome://splash/locale/splash.properties");
+pref("extensions.splashed@franklindm.description", "chrome://splash/locale/splash.properties");
 
 pref("splash.enabled", true);
 pref("splash.timeout", 3000);

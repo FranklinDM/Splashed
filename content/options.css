@@ -3,10 +3,11 @@
 PROJECT:      Splash!
 FILE:         options.css
 DESCRIPTION:  CSS file for options for Splash!
-AUTHOR:  aldreneo aka slyfox and mrtech
+AUTHOR:  	  aldreneo aka slyfox, mrtech, FranklinDM
 LICENSE:      GNU GPL (General Public License)
 ------------------------------------------------------------------------------
-Copyright (c) 2006 aldreneo aka slyfox and mrtech
+Original copyright (c) 2006 aldreneo aka slyfox and mrtech
+Copyright (c) 2017 FranklinDM
 ******************************************************************************
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,48 +24,27 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-/* begin no image hacks - remove this section once we have images for options
-.paneButtonIcon {
-  width: 0px !important;
-  height: 0px !important;
-}
-
+/* Preferences Panel Radio Icons */
 #splash-prefs radio {
-  padding: 5px !important;
-} */
-/* end no image hacks */
+  list-style-image: url("chrome://splash/content/images/icons.png");
+}
 
 /* General Preference Panel */
 #splash-prefs radio[pane=splash-pane1] {
-  list-style-image: url("chrome://splash/content/images/icons.png");
   -moz-image-region: rect(0px, 32px, 32px, 0px) !important;
 }
 
 /* Image Preference Panel */
 #splash-prefs radio[pane=splash-pane2] {
-  list-style-image: url("chrome://splash/content/images/icons.png");
   -moz-image-region: rect(0px, 80px, 32px, 45px) !important;
 }
 
 /* Sound Preference Panel */
 #splash-prefs radio[pane=splash-pane3] {
-  list-style-image: url("chrome://splash/content/images/icons.png");
   -moz-image-region: rect(0px, 128px, 32px, 96px) !important;
 }
 
 /* Text Preference Panel */
 #splash-prefs radio[pane=splash-pane4] {
-  list-style-image: url("chrome://splash/content/images/icons.png");
   -moz-image-region: rect(0px, 172px, 32px, 140px) !important;
-}
-
-/* Im/Ex+port Preference Panel */
-#splash-prefs radio[pane=splash-pane5] {
-  list-style-image: url("chrome://splash/content/images/double.png");
-}
-
-
-/* Preference Panel 6 */
-#splash-prefs radio[pane=splash-pane6] {
-  list-style-image: url("chrome://splash/content/images/icon6.png");
 }

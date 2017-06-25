@@ -22,7 +22,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-
 var splash_PrefBranchPrefix = "splash."
 var splash = {
   init: function() {
@@ -32,24 +31,12 @@ var splash = {
       window.close();
     }
 
-    // custom handling for background transparency as it breaks sunbird
-	
-    switch (splash.getAppName()) {
-      case "Calendar":
-      case "Sunbird":
-        document.getElementById("splashscreen").setAttribute("style", 
-          nsPreferences.copyUnicharPref("splash.windowStyle"));
-        break;
-      default:
-        document.getElementById("splashscreen").setAttribute("style", 
-          "background-color: transparent;" + nsPreferences.copyUnicharPref("splash.windowStyle"));
-    }
-
+    // custom handling for background transparency
+	document.getElementById("splashscreen").setAttribute("style", "background-color: transparent;" + nsPreferences.copyUnicharPref("splash.windowStyle"));
 
     // If the imageURL is the default value and we are running Thunderbird, 
     // we need to change the default about image location
-    var branchService = Components.classes["@mozilla.org/preferences-service;1"]
-                          .getService(Components.interfaces.nsIPrefBranch);
+    var branchService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
     var splashURL;
 
     if (branchService.prefHasUserValue("splash.imageURL")) {
@@ -60,9 +47,8 @@ var splash = {
     }
 
     document.getElementById("splash.image").src = splashURL;
-	  document.getElementById("splash.image").height = nsPreferences.getIntPref("splash.windowHeight");
+    document.getElementById("splash.image").height = nsPreferences.getIntPref("splash.windowHeight");
     document.getElementById("splash.image").width = nsPreferences.getIntPref("splash.windowWidth");
-//sizeToContent();
     
     var bgColor = nsPreferences.copyUnicharPref("splash.bgcolor");
     if (bgColor) {    
@@ -70,8 +56,8 @@ var splash = {
       document.getElementById("splashBox").setAttribute("style", bgColor)
     }
 	
-  	var trans=nsPreferences.getBoolPref("splash.trans");
-  	if (trans) { 
+  	var trans = nsPreferences.getBoolPref("splash.trans");
+  	if (trans) {
   		var trans_img=nsPreferences.copyUnicharPref("splash.transvalue_img");
   		var trans_txt=nsPreferences.copyUnicharPref("splash.transvalue_txt");
   		var trans_box=nsPreferences.copyUnicharPref("splash.transvalue_box");	
@@ -107,9 +93,7 @@ var splash = {
       document.getElementById("splash.progressMeter").hidden = false;
     }
 
-//    if (!nsPreferences.getBoolPref("splash.closeWithMainWindow")) {
-      setTimeout(window.close, nsPreferences.getIntPref("splash.timeout"));
-//    }
+    setTimeout(window.close, nsPreferences.getIntPref("splash.timeout"));
 
   },
   
@@ -186,6 +170,10 @@ var splash = {
               "chrome,centerscreen,alwaysRaised,titlebar=no,modal=yes");
   },
 
+  openProfileLoader: function() {
+    openDialog("chrome://splash/content/profile.xul", "Profile", "centerscreen,resizeable");
+  },
+
   resetToDefault: function() {
     var prefService = Components.classes["@mozilla.org/preferences-service;1"].
       getService(Components.interfaces.nsIPrefService);
@@ -222,7 +210,6 @@ var splash = {
     
     if(ret == nsIFilePicker.returnOK) {
      document.getElementById("pref_splash.soundURL").value = fp.fileURL.spec;
-  //   document.getElementById("pref_splash.soundEnabled").checked = true;
     }
   },
   
@@ -250,11 +237,6 @@ var splash = {
     var splashDefaultURL
 
     switch (splash.getAppName()) {
-      case "Songbird":
-        splashDefaultURL = "chrome://songbird-branding/skin/about.png";
-        nsPreferences.setIntPref("splash.windowHeight", 120)
-        nsPreferences.setIntPref("splash.windowWidth", 390)
-        break;
       case "Thunderbird":
         splashDefaultURL = "chrome://branding/content/about-thunderbird.png";
         break;
@@ -366,12 +348,11 @@ var splash = {
     }
 
     splash.initSettings();
-//	setTimeout(window.sizeToContent, 500);
   },
 
   resetValues: function() {
     var myResetVersion = nsPreferences.copyUnicharPref("splashext.resetVersion");
-    var thisResetVersion = "1.1";
+    var thisResetVersion = "1.0";
     
     if (myResetVersion != thisResetVersion) {
       var prefService = Components.classes["@mozilla.org/preferences-service;1"]
@@ -387,7 +368,7 @@ var splash = {
            branchService.clearUserPref(splash_PrefBranchPrefix + prefArray[i]);
         }
       } 
-
+	
       nsPreferences.setUnicharPref("splashext.resetVersion", thisResetVersion);
     }
   },
@@ -396,17 +377,10 @@ var splash = {
   		var url = "chrome://splash/content/webcolornames/webcolornames.xul";
   		var win = openDialog(url, "webcolornames", "chrome,centerscreen,resizable", setting);
   },
-
-  platform: Components.classes['@mozilla.org/xre/app-info;1'].getService(Components.interfaces.nsIXULAppInfo)
-                  .QueryInterface(Components.interfaces.nsIXULRuntime).OS,
-                  
-  sizeToContent: function() {
-    //logString(splash.platform);
-    //if (splash.platform != "Darwin") {
-      window.sizeToContent();
-    //}
-  }
   
+  sizeToContent: function() {
+      window.sizeToContent();
+  }
 }
 
 function logString(aLogString) {

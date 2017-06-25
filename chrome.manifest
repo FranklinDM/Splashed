@@ -1,6 +1,6 @@
 content	splash content/
 
-category command-line-handler m-inspector @mozilla.org/commandlinehandler/general-startup;1?type=splash
+category command-line-handler m-splash @mozilla.org/commandlinehandler/general-startup;1?type=splash
 component {924217E9-F8FE-4B92-B8E1-F781D4ABB31E} components/splash.js
 contract @mozilla.org/commandlinehandler/general-startup;1?type=splash {924217E9-F8FE-4B92-B8E1-F781D4ABB31E}
 

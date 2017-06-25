@@ -19,7 +19,7 @@
 <!ENTITY splash.browse "Browse...">
 <!ENTITY splash.default "Default">
 <!ENTITY splash.default_key "D">
-<!ENTITY splash.imageDemensions "Image demensions:">
+<!ENTITY splash.imageDemensions "Image dimensions:">
 <!ENTITY splash.preview "Preview">
 <!ENTITY splash.sound "Sound">
 <!ENTITY splash.soundEnabled "Play sound on startup">

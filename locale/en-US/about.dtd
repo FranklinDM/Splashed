@@ -1,5 +1,7 @@
-<!ENTITY windowTitle.label "About Splash">
-<!ENTITY tagLine.label "Adds a Splash Screen">
-<!ENTITY authorName.label "Created By:">
+<!ENTITY windowTitle.label "About Splashed!">
+<!ENTITY tagLine.label "Gives you a splash screen when you need it.">
+<!ENTITY authorName.label "Created and Maintained By:">
+<!ENTITY authL.label "Creators of the Splash! add-on:">
 <!ENTITY contrib.label "Contributors:">
 <!ENTITY homepage.label "Homepage:">
+<!ENTITY forkedfrom.label "A fork of the Splash! add-on.">

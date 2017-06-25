@@ -3,7 +3,7 @@
 ********************************************************************************
 PROJECT:      Splash!
 FILE:         splash.xul
-DESCRIPTION:  XUL overlay for the splash screen itself
+DESCRIPTION:  XUL window for splash screen
 AUTHOR:       aldreneo aka slyfox and mrtech
 LICENSE:      GNU GPL (General Public License)
 
