@@ -1,27 +1,28 @@
-//******************************************************************************
-// PROJECT:      Splash!
-// FILE:         splash.js
-// DESCRIPTION:  Main javascript file for Splash
-// AUTHOR:  aldreneo aka slyfox and mrtech
-// LICENSE:      GNU GPL (General Public License)
-//------------------------------------------------------------------------------
-//Copyright (c) 2006 aldreneo aka slyfox and mrtech
-//******************************************************************************
+/*
+******************************************************************************
+PROJECT:      Splash!
+FILE:         splash.js
+DESCRIPTION:  Main javascript file for Splash
+AUTHOR:  	  aldreneo aka slyfox and mrtech
+LICENSE:      GNU GPL (General Public License)
+------------------------------------------------------------------------------
+Copyright (c) 2006 aldreneo aka slyfox and mrtech
+******************************************************************************
 
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
 var splash_PrefBranchPrefix = "splash."
 var splash = {
   init: function() {
@@ -69,7 +70,6 @@ var splash = {
   	}
 
     if (!nsPreferences.getBoolPref("splash.textHide")) {
-	
 		var txColor = nsPreferences.copyUnicharPref("splash.txtcolor");
 			if (txColor) {    
 			txColor = ";color: " + txColor;
@@ -166,12 +166,7 @@ var splash = {
   
   previewSplashScreen: function() {
     splash.playSound(nsPreferences.getBoolPref("splash.soundEnabled"));
-    openDialog("chrome://splash/content/splash.xul", "SplashScreen",
-              "chrome,centerscreen,alwaysRaised,titlebar=no,modal=yes");
-  },
-
-  openProfileLoader: function() {
-    openDialog("chrome://splash/content/profile.xul", "Profile", "centerscreen,resizeable");
+    openDialog("chrome://splash/content/splash.xul", "SplashScreen", "chrome,centerscreen,alwaysRaised,modal=yes");
   },
 
   resetToDefault: function() {
