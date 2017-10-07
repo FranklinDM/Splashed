@@ -26,6 +26,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 var prefService			= Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
 var prefBranch			= prefService.getBranch("extensions.splash.");
+var prefBranchOld		= prefService.getBranch("splash.");
 
 var splash = {
   init: function() {
@@ -349,21 +350,29 @@ var splash = {
   },
 
   resetValues: function() {
-    var myResetVersion = "1.0", thisResetVersion = "1.0";
-	if (prefBranch.prefHasUserValue("resetVersion")) myResetVersion = prefBranch.getCharPref("resetVersion");
+    var myResetVersion = "1.0.0", thisResetVersion = "2.0.0";
+	if (prefBranch.getPrefType("resetVersion")) myResetVersion = prefBranch.getCharPref("resetVersion");
 
-    if (myResetVersion != thisResetVersion) {
-      var prefCount = {value:0};
-      var prefArray = prefBranch.getChildList("", prefCount);
+	if (myResetVersion != thisResetVersion) {
+      var prefCount    = {value:0};
+      var prefArray    = prefBranch.getChildList("", prefCount);
+      var prefArrayOld = prefBranchOld.getChildList("", prefCount);
 
       for (var i = 0; i < prefArray.length; ++i) {
         if (prefBranch.prefHasUserValue(prefArray[i])) {
            prefBranch.clearUserPref(prefArray[i]);
         }
       }
-
+	  
+	  // Old prefs (Splash and Splashed v1)
+      for (var i = 0; i < prefArrayOld.length; ++i) {
+        if (prefBranchOld.prefHasUserValue(prefArrayOld[i])) {
+           prefBranchOld.clearUserPref(prefArrayOld[i]);
+        }
+      }
+	  
 	  prefBranch.setCharPref("resetVersion", thisResetVersion);
-    }
+	}
   },
 
   opencsseditor: function(setting) {
