@@ -1,9 +1,8 @@
 # Splashed!
-Splashed! is a fork of the old Splash! add-on for Firefox.
-Need a splash screen while you wait? Old (and maybe some) applications have splash screens to let the user know that there's something happening. Supports Pale Moon, Thunderbird/FossaMail, and maybe SeaMonkey in the future.
+Adds a splash screen to Pale Moon, Thunderbird, and maybe SeaMonkey in the future. Supports sound, opacity, CSS customization, custom images, and much more. You can add {appVersion}, {buildID} and {userAgent} to the loading text and it will be filled in for you. It is a fork of the discontinued Splash! add-on for Firefox.
 
 ## Building
 Simply download the contents of the "src" folder  and pack the contents into a .zip file. Then, rename the file to .xpi and drag into the browser.
 
-## Download
-Check the releases page of this repository.
+### Download:
+[Pale Moon Add-ons site](http://addons.palemoon.org/addon/splashed/) or at the [repository](https://github.com/FranklinDM/Splashed/releases).
