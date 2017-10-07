@@ -350,7 +350,7 @@ var splash = {
   },
 
   resetValues: function() {
-    var myResetVersion = "1.0.0", thisResetVersion = "2.0.0";
+    var myResetVersion = "1.0.0", thisResetVersion = "1.1.0";
 	if (prefBranch.getPrefType("resetVersion")) myResetVersion = prefBranch.getCharPref("resetVersion");
 
 	if (myResetVersion != thisResetVersion) {

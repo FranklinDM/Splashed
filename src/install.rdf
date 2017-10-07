@@ -3,7 +3,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>splashed@franklindm</em:id>
     <em:name>Splashed!</em:name>
-    <em:version>1.0.0</em:version>
+    <em:version>1.1.0</em:version>
     <em:description>Adds a splash screen on startup while you wait.</em:description>
     <em:creator>FranklinDM</em:creator>
     <em:aboutURL>chrome://splash/content/about.xul</em:aboutURL>
