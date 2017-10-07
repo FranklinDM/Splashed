@@ -45,8 +45,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   </keyset>
 
   <vbox id="splashBox" flex="1">
-    <vbox flex="1" align="center">
-      <hbox flex="1">
+    <vbox id="f1" align="center">
+      <hbox id="f2">
         <image id="splash.image" />
       </hbox>
       <label id="splash.text" value="&loading.label;" flex="1" hidden="true" />

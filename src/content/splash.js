@@ -91,6 +91,11 @@ var splash = {
     if (!prefBranch.getBoolPref("progressMeterHide")) {
       document.getElementById("splash.progressMeter").hidden = false;
     }
+	
+	if (prefBranch.getBoolPref("useFlex")) {
+	  document.getElementById("f1").flex = 1;
+	  document.getElementById("f2").flex = 1;
+	}
 
     setTimeout(window.close, prefBranch.getIntPref("timeout"));
 
