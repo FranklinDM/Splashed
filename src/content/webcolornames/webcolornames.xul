@@ -75,10 +75,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             </treechildren>
           </tree>
         </tabpanel>
-      </tabpanels> 
+      </tabpanels>
     </tabbox>
 
-    <vbox id="splash-box1-2-1">                
+    <vbox id="splash-box1-2-1">
     <spacer id="splash-space2" />
       <grid>
         <columns>
@@ -100,21 +100,21 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
       </grid>
       <sepacer id="splash-space3" />
       <hbox>
-        <vbox flex="1">     
+        <vbox flex="1">
           <label id="splash-label-info-color" value="&splash.colorsample.label;" />
-          <label id="splash-label-info-colorsample" flex="1" value=""  />  
-        </vbox>      
+          <label id="splash-label-info-colorsample" flex="1" value=""  />
+        </vbox>
         <grid>
           <columns>
             <column />
             <column />
           </columns>
-           <rows>        
+           <rows>
             <row align="center">
               <label id="splash-label-info-redvalue" value="&splash.redvalue.label;" />
               <textbox id="splash-textbox-info-redvalue" readonly="true" size="3" />
             </row>
-            <row align="center">            
+            <row align="center">
               <label id="splash-label-info-greenvalue" value="&splash.greenvalue.label;" />
               <textbox id="splash-textbox-info-greenvalue" readonly="true" size="2" />
             </row>
@@ -124,7 +124,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             </row>
           </rows>
         </grid>
-      </hbox>     
+      </hbox>
 			<hbox align="center" flex="1">
 				<button id="splash-button-copyvalue" label="&splash.setvalue.label;"
 								accesskey="&splash.setvalue.accesskey;" onclick="set_setting()" />
@@ -135,5 +135,5 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   <spacer id="splash-space1" />
   </hbox>
   <label id="dtdalertpipe" value="&texttranswarning;" hidden="true" />
-  
+
 </window>

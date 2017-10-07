@@ -2,11 +2,12 @@
 ******************************************************************************
 PROJECT:      Splash!
 FILE:         splash.js
-DESCRIPTION:  Main javascript file for Splash
-AUTHOR:  	  aldreneo aka slyfox and mrtech
+DESCRIPTION:  Main JS file for splash
+AUTHOR:  	  aldreneo aka slyfox, mrtech, Franklin DM
 LICENSE:      GNU GPL (General Public License)
 ------------------------------------------------------------------------------
 Copyright (c) 2006 aldreneo aka slyfox and mrtech
+Copyright (c) 2017 Franklin DM
 ******************************************************************************
 
 This program is free software; you can redistribute it and/or modify
@@ -23,97 +24,91 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-var splash_PrefBranchPrefix = "splash."
+var prefService			= Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+var prefBranch			= prefService.getBranch("extensions.splash.");
+
 var splash = {
   init: function() {
     splash.resetValues(); // reset all prefs on major upgrades
 
-    if (!nsPreferences.getBoolPref("splash.enabled")) {
-      window.close();
-    }
-
     // custom handling for background transparency
-	document.getElementById("splashscreen").setAttribute("style", "background-color: transparent;" + nsPreferences.copyUnicharPref("splash.windowStyle"));
+	document.getElementById("splashscreen").setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
 
-    // If the imageURL is the default value and we are running Thunderbird, 
+    // If the imageURL is the default value and we are running Thunderbird,
     // we need to change the default about image location
-    var branchService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+    //var branchService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
     var splashURL;
 
-    if (branchService.prefHasUserValue("splash.imageURL")) {
-      splashURL = nsPreferences.copyUnicharPref("splash.imageURL");
+    if (prefBranch.prefHasUserValue("imageURL")) {
+      splashURL = prefBranch.getCharPref("imageURL");
     } else {
       splashURL = splash.getDefaultImage();
-      nsPreferences.setUnicharPref("splash.imageURL", splashURL)
+      prefBranch.setCharPref("imageURL", splashURL)
     }
 
     document.getElementById("splash.image").src = splashURL;
-    document.getElementById("splash.image").height = nsPreferences.getIntPref("splash.windowHeight");
-    document.getElementById("splash.image").width = nsPreferences.getIntPref("splash.windowWidth");
-    
-    var bgColor = nsPreferences.copyUnicharPref("splash.bgcolor");
-    if (bgColor) {    
+    document.getElementById("splash.image").height = prefBranch.getIntPref("windowHeight");
+    document.getElementById("splash.image").width = prefBranch.getIntPref("windowWidth");
+
+    var bgColor = prefBranch.getCharPref("bgcolor");
+    if (bgColor) {
       bgColor = "background-color: " + bgColor;
       document.getElementById("splashBox").setAttribute("style", bgColor)
     }
-	
-  	var trans = nsPreferences.getBoolPref("splash.trans");
+
+  	var trans = prefBranch.getBoolPref("trans");
   	if (trans) {
-  		var trans_img=nsPreferences.copyUnicharPref("splash.transvalue_img");
-  		var trans_txt=nsPreferences.copyUnicharPref("splash.transvalue_txt");
-  		var trans_box=nsPreferences.copyUnicharPref("splash.transvalue_box");	
-  		var trans_mtr=nsPreferences.copyUnicharPref("splash.transvalue_mtr");	
+  		var trans_img=prefBranch.getCharPref("transvalue_img");
+  		var trans_txt=prefBranch.getCharPref("transvalue_txt");
+  		var trans_box=prefBranch.getCharPref("transvalue_box");
+  		var trans_mtr=prefBranch.getCharPref("transvalue_mtr");
   		document.getElementById("splash.image").style.opacity = trans_img;
   		document.getElementById("splash.text").style.opacity = trans_txt;
   		document.getElementById("splashBox").style.opacity = trans_box;
   		document.getElementById("splash.progressMeter").style.opacity = trans_mtr;
   	}
 
-    if (!nsPreferences.getBoolPref("splash.textHide")) {
-		var txColor = nsPreferences.copyUnicharPref("splash.txtcolor");
-			if (txColor) {    
+    if (!prefBranch.getBoolPref("textHide")) {
+		var txColor = prefBranch.getCharPref("txtcolor");
+			if (txColor) {
 			txColor = ";color: " + txColor;
 		}
-	  
-	  document.getElementById("splash.text").setAttribute("style", nsPreferences.copyUnicharPref("splash.textStyle") + txColor );
 
-      var textOverride = nsPreferences.copyUnicharPref("splash.textOverride");
+	  document.getElementById("splash.text").setAttribute("style", prefBranch.getCharPref("textStyle") + txColor);
+
+      var textOverride = prefBranch.getCharPref("textOverride");
       if (textOverride) {
         var appInfo = Components.classes['@mozilla.org/xre/app-info;1'].getService(Components.interfaces.nsIXULAppInfo);
         textOverride = textOverride.replace(/{appVersion}/ig, appInfo.version);
         textOverride = textOverride.replace(/{buildID}/ig, appInfo.appBuildID);
         textOverride = textOverride.replace(/{userAgent}/ig, navigator.userAgent);
 
-        document.getElementById("splash.text").value = textOverride; 
+        document.getElementById("splash.text").value = textOverride;
       }
-      document.getElementById("splash.text").hidden = false; 
+      document.getElementById("splash.text").hidden = false;
     }
 
-    if (!nsPreferences.getBoolPref("splash.progressMeterHide")) {
+    if (!prefBranch.getBoolPref("progressMeterHide")) {
       document.getElementById("splash.progressMeter").hidden = false;
     }
 
-    setTimeout(window.close, nsPreferences.getIntPref("splash.timeout"));
+    setTimeout(window.close, prefBranch.getIntPref("timeout"));
 
   },
-  
+
   initSettings: function() {
-    var splashURL
-
-    var branchService = Components.classes["@mozilla.org/preferences-service;1"]
-                        .getService(Components.interfaces.nsIPrefBranch);
-
-    if (branchService.prefHasUserValue("splash.imageURL")) {
-      splashURL = nsPreferences.copyUnicharPref("splash.imageURL");
+    var splashURL;
+    if (prefBranch.prefHasUserValue("imageURL")) {
+      splashURL = prefBranch.getCharPref("imageURL");
     } else {
       splashURL = splash.getDefaultImage();
     }
 
     document.getElementById("splash.previewImage").src = splashURL;
   },
- 
+
   playSound: function(isEnabled) {
-    var soundURL = nsPreferences.copyUnicharPref("splash.soundURL");
+    var soundURL = prefBranch.getCharPref("soundURL");
     if (soundURL && isEnabled) {
       var gSound = Components.classes["@mozilla.org/sound;1"].
                  createInstance(Components.interfaces.nsISound);
@@ -122,22 +117,22 @@ var splash = {
       var ioService = Components.classes["@mozilla.org/network/io-service;1"].
                         getService(Components.interfaces.nsIIOService);
       var url = ioService.newURI(soundURL, null, null);
-      
+
       gSound.play(url);
     }
   },
-  
+
   getAppName: function() {
     var myBrandingPath = null;
     var myStringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"]
                         .getService(Components.interfaces.nsIStringBundleService);
-    
+
     if (typeof Components.interfaces.nsIXULAppInfo == "undefined") {
       myBrandingPath = "chrome://global/locale/brand.properties"
-    } else { 
+    } else {
       myBrandingPath = "chrome://branding/locale/brand.properties"
     }
-    
+
     var myBrandStrings = myStringBundleService.createBundle(myBrandingPath);
 
     return myBrandStrings.GetStringFromName("brandShortName");
@@ -159,68 +154,60 @@ var splash = {
       var uri = ioService.newURI(myLink, null, null);
       var extProtocolSvc = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
                                      .getService(Components.interfaces.nsIExternalProtocolService);
-  
+
       extProtocolSvc.loadUrl(uri);
     }
   },
-  
+
   previewSplashScreen: function() {
-    splash.playSound(nsPreferences.getBoolPref("splash.soundEnabled"));
+    splash.playSound(prefBranch.getBoolPref("soundEnabled"));
     openDialog("chrome://splash/content/splash.xul", "SplashScreen", "chrome,centerscreen,alwaysRaised,modal=yes");
   },
 
   resetToDefault: function() {
-    var prefService = Components.classes["@mozilla.org/preferences-service;1"].
-      getService(Components.interfaces.nsIPrefService);
+    var prefCount = {value:0};
+    var prefArray = prefBranch.getChildList("", prefCount);
 
-    var nsIPrefBranchObj = prefService.getBranch("splash.");
-    var prefCount = {value:0}; 
-    var prefArray = nsIPrefBranchObj.getChildList("" , prefCount); 
-
-    var branchService = Components.classes["@mozilla.org/preferences-service;1"]
-                                   .getService(Components.interfaces.nsIPrefBranch);
-
-    for (var i = 0; i < prefArray.length; ++i) {
-      if (branchService.prefHasUserValue("splash." + prefArray[i])) {
-         branchService.clearUserPref("splash." + prefArray[i]);
+    for (var i = 0; i < prefArray.length; i++) {
+      if (prefBranch.prefHasUserValue(prefArray[i])) {
+         prefBranch.clearUserPref(prefArray[i]);
       }
-    } 
+    }
 
     document.getElementById("splash.previewImage").src = document.getElementById("splash.imageURL").value;
 
     setTimeout(splash.sizeToContent, 500);
-
   },
-  
+
   getSoundFile: function() {
     var mStrings = document.getElementById("splashStrings");
-    
+
     const nsIFilePicker = Components.interfaces.nsIFilePicker;
-  
+
     var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
     fp.init(window, mStrings.getString("splash_select_sound"), nsIFilePicker.modeOpen);
     fp.appendFilter(mStrings.getString("splash_sound_filter_label"), "*.wav");
-  
+
     var ret = fp.show();
-    
+
     if(ret == nsIFilePicker.returnOK) {
      document.getElementById("pref_splash.soundURL").value = fp.fileURL.spec;
     }
   },
-  
+
   getImageFile: function() {
     var mStrings = document.getElementById("splashStrings");
-    
+
     const nsIFilePicker = Components.interfaces.nsIFilePicker;
-  
+
     var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
     fp.init(window, mStrings.getString("splash_select_image"), nsIFilePicker.modeOpen);
     fp.appendFilters(nsIFilePicker.filterImages);
     var previewImage = document.getElementById("splash.previewImage");
-    
+
 
     var ret = fp.show();
-    
+
     if(ret == nsIFilePicker.returnOK) {
       document.getElementById("pref_splash.imageURL").value = fp.fileURL.spec;
       document.getElementById("splash.previewImage").src = fp.fileURL.spec;
@@ -240,33 +227,33 @@ var splash = {
     }
     return splashDefaultURL;
   },
-  
+
   setDefaultImage: function() {
     var defaultImage = splash.getDefaultImage();
-    nsPreferences.setUnicharPref('splash.imageURL', defaultImage)
+    prefBranch.setCharPref('imageURL', defaultImage)
     document.getElementById("splash.previewImage").src = defaultImage;
     setTimeout(splash.sizeToContent, 250);
   },
-  
+
   getDimensions: function() {
     splash.sizeToContent();
     var previewImage = document.getElementById("splash.previewImage");
-    
+
     document.getElementById("splash.windowWidth").value = previewImage.boxObject.width;
     document.getElementById("splash.windowHeight").value = previewImage.boxObject.height;
-    
-    nsPreferences.setIntPref("splash.windowWidth", previewImage.boxObject.width);
-    nsPreferences.setIntPref("splash.windowHeight", previewImage.boxObject.height);
+
+    prefBranch.setIntPref("windowWidth", previewImage.boxObject.width);
+    prefBranch.setIntPref("windowHeight", previewImage.boxObject.height);
+  },
+  
+  extendInt: function(aInput) {
+    if(aInput < 10) return "0" + aInput.toString();
+    else return aInput;
   },
 
   exportData: function() {
-
-    var prefService = Components.classes["@mozilla.org/preferences-service;1"].
-      getService(Components.interfaces.nsIPrefService);
-
-    var nsIPrefBranchObj = prefService.getBranch(splash_PrefBranchPrefix);
-    var prefCount = {value:0}; 
-    var prefArray = nsIPrefBranchObj.getChildList("" , prefCount); 
+    var prefCount = {value:0};
+    var prefArray = prefBranch.getChildList("", prefCount);
 
     var stream = Components.classes['@mozilla.org/network/file-output-stream;1']
                  .createInstance(Components.interfaces.nsIFileOutputStream);
@@ -284,40 +271,51 @@ var splash = {
     var str = ""
 
     prefArray.sort();
+	
+	var now = new Date();
+    var sDate = this.extendInt(now.getMonth() + 1) + "/" + this.extendInt(now.getDate()) + "/" + now.getFullYear();
+    var sTtime = this.extendInt(now.getHours()) + ":" + this.extendInt(now.getMinutes()) + ":" + this.extendInt(now.getSeconds());
+    var sGMT = now.toGMTString();
 
+	// File header
+	str += "/*\n";
+	str += "Splashed! Exported Preferences file\n";
+	str += sDate + ", " + sTtime + " (" + sGMT + ")\n";
+	str += "*/\n";
+	
     for (var i = 0; i < prefArray.length; ++i) {
 
       var tmpString // clean up import-export strings
 
-      switch (nsIPrefBranchObj.getPrefType(prefArray[i])) {
-        case nsIPrefBranchObj.PREF_STRING:  // Text = 32
-          str += "nsPreferences.setUnicharPref('" + splash_PrefBranchPrefix + prefArray[i] + "', '";
-          tmpString = nsPreferences.copyUnicharPref(splash_PrefBranchPrefix + prefArray[i]); 
-          tmpString = tmpString.replace(/\\/g, '\\\\'); 
-          tmpString = tmpString.replace(/\'/g, '\\\''); 
-          str += tmpString; 
+      switch (prefBranch.getPrefType(prefArray[i])) {
+        case prefBranch.PREF_STRING:	// Text = 32
+          str += "prefBranch.setCharPref('" + prefArray[i] + "', '";
+          tmpString = prefBranch.getCharPref(prefArray[i]);
+          tmpString = tmpString.replace(/\\/g, '\\\\');
+          tmpString = tmpString.replace(/\'/g, '\\\'');
+          str += tmpString;
           str += "')";
           break;
-        case nsIPrefBranchObj.PREF_INT:  // Integer = 64
-          str += "nsPreferences.setIntPref('" + splash_PrefBranchPrefix + prefArray[i] + "', ";
-          str += nsPreferences.getIntPref(splash_PrefBranchPrefix + prefArray[i]);
+        case prefBranch.PREF_INT:		// Integer = 64
+          str += "prefBranch.setIntPref('" + prefArray[i] + "', ";
+          str += prefBranch.getIntPref(prefArray[i]);
           str += ")";
           break;
-        case nsIPrefBranchObj.PREF_BOOL:  // Boolean =128
-          str += "nsPreferences.setBoolPref('" + splash_PrefBranchPrefix + prefArray[i] + "', "; 
-          str += nsPreferences.getBoolPref(splash_PrefBranchPrefix + prefArray[i]);
+        case prefBranch.PREF_BOOL:		// Boolean =128
+          str += "prefBranch.setBoolPref('" + prefArray[i] + "', ";
+          str += prefBranch.getBoolPref(prefArray[i]);
           str += ")";
           break;
       }
 
       str += "\r\n"
     }
-    
-    stream.init(fp.file, 0x20|0x02|0x08, 0666, 0);
+
+    stream.init(fp.file, 0x20|0x02|0x08, 0o666, 0);
     stream.write(str, str.length);
     stream.close();
   },
-  
+
   importData: function(bReset) {
     var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker)
 
@@ -346,25 +344,20 @@ var splash = {
   },
 
   resetValues: function() {
-    var myResetVersion = nsPreferences.copyUnicharPref("splashext.resetVersion");
-    var thisResetVersion = "1.0";
-    
+    var myResetVersion = "1.0", thisResetVersion = "1.0";
+	if (prefBranch.prefHasUserValue("resetVersion")) myResetVersion = prefBranch.getCharPref("resetVersion");
+
     if (myResetVersion != thisResetVersion) {
-      var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-                          .getService(Components.interfaces.nsIPrefService);
-      var nsIPrefBranchObj = prefService.getBranch(splash_PrefBranchPrefix);
-      var prefCount = {value:0}; 
-      var prefArray = nsIPrefBranchObj.getChildList("" , prefCount); 
-  
-      var branchService = nsPreferences.mPrefService;
-  
+      var prefCount = {value:0};
+      var prefArray = prefBranch.getChildList("", prefCount);
+
       for (var i = 0; i < prefArray.length; ++i) {
-        if (branchService.prefHasUserValue(splash_PrefBranchPrefix + prefArray[i])) {
-           branchService.clearUserPref(splash_PrefBranchPrefix + prefArray[i]);
+        if (prefBranch.prefHasUserValue(prefArray[i])) {
+           prefBranch.clearUserPref(prefArray[i]);
         }
-      } 
-	
-      nsPreferences.setUnicharPref("splashext.resetVersion", thisResetVersion);
+      }
+
+	  prefBranch.setCharPref("resetVersion", thisResetVersion);
     }
   },
 
@@ -372,7 +365,7 @@ var splash = {
   		var url = "chrome://splash/content/webcolornames/webcolornames.xul";
   		var win = openDialog(url, "webcolornames", "chrome,centerscreen,resizable", setting);
   },
-  
+
   sizeToContent: function() {
       window.sizeToContent();
   }

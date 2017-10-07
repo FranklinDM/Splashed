@@ -4,10 +4,11 @@
 PROJECT:      Splash!
 FILE:         splash.xul
 DESCRIPTION:  XUL window for splash screen
-AUTHOR:       aldreneo aka slyfox and mrtech
+AUTHOR:       aldreneo aka slyfox, mrtech, FranklinDM
 LICENSE:      GNU GPL (General Public License)
 
 Copyright (c) 2007 aldreneo aka slyfox and mrtech
+Copyright (c) 2017 FranklinDM
 ********************************************************************************
 
 This program is free software; you can redistribute it and/or modify
@@ -28,18 +29,17 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE window SYSTEM "chrome://splash/locale/splash.dtd">
 
-<window id="splashscreen" 
-        title="&title.label;" 
-        windowtype="splash:window" 
-        hidechrome="true" 
-        onload="splash.init();" 
-        onclick="window.close();" 
-        flex="1" 
+<window id="splashscreen"
+        title="&title.label;"
+        windowtype="splash:window"
+        hidechrome="true"
+        onload="splash.init();"
+        onclick="window.close();"
+        flex="1"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
 
-  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js" />
   <script type="application/x-javascript" src="chrome://splash/content/splash.js" />
-	
+
   <keyset id="tasksKeys">
     <key keycode="VK_ESCAPE" oncommand="window.close();" />
   </keyset>

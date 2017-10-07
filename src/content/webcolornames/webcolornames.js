@@ -3,7 +3,7 @@
 // FILE:         webcolornames.js
 // DESCRIPTION:  Javascript file for main window taken from extension "Web Color Names"
 // AUTHOR:  aldreneo aka slyfox and mrtech
-// ORIGINAL AUTHOR: Andrea Binello 
+// ORIGINAL AUTHOR: Andrea Binello
 // LICENSE:      GNU GPL (General Public License)
 //------------------------------------------------------------------------------
 //Original  Copyright (c) 2004 Andrea Binello
@@ -187,13 +187,13 @@ function splash_load_trees ()
         treerow.appendChild (treecell);
 
         treecell = document.createElement ('treecell');
-        
+
 		if (!(splash_color_values[k]=="transparent"))
 			{
 			treecell.setAttribute ("label", "#" + splash_color_values[k]);
 			}
 			else {treecell.setAttribute ("label", splash_color_values[k]); }
-		
+
         treecell.setAttribute ("properties", "clrvalue");
         treerow.appendChild (treecell);
 
@@ -239,7 +239,7 @@ function splash_select_color (tree_idx)
 			{
 			textbox.value = "#" + splash_color_values[idx];
 			} else {textbox.value = splash_color_values[idx]; }
-    
+
 
 	if(!(splash_color_values[idx]=="transparent")) {
     textbox = document.getElementById ("splash-textbox-info-redvalue");
@@ -251,7 +251,7 @@ function splash_select_color (tree_idx)
     textbox = document.getElementById ("splash-textbox-info-bluevalue");
     textbox.value = rgb[2];
 	} else {
-	
+
     textbox = document.getElementById ("splash-textbox-info-redvalue");
     textbox.value = "N/A";
 
@@ -261,16 +261,16 @@ function splash_select_color (tree_idx)
     textbox = document.getElementById ("splash-textbox-info-bluevalue");
     textbox.value = "N/A";
 
-	
+
 	}
 
     label = document.getElementById ("splash-label-info-colorsample");
-	
+
 		if (!(splash_color_values[idx]=="transparent"))
 			{
 			label.setAttribute ("style", "background-color: #" + splash_color_values[idx] + ";");
 			} else {label.setAttribute ("style", "background-color: " + splash_color_values[idx] + ";");}
-    
+
 }
 
 //-- Initialize application --
@@ -290,7 +290,7 @@ function set_setting ()
   	} else {
   		set_settings_final ()
   	}
-  	
+
   	//Set the setting  (option)  to the variable element.value
   } else {
 		set_settings_final ()
@@ -299,7 +299,7 @@ function set_setting ()
 
 function set_settings_final () {
   var element = document.getElementById ('splash-textbox-info-value');
-  
+
   if (!element || !element.value || element.value == "") {
     window.close();
     return;
