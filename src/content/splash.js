@@ -33,11 +33,20 @@ var splash = {
     splash.resetValues(); // reset all prefs on major upgrades
 
     // custom handling for background transparency
-	document.getElementById("splashscreen").setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
+	switch (splash.getAppName()) {
+		// Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)
+		// When the background is set to transparent, other browsers
+		// => either dont show the window or show a black square
+		case "Pale Moon":
+		case "FossaMail":
+		  document.getElementById("splashscreen").setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
+		  break;
+		default:
+		  document.getElementById("splashscreen").setAttribute("style", prefBranch.getCharPref("windowStyle"));
+	}
 
     // If the imageURL is the default value and we are running Thunderbird,
     // we need to change the default about image location
-    //var branchService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
     var splashURL;
 
     if (prefBranch.prefHasUserValue("imageURL")) {
@@ -174,7 +183,7 @@ var splash = {
     var prefCount = {value:0};
     var prefArray = prefBranch.getChildList("", prefCount);
 
-    for (var i = 0; i < prefArray.length; i++) {
+    for (let i = 0; i < prefArray.length; i++) {
       if (prefBranch.prefHasUserValue(prefArray[i])) {
          prefBranch.clearUserPref(prefArray[i]);
       }
@@ -196,7 +205,7 @@ var splash = {
 
     var ret = fp.show();
 
-    if(ret == nsIFilePicker.returnOK) {
+    if (ret == nsIFilePicker.returnOK) {
      document.getElementById("pref_splash.soundURL").value = fp.fileURL.spec;
     }
   },
@@ -214,7 +223,7 @@ var splash = {
 
     var ret = fp.show();
 
-    if(ret == nsIFilePicker.returnOK) {
+    if (ret == nsIFilePicker.returnOK) {
       document.getElementById("pref_splash.imageURL").value = fp.fileURL.spec;
       document.getElementById("splash.previewImage").src = fp.fileURL.spec;
       setTimeout(splash.sizeToContent, 250);
@@ -253,7 +262,7 @@ var splash = {
   },
   
   extendInt: function(aInput) {
-    if(aInput < 10) return "0" + aInput.toString();
+    if (aInput < 10) return "0" + aInput.toString();
     else return aInput;
   },
 
@@ -289,7 +298,7 @@ var splash = {
 	str += sDate + ", " + sTtime + " (" + sGMT + ")\n";
 	str += "*/\n";
 	
-    for (var i = 0; i < prefArray.length; ++i) {
+    for (let i = 0; i < prefArray.length; ++i) {
 
       var tmpString // clean up import-export strings
 
@@ -357,15 +366,16 @@ var splash = {
       var prefCount    = {value:0};
       var prefArray    = prefBranch.getChildList("", prefCount);
       var prefArrayOld = prefBranchOld.getChildList("", prefCount);
-
-      for (var i = 0; i < prefArray.length; ++i) {
+	  
+	  // Regular prefs
+      for (let i = 0; i < prefArray.length; ++i) {
         if (prefBranch.prefHasUserValue(prefArray[i])) {
            prefBranch.clearUserPref(prefArray[i]);
         }
       }
 	  
 	  // Old prefs (Splash and Splashed v1)
-      for (var i = 0; i < prefArrayOld.length; ++i) {
+      for (let i = 0; i < prefArrayOld.length; ++i) {
         if (prefBranchOld.prefHasUserValue(prefArrayOld[i])) {
            prefBranchOld.clearUserPref(prefArrayOld[i]);
         }
@@ -389,7 +399,7 @@ function logString(aLogString) {
   var mConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
          .getService(Components.interfaces.nsIConsoleService)
 
-	if(mConsoleService) {
-  	mConsoleService.logStringMessage("Splash: " + aLogString + "\n");
+  if (mConsoleService) {
+    mConsoleService.logStringMessage("Splash: " + aLogString + "\n");
   }
 }
