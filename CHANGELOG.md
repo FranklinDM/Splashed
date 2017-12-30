@@ -3,6 +3,7 @@
 ### 1.1.1
 * Provide support for Basilisk and SeaMonkey
   - Splashed! will now work on these applications ^
+  - However, transparency is disabled in these applications (probably some others) since it will cause the splash window to either not show or display a black rectangle. This bug is not present in Pale Moon/FossaMail
 
 ### 1.1.0
 * The -splash cmd arg is now restored
