@@ -36,7 +36,7 @@ var splash = {
 	switch (splash.getAppName()) {
 		// Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)
 		// When the background is set to transparent, other browsers
-		// => either dont show the window or show a black square
+		// don't show the window or show a black square with nothing inside it
 		case "Pale Moon":
 		case "FossaMail":
 		  document.getElementById("splashscreen").setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
@@ -120,6 +120,9 @@ var splash = {
     }
 
     document.getElementById("splash.previewImage").src = splashURL;
+	
+	updateColorPicker('bg');
+	updateColorPicker('txt');
   },
 
   playSound: function(isEnabled) {
@@ -152,7 +155,7 @@ var splash = {
 
     return myBrandStrings.GetStringFromName("brandShortName");
   },
-
+  
   openURL: function(myLink) {
     var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                        .getService(Components.interfaces.nsIWindowMediator);
@@ -383,11 +386,6 @@ var splash = {
 	  
 	  prefBranch.setCharPref("resetVersion", thisResetVersion);
 	}
-  },
-
-  opencsseditor: function(setting) {
-  		var url = "chrome://splash/content/webcolornames/webcolornames.xul";
-  		var win = openDialog(url, "webcolornames", "chrome,centerscreen,resizable", setting);
   },
 
   sizeToContent: function() {

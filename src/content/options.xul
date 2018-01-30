@@ -42,6 +42,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
      persist="lastSelected screenX screenY"
      type="prefwindow"
      centerWindowOnScreen="true"
+     xmlns:html="http://www.w3.org/1999/xhtml"
      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script type="application/x-javascript" src="chrome://splash/content/splash.js" />
 
@@ -52,7 +53,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   <prefpane id="splash-pane1" label="&splash.panel_general;">
     <preferences>
       <preference id="pref_splash.enabled"             name="extensions.splash.enabled"      		instantApply="true" type="bool"/>
-      <preference id="pref_splash.closeWithMainWindow" name="extensions.splash.closeWithMainWindow" instantApply="true" type="bool"/>
+      <preference id="pref_splash.closeWithMainWindow" name="extensions.splash.closeWithMainWindow" instantApply="true" type="bool" onchange="toggleElementChildren(document.getElementById('splash.timeout.opt'), this.value);"/>
       <preference id="pref_splash.timeout"             name="extensions.splash.timeout"            	instantApply="true" type="int"/>
       <preference id="pref_splash.bgcolor"             name="extensions.splash.bgcolor"         	instantApply="true" type="string"/>
       <preference id="pref_splash.windowStyle"         name="extensions.splash.windowStyle"     	instantApply="true" type="string"/>
@@ -68,9 +69,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
       <checkbox id="splash.enabled"
                 preference="pref_splash.enabled" label="&splash.enabled;" />
       <checkbox id="splash.closeWithMainWindow"
-                preference="pref_splash.closeWithMainWindow" label="&splash.closeWithMainWindow;"
-                onclick="toggleTimeout(!this.checked);" />
-      <hbox align="center">
+                preference="pref_splash.closeWithMainWindow" label="&splash.closeWithMainWindow;"/>
+      <hbox id="splash.timeout.opt" align="center">
         <label control="splash.timeout" value="&splash.timeout;"/>
         <textbox preference="pref_splash.timeout" id="splash.timeout" size="4" maxlength="5" />
       </hbox>
@@ -80,8 +80,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
       <caption label="&splash.background;" />
       <hbox align="center">
         <label control="splash.bgcolor" value="&splash.bgcolor;"/>
-        <textbox preference="pref_splash.bgcolor" id="splash.bgcolor" size="10" maxlength="500" />
-	      <button label="&splash.morecolors;" class="url" onclick="splash.opencsseditor('splash.bgcolor')"/>
+        <textbox preference="pref_splash.bgcolor" id="splash.bgcolor" size="10" maxlength="500" onchange="updateColorPicker('bg');"/>
+        <html:input type="color" id="splash.bgcolorpicker" preference="pref_splash.bgcolor"/>
       </hbox>
       <label control="splash.windowStyle" value="&splash.windowStyle;"/>
       <textbox preference="pref_splash.windowStyle" id="splash.windowStyle" multiline="true" rows="4" />
@@ -130,7 +130,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
   <prefpane id="splash-pane4" label="&splash.panel_text;">
     <preferences>
-      <preference id="pref_splash.textHide" name="extensions.splash.textHide" instantApply="true" type="bool"/>
+      <preference id="pref_splash.textHide" name="extensions.splash.textHide" instantApply="true" type="bool" onchange="toggleElementChildren(document.getElementById('splash.text.opt'), this.value);"/>
       <preference id="pref_splash.progressMeterHide" name="extensions.splash.progressMeterHide" instantApply="true" type="bool"/>
       <preference id="pref_splash.textOverride" name="extensions.splash.textOverride" instantApply="true" type="string"/>
       <preference id="pref_splash.textStyle" name="extensions.splash.textStyle" instantApply="true" type="string"/>
@@ -141,23 +141,24 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
       <caption label="&splash.textSettings;" />
       <checkbox id="splash.textHide"
                 preference="pref_splash.textHide"
-                label="&splash.textHide;"
-                onclick="toggleText(!this.checked);" />
+                label="&splash.textHide;" />
       <checkbox id="splash.progressMeterHide"
                 preference="pref_splash.progressMeterHide"
                 label="&splash.progressMeterHide;" />
       <separator />
-      <label control="splash.textOverride" value="&splash.textOverride;"/>
-      <textbox preference="pref_splash.textOverride" id="splash.textOverride" />
-      <separator />
-      <hbox align="center">
-	      <label control="splash.txtcolor" value="&splash.txtcolor;"/>
-        <textbox preference="pref_splash.txtcolor" id="splash.txtcolor" size="10" maxlength="500" />
-	      <button label="&splash.morecolors;" class="url" onclick="disabled_button()"/>
-      </hbox>
-      <separator />
-      <label control="splash.textStyle" value="&splash.textStyle;"/>
-      <textbox preference="pref_splash.textStyle" id="splash.textStyle" multiline="true" rows="4" />
+	  <vbox id="splash.text.opt">
+		  <label control="splash.textOverride" value="&splash.textOverride;"/>
+		  <textbox preference="pref_splash.textOverride" id="splash.textOverride" />
+		  <separator />
+		  <hbox align="center">
+			  <label control="splash.txtcolor" value="&splash.txtcolor;"/>
+			<textbox preference="pref_splash.txtcolor" id="splash.txtcolor" size="10" maxlength="500" onchange="updateColorPicker('txt');"/>
+			<html:input type="color" id="splash.txtcolorpicker" preference="pref_splash.txtcolor"/>
+		  </hbox>
+		  <separator />
+		  <label control="splash.textStyle" value="&splash.textStyle;"/>
+		  <textbox preference="pref_splash.textStyle" id="splash.textStyle" multiline="true" rows="4" />
+	  </vbox>
     </groupbox>
 	</prefpane>
 
@@ -165,7 +166,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
     <preferences>
       <preference id="pref_splash.soundEnabled" name="extensions.splash.soundEnabled" instantApply="true" type="bool" />
       <preference id="pref_splash.soundURL" name="extensions.splash.soundURL" instantApply="true" type="string" />
-	  <preference id="pref_splash.trans" name="extensions.splash.trans" instantApply="true" type="bool"/>
+	  <preference id="pref_splash.trans" name="extensions.splash.trans" instantApply="true" type="bool" onchange="toggleElementChildren(document.getElementById('splash.trans.opt'), !this.value);"/>
 	  <preference id="pref_splash.transvalue_img" name="extensions.splash.transvalue_img" instantApply="true" type="string"/>
 	  <preference id="pref_splash.transvalue_txt" name="extensions.splash.transvalue_txt" instantApply="true" type="string"/>
 	  <preference id="pref_splash.transvalue_box" name="extensions.splash.transvalue_box" instantApply="true" type="string"/>
@@ -188,8 +189,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 	  <groupbox>
       <caption label="&splash.trans;" />
-      <checkbox id="splash.trans" preference="pref_splash.trans" label="&splash.usetrans;" onclick="toggleTran(!this.checked);" />
-      <grid>
+      <checkbox id="splash.trans" preference="pref_splash.trans" label="&splash.usetrans;" />
+      <grid id="splash.trans.opt">
         <columns>
           <column />
           <column />
@@ -218,40 +219,33 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   </prefpane>
 
   <script><![CDATA[
-    function toggleTimeout(isChecked) {
-      document.getElementById('splash.timeout').disabled = isChecked;
-    }
-
-    function toggleText(isChecked) {
-      document.getElementById('splash.textOverride').disabled = isChecked;
-      document.getElementById('splash.textStyle').disabled = isChecked;
-	  document.getElementById('splash.txtcolor').disabled = isChecked;
-    }
-
-    function toggleTran(isChecked2) {
-      if (!isChecked2) {
-        document.getElementById('splash.trans.img').disabled = true;
-        document.getElementById('splash.trans.txt').disabled = true;
-        document.getElementById('splash.trans.box').disabled = true;
-        document.getElementById('splash.trans.prg').disabled = true;
-      } else {
-        document.getElementById('splash.trans.img').disabled = false;
-        document.getElementById('splash.trans.txt').disabled = false;
-        document.getElementById('splash.trans.box').disabled = false;
-        document.getElementById('splash.trans.prg').disabled = false;
-	  }
+	function updateColorPicker(type) {
+		switch (type) {
+			case "bg":
+				document.getElementById('splash.bgcolorpicker').value = document.getElementById('splash.bgcolor').value;
+				break;
+			case "txt":
+				document.getElementById('splash.txtcolorpicker').value = document.getElementById('splash.txtcolor').value;
+				break;
+			default:
+				// do nothing
+		}
+	}
+	
+	function toggleElementChildren(element, state) {
+		for (let i = 0; i < element.children.length; i++) {
+			element.children[i].disabled = state;
+			// If element still has children, go and set its state also
+			if (element.children[i].children.length != 0) {
+				toggleElementChildren(element.children[i], state);
+			}
+		}
 	}
 
-	function disabled_button () {
-      if(!(prefBranch.getBoolPref("textHide"))) {
-        splash.opencsseditor('splash.txtcolor');
-  	  }
-	}
-
-  toggleTimeout(prefBranch.getBoolPref("closeWithMainWindow"));
-  toggleText(prefBranch.getBoolPref("textHide"));
-  toggleTran(prefBranch.getBoolPref("trans"));
-
+  toggleElementChildren(document.getElementById('splash.timeout.opt'), prefBranch.getBoolPref("closeWithMainWindow"));
+  toggleElementChildren(document.getElementById('splash.text.opt'), prefBranch.getBoolPref("textHide"));
+  toggleElementChildren(document.getElementById('splash.trans.opt'), !prefBranch.getBoolPref("trans"));
+  
   ]]></script>
 
 </prefwindow>

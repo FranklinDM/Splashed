@@ -59,6 +59,5 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 		<description value="Pike" />
     <label value="mcdavis941 (Images)" class="url" onclick="splash.openURL('http://www.knology.net/~mcdavis941/411design/');"/>
     <label value="badassfeline (More Images)" class="url" onclick="splash.openURL('http://www.badassfeline.co.uk/');"/>
-    <label value="Andrea Binello (Color Picker)" class="url" onclick="splash.openURL('https://addons.mozilla.org/firefox/399/');"/>
   </vbox>
 </dialog>
