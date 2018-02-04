@@ -72,7 +72,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                 preference="pref_splash.closeWithMainWindow" label="&splash.closeWithMainWindow;"/>
       <hbox id="splash.timeout.opt" align="center">
         <label control="splash.timeout" value="&splash.timeout;"/>
-        <textbox preference="pref_splash.timeout" id="splash.timeout" size="4" maxlength="5" />
+        <textbox preference="pref_splash.timeout" id="splash.timeout" size="4" maxlength="5" type="number"/>
+        <label value="&splash.msec;"/>
       </hbox>
     </groupbox>
 
