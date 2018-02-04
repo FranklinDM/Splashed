@@ -6,10 +6,10 @@
 <!ENTITY splash.startuptweaks "Startup Tweaks">
 <!ENTITY splash.enabled "Show Splash on Startup">
 <!ENTITY splash.closeWithMainWindow "Close splash when main window loads">
-<!ENTITY splash.timeout "Auto-close Timeout (1000 = 1 sec):">
+<!ENTITY splash.timeout "Auto-close Timeout:">
+<!ENTITY splash.msec "milliseconds">
 <!ENTITY splash.background "Splash Background">
 <!ENTITY splash.bgcolor "Color: ">
-<!ENTITY splash.morecolors "More Colors ">
 <!ENTITY splash.windowStyle "Window Style:">
 <!ENTITY splash.importexport.label "Export/Import Settings">
 <!ENTITY splash.export "Export">
@@ -19,7 +19,7 @@
 <!ENTITY splash.browse "Browse...">
 <!ENTITY splash.default "Default">
 <!ENTITY splash.default_key "D">
-<!ENTITY splash.imageDemensions "Image demensions:">
+<!ENTITY splash.imageDemensions "Image dimensions:">
 <!ENTITY splash.preview "Preview">
 <!ENTITY splash.sound "Sound">
 <!ENTITY splash.soundEnabled "Play sound on startup">

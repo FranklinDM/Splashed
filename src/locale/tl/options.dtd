@@ -1,0 +1,41 @@
+<!ENTITY splash.title "Mga Preperensiya ng Splash">
+<!ENTITY splash.panel_general "Pangkalahatan">
+<!ENTITY splash.panel_image "Imahen">
+<!ENTITY splash.panel_misc "Iba pa">
+<!ENTITY splash.panel_text "Teksto">
+<!ENTITY splash.startuptweaks "Pagbukas">
+<!ENTITY splash.enabled "Ipakita ang Splash kapag binuksan ang browser">
+<!ENTITY splash.closeWithMainWindow "Isara ang Splash kapang naiload na ang main window">
+<!ENTITY splash.timeout "Auto-close Timeout:">
+<!ENTITY splash.msec "mga milisegundo">
+<!ENTITY splash.background "Splash Background">
+<!ENTITY splash.bgcolor "Kulay: ">
+<!ENTITY splash.windowStyle "Estilo ng Window:">
+<!ENTITY splash.importexport.label "Export/Import Settings">
+<!ENTITY splash.export "I-export">
+<!ENTITY splash.import "I-import">
+<!ENTITY splash.imageParameters "Mga Parametro ng Imahen">
+<!ENTITY splash.imageURL "Imahen URL (ex: file:///c:/image.png):">
+<!ENTITY splash.browse "I-browse...">
+<!ENTITY splash.default "Ibalik sa Dati">
+<!ENTITY splash.default_key "D">
+<!ENTITY splash.imageDemensions "Mga dimensiyon ng imahen:">
+<!ENTITY splash.preview "I-preview">
+<!ENTITY splash.sound "Sound">
+<!ENTITY splash.soundEnabled "Magpatugtog ng sound sa pagbukas">
+<!ENTITY splash.soundURL "Sound URL (ex: file:///c:/sound.wav):">
+<!ENTITY splash.play "I-play">
+<!ENTITY splash.play_key "P">
+<!ENTITY splash.trans "Opacity">
+<!ENTITY splash.usetrans "Gumamit ng Opacity (value range ay mula 0-1 Ex. &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Imahen">
+<!ENTITY splash.transval2 "Teksto">
+<!ENTITY splash.transval3 "Main Box">
+<!ENTITY splash.transval4 "Halang ng Progreso">
+<!ENTITY splash.textSettings "Mga Setting ng Teksto">
+<!ENTITY splash.textHide "Itago ang teksto ng splash">
+<!ENTITY splash.progressMeterHide "Itago ang metro ng progreso">
+<!ENTITY splash.textOverride "I-override ang &quot;Naglo-load...&quot; na teksto (iwang blanko para sa paunang-tukoy):">
+<!ENTITY splash.txtcolor "Kulay ng Teksto:">
+<!ENTITY splash.textStyle "Estilo ng Teksto:">
+<!ENTITY splash.reset "I-reset ang lahat">

@@ -1,12 +1,13 @@
 # This file contains a list of locales present in the package
 
 locale	splash	en-US	locale/en-US/
+locale	splash	es-AR	locale/es-AR/
+locale	splash	es-ES	locale/es-ES/
+locale	splash	tl		locale/tl/
 
 # unused locales (not updated)
 #locale	splash	cs-CZ	locale/cs-CZ/
 #locale	splash	de-DE	locale/de-DE/
-#locale	splash	es-AR	locale/es-AR/
-#locale	splash	es-ES	locale/es-ES/
 #locale	splash	fa-IR	locale/fa-IR/
 #locale	splash	fi-FI	locale/fi-FI/
 #locale	splash	fr-FR	locale/fr-FR/
