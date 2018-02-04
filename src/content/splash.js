@@ -30,8 +30,6 @@ var prefBranchOld		= prefService.getBranch("splash.");
 
 var splash = {
   init: function() {
-    splash.resetValues(); // reset all prefs on major upgrades
-
     // custom handling for background transparency
 	switch (splash.getAppName()) {
 		// Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)
@@ -123,6 +121,8 @@ var splash = {
 	
 	updateColorPicker('bg');
 	updateColorPicker('txt');
+	
+	removeOldPrefs();
   },
 
   playSound: function(isEnabled) {
@@ -193,8 +193,8 @@ var splash = {
     }
 
     document.getElementById("splash.previewImage").src = document.getElementById("splash.imageURL").value;
-
-    setTimeout(splash.sizeToContent, 500);
+	
+	splash.getDimensions();
   },
 
   getSoundFile: function() {
@@ -223,13 +223,12 @@ var splash = {
     fp.appendFilters(nsIFilePicker.filterImages);
     var previewImage = document.getElementById("splash.previewImage");
 
-
     var ret = fp.show();
 
     if (ret == nsIFilePicker.returnOK) {
       document.getElementById("pref_splash.imageURL").value = fp.fileURL.spec;
       document.getElementById("splash.previewImage").src = fp.fileURL.spec;
-      setTimeout(splash.sizeToContent, 250);
+	  splash.getDimensions();
     }
   },
 
@@ -250,18 +249,22 @@ var splash = {
     var defaultImage = splash.getDefaultImage();
     prefBranch.setCharPref('imageURL', defaultImage)
     document.getElementById("splash.previewImage").src = defaultImage;
-    setTimeout(splash.sizeToContent, 250);
+	splash.getDimensions();
   },
 
   getDimensions: function() {
-    splash.sizeToContent();
     var previewImage = document.getElementById("splash.previewImage");
 
-    document.getElementById("splash.windowWidth").value = previewImage.boxObject.width;
-    document.getElementById("splash.windowHeight").value = previewImage.boxObject.height;
+	var height = previewImage.height;
+	var width = previewImage.width;
+		
+	// Set text box values
+	document.getElementById("splash.windowWidth").value = width;
+	document.getElementById("splash.windowHeight").value = height;
 
-    prefBranch.setIntPref("windowWidth", previewImage.boxObject.width);
-    prefBranch.setIntPref("windowHeight", previewImage.boxObject.height);
+	// Set pref values
+	prefBranch.setIntPref("windowWidth", width);
+	prefBranch.setIntPref("windowHeight", height);
   },
   
   extendInt: function(aInput) {
@@ -269,6 +272,7 @@ var splash = {
     else return aInput;
   },
 
+  // TODO: Revise Import & Export data - imposes a security risk
   exportData: function() {
     var prefCount = {value:0};
     var prefArray = prefBranch.getChildList("", prefCount);
@@ -361,21 +365,9 @@ var splash = {
     splash.initSettings();
   },
 
-  resetValues: function() {
-    var myResetVersion = "1.0.0", thisResetVersion = "1.1.0";
-	if (prefBranch.getPrefType("resetVersion")) myResetVersion = prefBranch.getCharPref("resetVersion");
-
-	if (myResetVersion != thisResetVersion) {
+  removeOldPrefs: function() {
       var prefCount    = {value:0};
-      var prefArray    = prefBranch.getChildList("", prefCount);
       var prefArrayOld = prefBranchOld.getChildList("", prefCount);
-	  
-	  // Regular prefs
-      for (let i = 0; i < prefArray.length; ++i) {
-        if (prefBranch.prefHasUserValue(prefArray[i])) {
-           prefBranch.clearUserPref(prefArray[i]);
-        }
-      }
 	  
 	  // Old prefs (Splash and Splashed v1)
       for (let i = 0; i < prefArrayOld.length; ++i) {
@@ -383,13 +375,6 @@ var splash = {
            prefBranchOld.clearUserPref(prefArrayOld[i]);
         }
       }
-	  
-	  prefBranch.setCharPref("resetVersion", thisResetVersion);
-	}
-  },
-
-  sizeToContent: function() {
-      window.sizeToContent();
   }
 }
 
