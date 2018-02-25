@@ -1,5 +1,13 @@
 # Changelog
 
+### 1.1.2
+* Use HTML5 color picker and update code on disabling elements
+  - This also removes the integrated color picker which was made by Andrea Binello since it is no longer needed
+  - Update code on disabling elements: Instead of specifying each element ID individually, use its parent element (where possible) and disable all its child elements which is more cleaner and reusable throughout
+* Fix #3 - Better handling of splash preview in options window
+  - No longer stretches the preview, more accurate size = more clear image
+  - Instead of resizing the window (the image might be large), show scrollbars instead
+
 ### 1.1.1
 * Provide support for Basilisk and SeaMonkey
   - Splashed! will now work on these applications ^
