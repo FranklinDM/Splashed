@@ -24,11 +24,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 .url {
-  color: #0000FF;
-  text-decoration: none;
-  cursor: pointer;
+    color: #0000FF;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .url:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }

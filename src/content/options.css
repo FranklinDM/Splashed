@@ -3,7 +3,7 @@
 PROJECT:      Splash!
 FILE:         options.css
 DESCRIPTION:  CSS file for options for Splash!
-AUTHOR:  	  aldreneo aka slyfox, mrtech, FranklinDM
+AUTHOR:       aldreneo aka slyfox, mrtech, FranklinDM
 LICENSE:      GNU GPL (General Public License)
 ------------------------------------------------------------------------------
 Copyright (c) 2006 aldreneo aka slyfox and mrtech
@@ -26,25 +26,25 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 /* Preferences Panel Radio Icons */
 #splash-prefs radio {
-  list-style-image: url("chrome://splash/content/images/icons.png");
+    list-style-image: url("chrome://splash/content/images/icons.png");
 }
 
 /* General Preference Panel */
 #splash-prefs radio[pane=splash-pane1] {
-  -moz-image-region: rect(0px, 32px, 32px, 0px) !important;
+    -moz-image-region: rect(0px, 32px, 32px, 0px) !important;
 }
 
 /* Image Preference Panel */
 #splash-prefs radio[pane=splash-pane2] {
-  -moz-image-region: rect(0px, 80px, 32px, 45px) !important;
+    -moz-image-region: rect(0px, 80px, 32px, 45px) !important;
 }
 
 /* Sound Preference Panel */
 #splash-prefs radio[pane=splash-pane3] {
-  -moz-image-region: rect(0px, 128px, 32px, 96px) !important;
+    -moz-image-region: rect(0px, 128px, 32px, 96px) !important;
 }
 
 /* Text Preference Panel */
 #splash-prefs radio[pane=splash-pane4] {
-  -moz-image-region: rect(0px, 172px, 32px, 140px) !important;
+    -moz-image-region: rect(0px, 172px, 32px, 140px) !important;
 }
