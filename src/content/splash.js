@@ -122,7 +122,7 @@ var splash = {
         updateColorPicker('bg');
         updateColorPicker('txt');
 
-        removeOldPrefs();
+        this.removeOldPrefs();
     },
 
     playSound: function (isEnabled) {
