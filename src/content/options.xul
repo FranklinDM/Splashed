@@ -34,11 +34,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 <prefwindow id="splash-prefs"
             title="&splash.title;"
             buttons="accept,extra1,extra2"
-            ondialogextra1="splash.previewSplashScreen();"
+            ondialogextra1="splashOpt.previewSplashScreen();"
             buttonlabelextra1="&splash.preview;"
-            ondialogextra2="splash.resetToDefault();"
+            ondialogextra2="splashOpt.resetToDefault();"
             buttonlabelextra2="&splash.reset;"
-            onload="splash.initSettings();"
+            onload="splashOpt.initSettings();"
             persist="lastSelected screenX screenY"
             type="prefwindow"
             centerWindowOnScreen="true"
@@ -46,6 +46,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <script type="application/x-javascript"
             src="chrome://splash/content/splash.js" />
+    <script type="application/x-javascript"
+            src="chrome://splash/content/options.js" />
 
     <stringbundleset id="splashSet">
         <stringbundle id="splashStrings"
@@ -63,7 +65,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         name="extensions.splash.closeWithMainWindow"
                         instantApply="true"
                         type="bool"
-                        onchange="toggleElementChildren(document.getElementById('splash.timeout.opt'), this.value);"/>
+                        onchange="splashOpt.toggleElementChildren(document.getElementById('splash.timeout.opt'), this.value);"/>
             <preference id="pref_splash.timeout"
                         name="extensions.splash.timeout"
                         instantApply="true"
@@ -128,7 +130,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                          id="splash.bgcolor"
                          size="10"
                          maxlength="500"
-                         onchange="updateColorPicker('bg');"/>
+                         onchange="splashOpt.updateColorPicker('bg');"/>
                 <html:input type="color"
                             id="splash.bgcolorpicker"
                             preference="pref_splash.bgcolor"/>
@@ -147,10 +149,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                 <spacer flex="1"/>
                 <button id="li-export"
                         label="&splash.export;"
-                        oncommand="splash.exportData();" />
+                        oncommand="splashOpt.exportData();" />
                 <button id="li-import"
                         label="&splash.import;"
-                        oncommand="splash.importData();" />
+                        oncommand="splashOpt.importData();" />
                 <spacer flex="1"/>
             </hbox>
         </groupbox>
@@ -182,10 +184,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                 <textbox preference="pref_splash.imageURL"
                          id="splash.imageURL"
                          flex="1" />
-                <button onclick="splash.getImageFile();"
+                <button onclick="splashOpt.getImageFile();"
                         label="&splash.browse;"
                         style="min-width:6px;"/>
-                <button onclick="splash.setDefaultImage();"
+                <button onclick="splashOpt.setDefaultImage();"
                         label="&splash.default;"
                         accesskey="&splash.default_key;" />
             </hbox>
@@ -208,8 +210,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                   style="overflow:auto;"
                   flex="1">
                 <html:img id="splash.previewImage"
-                          onload="setTimeout(splash.getDimensions, 200);"
-                          onerror="splash.setDefaultImage();" />
+                          onload="setTimeout(splashOpt.getDimensions, 200);"
+                          onerror="splashOpt.setDefaultImage();" />
             </vbox>
         </groupbox>
     </prefpane>
@@ -221,7 +223,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         name="extensions.splash.textHide"
                         instantApply="true"
                         type="bool"
-                        onchange="toggleElementChildren(document.getElementById('splash.text.opt'), this.value);"/>
+                        onchange="splashOpt.toggleElementChildren(document.getElementById('splash.text.opt'), this.value);"/>
             <preference id="pref_splash.progressMeterHide"
                         name="extensions.splash.progressMeterHide"
                         instantApply="true"
@@ -262,7 +264,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                              id="splash.txtcolor"
                              size="10"
                              maxlength="500"
-                             onchange="updateColorPicker('txt');"/>
+                             onchange="splashOpt.updateColorPicker('txt');"/>
                     <html:input type="color"
                                 id="splash.txtcolorpicker"
                                 preference="pref_splash.txtcolor"/>
@@ -293,7 +295,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         name="extensions.splash.trans"
                         instantApply="true"
                         type="bool"
-                        onchange="toggleElementChildren(document.getElementById('splash.trans.opt'), !this.value);"/>
+                        onchange="splashOpt.toggleElementChildren(document.getElementById('splash.trans.opt'), !this.value);"/>
             <preference id="pref_splash.transvalue_img"
                         name="extensions.splash.transvalue_img"
                         instantApply="true"
@@ -324,10 +326,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                 <textbox preference="pref_splash.soundURL"
                          id="splash.soundURL"
                          flex="1" />
-                <button onclick="splash.getSoundFile();"
+                <button onclick="splashOpt.getSoundFile();"
                         label="&splash.browse;"
                         style="min-width:6px;margin-left:0;"/>
-                <button onclick="splash.playSound(true);"
+                <button onclick="splashOpt.playSound(true);"
                         label="&splash.play;"
                         accesskey="&splash.play_key;" />
             </hbox>
@@ -386,37 +388,5 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
         </groupbox>
 
     </prefpane>
-
-    <script>
-        <![CDATA[
-            function updateColorPicker(type) {
-                switch (type) {
-                    case "bg":
-                        document.getElementById('splash.bgcolorpicker').value = document.getElementById('splash.bgcolor').value;
-                        break;
-                    case "txt":
-                        document.getElementById('splash.txtcolorpicker').value = document.getElementById('splash.txtcolor').value;
-                        break;
-                    default:
-                        // do nothing
-                }
-            }
-            
-            function toggleElementChildren(element, state) {
-                for (let i = 0; i < element.children.length; i++) {
-                    element.children[i].disabled = state;
-                    // If element still has children, go and set its state also
-                    if (element.children[i].children.length != 0) {
-                        toggleElementChildren(element.children[i], state);
-                    }
-                }
-            }
-
-            toggleElementChildren(document.getElementById('splash.timeout.opt'), prefBranch.getBoolPref("closeWithMainWindow"));
-            toggleElementChildren(document.getElementById('splash.text.opt'), prefBranch.getBoolPref("textHide"));
-            toggleElementChildren(document.getElementById('splash.trans.opt'), !prefBranch.getBoolPref("trans"));
-        ]]>
-    </script>
-
 </prefwindow>
 
