@@ -11,7 +11,6 @@ pref("extensions.splash.soundEnabled", false);
 pref("extensions.splash.soundURL", "");
 
 pref("extensions.splash.imageURL", "chrome://branding/content/about.png");
-pref("extensions.splash.useFlex", false);
 pref("extensions.splash.windowWidth", 300);
 pref("extensions.splash.windowHeight", 236);
 

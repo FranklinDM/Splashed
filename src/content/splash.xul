@@ -36,7 +36,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
         onload="splash.init();"
         onclick="window.close();"
         flex="1"
-        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
     <script type="application/x-javascript"
             src="chrome://splash/content/splash.js" />
@@ -48,9 +48,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
     <vbox id="splashBox"
           flex="1">
-        <vbox id="f1"
-              align="center">
-            <hbox id="f2">
+        <vbox align="center">
+            <hbox>
                 <image id="splash.image" src="chrome://branding/content/about.png"/>
             </hbox>
             <label id="splash.text"
