@@ -28,24 +28,24 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 <overlay id="splashoverlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-
-    <script type="application/x-javascript"
-            src="chrome://splash/content/splash.js" />
-
     <script>
         <![CDATA[
-            function closeSplash() {
-              var mainWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-                                 .getService(Components.interfaces.nsIWindowMediator)
-                                 .getMostRecentWindow("splash:window");
-              if (mainWindow) {
-                mainWindow.close();
-              }
-            }
-
-            if (prefBranch.getBoolPref("closeWithMainWindow")) {
-              setTimeout(closeSplash, 500);
-            }
+            (function () {
+                function closeSplash() {
+                  var mainWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                                     .getService(Components.interfaces.nsIWindowMediator)
+                                     .getMostRecentWindow("splash:window");
+                  if (mainWindow) {
+                    mainWindow.close();
+                  }
+                }
+                
+                let prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+                let prefBranch = prefService.getBranch("extensions.splash.");
+                if (prefBranch.getBoolPref("closeWithMainWindow")) {
+                  setTimeout(closeSplash, 500);
+                }
+            })();
         ]]>
     </script>
 </overlay>

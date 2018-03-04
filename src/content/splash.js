@@ -24,12 +24,11 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-var prefService   = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
-var prefBranch    = prefService.getBranch("extensions.splash.");
-var prefBranchOld = prefService.getBranch("splash.");
 
 var splash = {
     init: function () {
+        var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+        var prefBranch = prefService.getBranch("extensions.splash.");
         // custom handling for background transparency
         switch (splash.getAppName()) {
             // Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)

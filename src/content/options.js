@@ -1,14 +1,14 @@
 /*
-******************************************************************************
+********************************************************************************
 PROJECT:      Splash!
 FILE:         options.js
 DESCRIPTION:  Options JS file for splash
 AUTHOR:       aldreneo aka slyfox, mrtech, Franklin DM
 LICENSE:      GNU GPL (General Public License)
-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Copyright (c) 2006 aldreneo aka slyfox and mrtech
 Copyright (c) 2017 Franklin DM
-******************************************************************************
+********************************************************************************
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,10 +26,20 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 var splashOpt = {
+    prefService: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
+
+    get prefBranch() {
+        return this.prefService.getBranch("extensions.splash.");
+    },
+	
+    get prefBranchOld() {
+        return this.prefService.getBranch("splash.");
+    },
+
     initSettings: function () {
         var splashURL;
-        if (prefBranch.prefHasUserValue("imageURL")) {
-            splashURL = prefBranch.getCharPref("imageURL");
+        if (this.prefBranch.prefHasUserValue("imageURL")) {
+            splashURL = this.prefBranch.getCharPref("imageURL");
         } else {
             splashURL = splash.getDefaultImage();
         }
@@ -39,15 +49,15 @@ var splashOpt = {
         this.updateColorPicker('bg');
         this.updateColorPicker('txt');
 
-        this.toggleElementChildren(document.getElementById('splash.timeout.opt'), prefBranch.getBoolPref("closeWithMainWindow"));
-        this.toggleElementChildren(document.getElementById('splash.text.opt'), prefBranch.getBoolPref("textHide"));
-        this.toggleElementChildren(document.getElementById('splash.trans.opt'), !prefBranch.getBoolPref("trans"));
+        this.toggleElementChildren(document.getElementById('splash.timeout.opt'), this.prefBranch.getBoolPref("closeWithMainWindow"));
+        this.toggleElementChildren(document.getElementById('splash.text.opt'), this.prefBranch.getBoolPref("textHide"));
+        this.toggleElementChildren(document.getElementById('splash.trans.opt'), !this.prefBranch.getBoolPref("trans"));
 
         this.removeOldPrefs();
     },
 
     playSound: function (isEnabled) {
-        var soundURL = prefBranch.getCharPref("soundURL");
+        var soundURL = this.prefBranch.getCharPref("soundURL");
         if (soundURL && isEnabled) {
             var gSound = Components.classes["@mozilla.org/sound;1"].
                 createInstance(Components.interfaces.nsISound);
@@ -83,16 +93,16 @@ var splashOpt = {
     },
 
     previewSplashScreen: function () {
-        this.playSound(prefBranch.getBoolPref("soundEnabled"));
+        this.playSound(this.prefBranch.getBoolPref("soundEnabled"));
         openDialog("chrome://splash/content/splash.xul", "SplashScreen", "chrome,centerscreen,alwaysRaised,modal=yes");
     },
 
     resetToDefault: function () {
-        var prefArray = prefBranch.getChildList("");
+        var prefArray = this.prefBranch.getChildList("");
 
         for (let i = 0; i < prefArray.length; i++) {
-            if (prefBranch.prefHasUserValue(prefArray[i])) {
-                prefBranch.clearUserPref(prefArray[i]);
+            if (this.prefBranch.prefHasUserValue(prefArray[i])) {
+                this.prefBranch.clearUserPref(prefArray[i]);
             }
         }
 
@@ -147,13 +157,13 @@ var splashOpt = {
         document.getElementById("splash.windowHeight").value = height;
 
         // Set pref values
-        prefBranch.setIntPref("windowWidth", width);
-        prefBranch.setIntPref("windowHeight", height);
+        splashOpt.prefBranch.setIntPref("windowWidth", width);
+        splashOpt.prefBranch.setIntPref("windowHeight", height);
     },
 
     setDefaultImage: function () {
         var defaultImage = splash.getDefaultImage();
-        prefBranch.setCharPref('imageURL', defaultImage)
+        this.prefBranch.setCharPref('imageURL', defaultImage)
         document.getElementById("splash.previewImage").src = defaultImage;
         this.getDimensions();
     },
@@ -166,8 +176,9 @@ var splashOpt = {
     },
 
     // TODO: Revise Import & Export data - imposes a security risk
+	//		 User might import a script that may do something else
     exportData: function () {
-        var prefArray = prefBranch.getChildList("");
+        var prefArray = this.prefBranch.getChildList("");
 
         var stream = Components.classes['@mozilla.org/network/file-output-stream;1']
             .createInstance(Components.interfaces.nsIFileOutputStream);
@@ -201,28 +212,28 @@ var splashOpt = {
 
             var tmpString // clean up import-export strings
 
-            switch (prefBranch.getPrefType(prefArray[i])) {
-            case prefBranch.PREF_STRING: // Text = 32
+            switch (this.prefBranch.getPrefType(prefArray[i])) {
+            case this.prefBranch.PREF_STRING: // Text = 32
                 str += "prefBranch.setCharPref('" + prefArray[i] + "', '";
-                tmpString = prefBranch.getCharPref(prefArray[i]);
+                tmpString = this.prefBranch.getCharPref(prefArray[i]);
                 tmpString = tmpString.replace(/\\/g, '\\\\');
                 tmpString = tmpString.replace(/\'/g, '\\\'');
                 str += tmpString;
                 str += "')";
                 break;
-            case prefBranch.PREF_INT: // Integer = 64
+            case this.prefBranch.PREF_INT: // Integer = 64
                 str += "prefBranch.setIntPref('" + prefArray[i] + "', ";
-                str += prefBranch.getIntPref(prefArray[i]);
+                str += this.prefBranch.getIntPref(prefArray[i]);
                 str += ")";
                 break;
-            case prefBranch.PREF_BOOL: // Boolean =128
+            case this.prefBranch.PREF_BOOL: // Boolean =128
                 str += "prefBranch.setBoolPref('" + prefArray[i] + "', ";
-                str += prefBranch.getBoolPref(prefArray[i]);
+                str += this.prefBranch.getBoolPref(prefArray[i]);
                 str += ")";
                 break;
             }
 
-            str += "\r\n"
+            str += "\r\n";
         }
 
         stream.init(fp.file, 0x20 | 0x02 | 0x08, 0o666, 0);
@@ -231,9 +242,9 @@ var splashOpt = {
     },
 
     importData: function (bReset) {
-        var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker)
+        var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
 
-            fp.init(window, "", Components.interfaces.nsIFilePicker.modeOpen);
+        fp.init(window, "", Components.interfaces.nsIFilePicker.modeOpen);
         fp.defaultString = "export_splash.txt";
         fp.defaultExtension = "txt";
         fp.appendFilters(fp.filterText);
@@ -243,10 +254,10 @@ var splashOpt = {
 
             if (retVal == Components.interfaces.nsIFilePicker.returnOK) {
                 var mIOService = Components.classes["@mozilla.org/network/io-service;1"]
-                    .getService(Components.interfaces.nsIIOService)
-                    var mFileProtocolHandler = mIOService.getProtocolHandler("file")
-                    .QueryInterface(Components.interfaces.nsIFileProtocolHandler)
-                    var mURL = mFileProtocolHandler.newFileURI(fp.file)
+                    .getService(Components.interfaces.nsIIOService);
+                var mFileProtocolHandler = mIOService.getProtocolHandler("file")
+                    .QueryInterface(Components.interfaces.nsIFileProtocolHandler);
+                var mURL = mFileProtocolHandler.newFileURI(fp.file)
                     .QueryInterface(Components.interfaces.nsIURL);
 
                 var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].
@@ -258,12 +269,12 @@ var splashOpt = {
     },
 
     removeOldPrefs: function () {
-        var prefArrayOld = prefBranchOld.getChildList("");
+        var prefArrayOld = this.prefBranchOld.getChildList("");
 
         // Old prefs (Splash and Splashed v1)
         for (let i = 0; i < prefArrayOld.length; ++i) {
-            if (prefBranchOld.prefHasUserValue(prefArrayOld[i])) {
-                prefBranchOld.clearUserPref(prefArrayOld[i]);
+            if (this.prefBranchOld.prefHasUserValue(prefArrayOld[i])) {
+                this.prefBranchOld.clearUserPref(prefArrayOld[i]);
             }
         }
     },
