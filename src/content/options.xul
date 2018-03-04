@@ -207,7 +207,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
         <groupbox flex="1">
             <caption label="&splash.preview;" />
             <vbox align="center"
-                  style="overflow:auto;"
+                  style="overflow:auto; width: 300px; height: 200px;"
                   flex="1">
                 <html:img id="splash.previewImage"
                           onload="setTimeout(splashOpt.getDimensions, 200);"
