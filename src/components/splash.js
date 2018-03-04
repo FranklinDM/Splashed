@@ -5,10 +5,10 @@ FILE:         splash.js
 DESCRIPTION:  Main JS component for startup
 AUTHOR:       aldreneo aka slyfox, mrtech, Franklin DM
 LICENSE:      GNU GPL (General Public License)
-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Copyright (c) 2006 aldreneo aka slyfox and mrtech
 Copyright (c) 2017 Franklin DM
-******************************************************************************
+********************************************************************************
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
