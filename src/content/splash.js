@@ -29,50 +29,50 @@ var splash = {
     init: function () {
         var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
         var prefBranch = prefService.getBranch("extensions.splash.");
+        var splashWindow = document.getElementById("splashscreen"),
+        splashImg = document.getElementById("splash.image"),
+        splashBox = document.getElementById("splashBox"),
+        splashTxt = document.getElementById("splash.text"),
+        splashProgMeter = document.getElementById("splash.progressMeter"),
+        splashURL;
+
         // custom handling for background transparency
+        // Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)
+        // When the background is set to transparent, other browsers don't show the window or show a black square with nothing inside it
         switch (splash.getAppName()) {
-            // Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)
-            // When the background is set to transparent, other browsers
-            // don't show the window or show a black square with nothing inside it
         case "Pale Moon":
         case "FossaMail":
-            document.getElementById("splashscreen").setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
+            splashWindow.setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
             break;
         default:
-            document.getElementById("splashscreen").setAttribute("style", prefBranch.getCharPref("windowStyle"));
+            splashWindow.setAttribute("style", prefBranch.getCharPref("windowStyle"));
         }
 
         // If the imageURL is the default value and we are running Thunderbird,
         // we need to change the default about image location
-        var splashURL;
-
         if (prefBranch.prefHasUserValue("imageURL")) {
             splashURL = prefBranch.getCharPref("imageURL");
         } else {
             splashURL = splash.getDefaultImage();
-            prefBranch.setCharPref("imageURL", splashURL)
+            prefBranch.setCharPref("imageURL", splashURL);
         }
 
-        document.getElementById("splash.image").src = splashURL;
-        document.getElementById("splash.image").height = prefBranch.getIntPref("windowHeight");
-        document.getElementById("splash.image").width = prefBranch.getIntPref("windowWidth");
+        splashImg.src = splashURL;
+        splashImg.height = prefBranch.getIntPref("windowHeight");
+        splashImg.width = prefBranch.getIntPref("windowWidth");
 
         var bgColor = prefBranch.getCharPref("bgcolor");
         if (bgColor) {
             bgColor = "background-color: " + bgColor;
-            document.getElementById("splashBox").setAttribute("style", bgColor)
+            splashBox.setAttribute("style", bgColor)
         }
 
         var trans = prefBranch.getBoolPref("trans");
         if (trans) {
-            var trans_img = prefBranch.getCharPref("transvalue_img");
-            var trans_txt = prefBranch.getCharPref("transvalue_txt");
-            var trans_box = prefBranch.getCharPref("transvalue_box");
-            var trans_mtr = prefBranch.getCharPref("transvalue_mtr");
-            document.getElementById("splash.image").style.opacity = trans_img;
-            document.getElementById("splash.text").style.opacity = trans_txt;
-            document.getElementById("splashBox").style.opacity = trans_box;
-            document.getElementById("splash.progressMeter").style.opacity = trans_mtr;
+            splashImg.style.opacity = prefBranch.getCharPref("transvalue_img");
+            splashTxt.style.opacity = prefBranch.getCharPref("transvalue_txt");
+            splashBox.style.opacity = prefBranch.getCharPref("transvalue_box");
+            splashProgMeter.style.opacity = prefBranch.getCharPref("transvalue_mtr");
         }
 
         if (!prefBranch.getBoolPref("textHide")) {
@@ -81,7 +81,7 @@ var splash = {
                 txColor = ";color: " + txColor;
             }
 
-            document.getElementById("splash.text").setAttribute("style", prefBranch.getCharPref("textStyle") + txColor);
+            splashTxt.setAttribute("style", prefBranch.getCharPref("textStyle") + txColor);
 
             var textOverride = prefBranch.getCharPref("textOverride");
             if (textOverride) {
@@ -90,13 +90,13 @@ var splash = {
                 textOverride = textOverride.replace(/{buildID}/ig, appInfo.appBuildID);
                 textOverride = textOverride.replace(/{userAgent}/ig, navigator.userAgent);
 
-                document.getElementById("splash.text").value = textOverride;
+                splashTxt.value = textOverride;
             }
-            document.getElementById("splash.text").hidden = false;
+            splashTxt.hidden = false;
         }
 
         if (!prefBranch.getBoolPref("progressMeterHide")) {
-            document.getElementById("splash.progressMeter").hidden = false;
+            splashProgMeter.hidden = false;
         }
 
         setTimeout(window.close, prefBranch.getIntPref("timeout"));
@@ -119,7 +119,7 @@ var splash = {
     },
 
     getDefaultImage: function () {
-        var splashDefaultURL
+        var splashDefaultURL;
 
         switch (splash.getAppName()) {
         case "Thunderbird":
