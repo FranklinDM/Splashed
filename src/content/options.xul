@@ -36,8 +36,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             buttons="accept,extra1,extra2"
             ondialogextra1="splashOpt.previewSplashScreen();"
             buttonlabelextra1="&splash.preview;"
-            ondialogextra2="splashOpt.resetToDefault();"
-            buttonlabelextra2="&splash.reset;"
+            buttonlabelextra2="&splash.settings;"
             onload="splashOpt.initSettings();"
             persist="lastSelected screenX screenY"
             type="prefwindow"
@@ -53,6 +52,28 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
         <stringbundle id="splashStrings"
                       src="chrome://splash/locale/splash.properties" />
     </stringbundleset>
+
+
+    <popupset>
+        <menupopup id="splash-settings-popup"
+                   position="before_start">
+            <menuitem id="li-reset"
+                      label="&splash.reset;"
+                      oncommand="splashOpt.resetToDefault();" />
+
+            <menuseparator />
+
+            <menuitem id="li-export"
+                      label="&splash.export;"
+                      oncommand="splashOpt.exportData('save');" />
+            <menuitem id="li-import"
+                      label="&splash.import;"
+                      oncommand="splashOpt.importData();" />
+            <menuitem id="li-copy"
+                      label="&splash.copy;"
+                      oncommand="splashOpt.exportData('copy');" />
+        </menupopup>
+    </popupset>
 
     <prefpane id="splash-pane1"
               label="&splash.panel_general;">
@@ -142,21 +163,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                      multiline="true"
                      rows="4" />
         </groupbox>
-        <groupbox orient="vertical">
-            <caption label="&splash.importexport.label;" />
-            <hbox pack="center"
-                  flex="1">
-                <spacer flex="1"/>
-                <button id="li-export"
-                        label="&splash.export;"
-                        oncommand="splashOpt.exportData();" />
-                <button id="li-import"
-                        label="&splash.import;"
-                        oncommand="splashOpt.importData();" />
-                <spacer flex="1"/>
-            </hbox>
-        </groupbox>
-
     </prefpane>
 
     <prefpane id="splash-pane2"

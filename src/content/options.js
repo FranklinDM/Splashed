@@ -31,7 +31,7 @@ var splashOpt = {
     get prefBranch() {
         return this.prefService.getBranch("extensions.splash.");
     },
-	
+
     get prefBranchOld() {
         return this.prefService.getBranch("splash.");
     },
@@ -52,6 +52,13 @@ var splashOpt = {
         this.toggleElementChildren(document.getElementById('splash.timeout.opt'), this.prefBranch.getBoolPref("closeWithMainWindow"));
         this.toggleElementChildren(document.getElementById('splash.text.opt'), this.prefBranch.getBoolPref("textHide"));
         this.toggleElementChildren(document.getElementById('splash.trans.opt'), !this.prefBranch.getBoolPref("trans"));
+
+        if (document.documentElement.getButton('extra2')) {
+            var extra2 = document.documentElement.getButton('extra2');
+            extra2.setAttribute('id', 'splash-settings-button');
+            extra2.setAttribute('popup', 'splash-settings-popup');
+            extra2.setAttribute('dir', 'reverse');
+        }
 
         this.removeOldPrefs();
     },
@@ -168,104 +175,172 @@ var splashOpt = {
         this.getDimensions();
     },
 
-    extendInt: function (aInput) {
-        if (aInput < 10)
-            return "0" + aInput.toString();
-        else
-            return aInput;
-    },
-
-    // TODO: Revise Import & Export data - imposes a security risk
-	//		 User might import a script that may do something else
-    exportData: function () {
-        var prefArray = this.prefBranch.getChildList("");
-
-        var stream = Components.classes['@mozilla.org/network/file-output-stream;1']
-            .createInstance(Components.interfaces.nsIFileOutputStream);
-        var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker)
-
-            fp.init(window, "", fp.modeSave);
-        fp.defaultExtension = "txt";
-        fp.defaultString = "export_splash.txt";
-        fp.appendFilters(fp.filterText);
-        fp.appendFilters(fp.filterAll);
-
-        if (fp.show() == fp.returnCancel)
-            return;
-
-        var str = ""
-
-            prefArray.sort();
-
-        var now = new Date();
-        var sDate = this.extendInt(now.getMonth() + 1) + "/" + this.extendInt(now.getDate()) + "/" + now.getFullYear();
-        var sTtime = this.extendInt(now.getHours()) + ":" + this.extendInt(now.getMinutes()) + ":" + this.extendInt(now.getSeconds());
-        var sGMT = now.toGMTString();
-
-        // File header
-        str += "/*\n";
-        str += "Splashed! Exported Preferences file\n";
-        str += sDate + ", " + sTtime + " (" + sGMT + ")\n";
-        str += "*/\n";
-
-        for (let i = 0; i < prefArray.length; ++i) {
-
-            var tmpString // clean up import-export strings
-
-            switch (this.prefBranch.getPrefType(prefArray[i])) {
-            case this.prefBranch.PREF_STRING: // Text = 32
-                str += "prefBranch.setCharPref('" + prefArray[i] + "', '";
-                tmpString = this.prefBranch.getCharPref(prefArray[i]);
-                tmpString = tmpString.replace(/\\/g, '\\\\');
-                tmpString = tmpString.replace(/\'/g, '\\\'');
-                str += tmpString;
-                str += "')";
-                break;
-            case this.prefBranch.PREF_INT: // Integer = 64
-                str += "prefBranch.setIntPref('" + prefArray[i] + "', ";
-                str += this.prefBranch.getIntPref(prefArray[i]);
-                str += ")";
-                break;
-            case this.prefBranch.PREF_BOOL: // Boolean =128
-                str += "prefBranch.setBoolPref('" + prefArray[i] + "', ";
-                str += this.prefBranch.getBoolPref(prefArray[i]);
-                str += ")";
-                break;
-            }
-
-            str += "\r\n";
+    exportData: function (mode) {
+        function extendInt(input) {
+            if (input < 10)
+                return "0" + input.toString();
+            else
+                return input;
         }
 
-        stream.init(fp.file, 0x20 | 0x02 | 0x08, 0o666, 0);
-        stream.write(str, str.length);
-        stream.close();
+        var now = new Date();
+        var sDate = extendInt(now.getMonth() + 1) + "/" + extendInt(now.getDate()) + "/" + now.getFullYear();
+        var sTtime = extendInt(now.getHours()) + ":" + extendInt(now.getMinutes()) + ":" + extendInt(now.getSeconds());
+        var sGMT = now.toGMTString();
+
+        var contents = [];
+        contents[0] = "/*\n";
+        contents[0] += " * Splashed! Exported Preferences file v2\n";
+        contents[0] += " * " + sDate + ", " + sTtime + " (" + sGMT + ")\n";
+        contents[0] += " */\n";
+
+        var childList = this.prefBranch.getChildList("");
+
+        for (let i = 0; i < childList.length; i++) {
+            switch (this.prefBranch.getPrefType(childList[i])) {
+            case this.prefBranch.PREF_BOOL:
+                contents[i + 1] = childList[i] + '=' + this.prefBranch.getBoolPref(childList[i]);
+                break;
+            case this.prefBranch.PREF_INT:
+                contents[i + 1] = childList[i] + '=' + this.prefBranch.getIntPref(childList[i]);
+                break;
+            case this.prefBranch.PREF_STRING:
+                // Replace new lines with space
+                let tmpString = this.prefBranch.getCharPref(childList[i]);
+                tmpString = tmpString.replace(/\n/g, " ");
+                contents[i + 1] = childList[i] + '=' + tmpString;
+                break;
+            }
+        }
+
+        // Sort settings alphabetically
+        contents.sort();
+
+        // Create string
+        var exportString = "";
+        for (var i = 0; i < contents.length; i++) {
+            exportString += contents[i] + "\n";
+        }
+
+        // Copy the string to the clipboard
+        if (mode == "copy") {
+            var gClipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+            gClipboardHelper.copyString(exportString);
+
+            // TODO: LOCALIZE ME
+            //alert(strings.getString('prefs.copy'));
+            alert('Settings have been copied to the clipboard.');
+        }
+        // Save the string to a text file
+        else if (mode == "save") {
+            var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+            var stream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
+
+            fp.init(window, "", fp.modeSave);
+            fp.defaultExtension = 'txt';
+            fp.defaultString = 'export_splash';
+            fp.appendFilters(fp.filterText | fp.filterAll);
+
+            if (fp.show() != fp.returnCancel) {
+                if (fp.file.exists())
+                    fp.file.remove(true);
+                fp.file.create(fp.file.NORMAL_FILE_TYPE, 0o666);
+                stream.init(fp.file, 0x02, 0x200, null);
+
+                stream.write(exportString, exportString.length);
+                stream.close();
+            }
+        }
     },
 
     importData: function (bReset) {
         var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+        var useOld = true;
 
+        // Initialize file picker window
         fp.init(window, "", Components.interfaces.nsIFilePicker.modeOpen);
         fp.defaultString = "export_splash.txt";
         fp.defaultExtension = "txt";
-        fp.appendFilters(fp.filterText);
-        fp.appendFilters(fp.filterAll);
+        fp.appendFilters(fp.filterText | fp.filterAll);
 
-        var retVal = fp.show()
+        // Show the file picker window and load up selected file
+        if (fp.show() != fp.returnCancel) {
+            let stream = Components.classes["@mozilla.org/network/file-input-stream;1"].createInstance(Components.interfaces.nsIFileInputStream);
+            let streamIO = Components.classes["@mozilla.org/scriptableinputstream;1"].createInstance(Components.interfaces.nsIScriptableInputStream);
 
-            if (retVal == Components.interfaces.nsIFilePicker.returnOK) {
-                var mIOService = Components.classes["@mozilla.org/network/io-service;1"]
-                    .getService(Components.interfaces.nsIIOService);
-                var mFileProtocolHandler = mIOService.getProtocolHandler("file")
-                    .QueryInterface(Components.interfaces.nsIFileProtocolHandler);
-                var mURL = mFileProtocolHandler.newFileURI(fp.file)
-                    .QueryInterface(Components.interfaces.nsIURL);
+            stream.init(fp.file, 0x01, 0o444, null);
+            streamIO.init(stream);
 
-                var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].
-                    getService(Components.interfaces.mozIJSSubScriptLoader);
-                loader.loadSubScript(mURL.spec);
+            var input = streamIO.read(stream.available());
+            streamIO.close();
+            stream.close();
+
+            var linebreak = input.match(/(((\n+)|(\r+))+)/m)[1]; // first: whole match -- second: backref-1 -- etc..
+            var pattern = input.split(linebreak);
+        }
+
+        // If file was empty/cancelled, return
+        if (!pattern)
+            return;
+
+        // Check if imported preferences file uses v1 format
+        if (!pattern[1].includes('Splashed')) {
+            // TODO: LOCALIZE ME
+            alert("Can't import settings because it's not a valid file.");
+            return;
+        }
+
+        // If exported preferences is of v2 format, don't use old parser
+        if (pattern[1].includes('v2')) {
+            useOld = false;
+        }
+
+        // TODO: LOCALIZE ME
+        // Confirm if user really wants to proceed with import
+        if (!confirm('Are you sure you want to import these settings for Splashed?'))
+            return;
+
+        if (useOld) {
+            var mIOService = Components.classes["@mozilla.org/network/io-service;1"]
+                .getService(Components.interfaces.nsIIOService);
+            var mFileProtocolHandler = mIOService.getProtocolHandler("file")
+                .QueryInterface(Components.interfaces.nsIFileProtocolHandler);
+            var mURL = mFileProtocolHandler.newFileURI(fp.file)
+                .QueryInterface(Components.interfaces.nsIURL);
+
+            var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].
+                getService(Components.interfaces.mozIJSSubScriptLoader);
+            loader.loadSubScript(mURL.spec);
+        } else {
+            var contents = [];
+            for (let i = 4; i < pattern.length; i++) {
+                var index = pattern[i].indexOf("=");
+
+                if (index > 0) {
+                    contents[i] = [];
+                    contents[i].push(pattern[i].substring(0, index));
+                    contents[i].push(pattern[i].substring(index + 1, pattern[i].length));
+                }
             }
 
-            this.initSettings();
+            for (let i = 4; i < contents.length; i++) {
+                try {
+                    switch (this.prefBranch.getPrefType(contents[i][0])) {
+                    case this.prefBranch.PREF_STRING:
+                        this.prefBranch.setCharPref(contents[i][0], contents[i][1]);
+                        break;
+                    case this.prefBranch.PREF_BOOL:
+                        this.prefBranch.setBoolPref(contents[i][0], /true/i.test(contents[i][1]));
+                        break;
+                    case this.prefBranch.PREF_INT:
+                        this.prefBranch.setIntPref(contents[i][0], contents[i][1]);
+                        break;
+                    }
+                } catch (e) {}
+            }
+        }
+
+        this.initSettings();
     },
 
     removeOldPrefs: function () {
@@ -302,3 +377,6 @@ var splashOpt = {
         }
     }
 }
+
+// For compatibility
+var prefBranch = splashOpt.prefBranch;
