@@ -27,6 +27,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 var splashOpt = {
     prefService: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
+    get mStrings() {
+        return document.getElementById("splashStrings");
+    },
 
     get prefBranch() {
         return this.prefService.getBranch("extensions.splash.");
@@ -119,34 +122,22 @@ var splashOpt = {
     },
 
     getSoundFile: function () {
-        var mStrings = document.getElementById("splashStrings");
+        var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+        fp.init(window, this.mStrings.getString("splash_select_sound"), fp.modeOpen);
+        fp.appendFilter(this.mStrings.getString("splash_sound_filter_label"), "*.wav");
 
-        const nsIFilePicker = Components.interfaces.nsIFilePicker;
-
-        var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
-        fp.init(window, mStrings.getString("splash_select_sound"), nsIFilePicker.modeOpen);
-        fp.appendFilter(mStrings.getString("splash_sound_filter_label"), "*.wav");
-
-        var ret = fp.show();
-
-        if (ret == nsIFilePicker.returnOK) {
+        if (fp.show() == fp.returnOK) {
             document.getElementById("pref_splash.soundURL").value = fp.fileURL.spec;
         }
     },
 
     getImageFile: function () {
-        var mStrings = document.getElementById("splashStrings");
-
-        const nsIFilePicker = Components.interfaces.nsIFilePicker;
-
-        var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
-        fp.init(window, mStrings.getString("splash_select_image"), nsIFilePicker.modeOpen);
-        fp.appendFilters(nsIFilePicker.filterImages);
+        var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+        fp.init(window, this.mStrings.getString("splash_select_image"), fp.modeOpen);
+        fp.appendFilters(fp.filterImages);
         var previewImage = document.getElementById("splash.previewImage");
 
-        var ret = fp.show();
-
-        if (ret == nsIFilePicker.returnOK) {
+        if (fp.show() == fp.returnOK) {
             document.getElementById("pref_splash.imageURL").value = fp.fileURL.spec;
             document.getElementById("splash.previewImage").src = fp.fileURL.spec;
             this.getDimensions();
@@ -227,9 +218,7 @@ var splashOpt = {
             var gClipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
             gClipboardHelper.copyString(exportString);
 
-            // TODO: LOCALIZE ME
-            //alert(strings.getString('prefs.copy'));
-            alert('Settings have been copied to the clipboard.');
+            alert(this.mStrings.getString('prefs.copy'));
         }
         // Save the string to a text file
         else if (mode == "save") {
@@ -239,7 +228,7 @@ var splashOpt = {
             fp.init(window, "", fp.modeSave);
             fp.defaultExtension = 'txt';
             fp.defaultString = 'export_splash';
-            fp.appendFilters(fp.filterText | fp.filterAll);
+            fp.appendFilters(fp.filterText);
 
             if (fp.show() != fp.returnCancel) {
                 if (fp.file.exists())
@@ -261,7 +250,7 @@ var splashOpt = {
         fp.init(window, "", Components.interfaces.nsIFilePicker.modeOpen);
         fp.defaultString = "export_splash.txt";
         fp.defaultExtension = "txt";
-        fp.appendFilters(fp.filterText | fp.filterAll);
+        fp.appendFilters(fp.filterText);
 
         // Show the file picker window and load up selected file
         if (fp.show() != fp.returnCancel) {
@@ -285,8 +274,7 @@ var splashOpt = {
 
         // Check if imported preferences file uses v1 format
         if (!pattern[1].includes('Splashed')) {
-            // TODO: LOCALIZE ME
-            alert("Can't import settings because it's not a valid file.");
+            alert(this.mStrings.getString('prefs.invalid'));
             return;
         }
 
@@ -295,9 +283,8 @@ var splashOpt = {
             useOld = false;
         }
 
-        // TODO: LOCALIZE ME
         // Confirm if user really wants to proceed with import
-        if (!confirm('Are you sure you want to import these settings for Splashed?'))
+        if (!confirm(this.mStrings.getString('prefs.import')))
             return;
 
         if (useOld) {
