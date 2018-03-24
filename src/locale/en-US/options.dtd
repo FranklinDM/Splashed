@@ -11,9 +11,10 @@
 <!ENTITY splash.background "Splash Background">
 <!ENTITY splash.bgcolor "Color: ">
 <!ENTITY splash.windowStyle "Window Style:">
-<!ENTITY splash.importexport.label "Export/Import Settings">
-<!ENTITY splash.export "Export">
-<!ENTITY splash.import "Import">
+<!ENTITY splash.settings "Settings">
+<!ENTITY splash.export "Export Settings">
+<!ENTITY splash.import "Import Settings">
+<!ENTITY splash.copy "Copy Settings to Clipboard">
 <!ENTITY splash.imageParameters "Image Parameters">
 <!ENTITY splash.imageURL "Image URL (ex: file:///c:/image.png):">
 <!ENTITY splash.browse "Browse...">

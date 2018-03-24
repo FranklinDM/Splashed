@@ -11,9 +11,10 @@
 <!ENTITY splash.background "Splash Background">
 <!ENTITY splash.bgcolor "Kulay: ">
 <!ENTITY splash.windowStyle "Estilo ng Window:">
-<!ENTITY splash.importexport.label "Export/Import Settings">
-<!ENTITY splash.export "I-export">
-<!ENTITY splash.import "I-import">
+<!ENTITY splash.settings "Mga Setting">
+<!ENTITY splash.export "I-export ang mga Setting">
+<!ENTITY splash.import "I-import ang mga Setting">
+<!ENTITY splash.copy "Kopyahin ang mga Setting sa Clipboard">
 <!ENTITY splash.imageParameters "Mga Parametro ng Imahen">
 <!ENTITY splash.imageURL "Imahen URL (ex: file:///c:/image.png):">
 <!ENTITY splash.browse "I-browse...">
