@@ -25,30 +25,31 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 /* Preferences Panel Radio Icons */
-#splash-prefs radio {
+#splash-prefs radio[pane] {
     list-style-image: url("chrome://splash/content/images/icons.png");
 }
 
 /* General Preference Panel */
-#splash-prefs radio[pane=splash-pane1] {
-    -moz-image-region: rect(0px, 32px, 32px, 0px) !important;
+radio[pane=splash-pane1] {
+    -moz-image-region: rect(0px, 32px, 32px, 0px);
 }
 
 /* Image Preference Panel */
-#splash-prefs radio[pane=splash-pane2] {
-    -moz-image-region: rect(0px, 80px, 32px, 45px) !important;
+radio[pane=splash-pane2] {
+    -moz-image-region: rect(0px, 80px, 32px, 45px);
 }
 
 /* Sound Preference Panel */
-#splash-prefs radio[pane=splash-pane3] {
-    -moz-image-region: rect(0px, 128px, 32px, 96px) !important;
+radio[pane=splash-pane3] {
+    -moz-image-region: rect(0px, 128px, 32px, 96px);
 }
 
 /* Text Preference Panel */
-#splash-prefs radio[pane=splash-pane4] {
-    -moz-image-region: rect(0px, 172px, 32px, 140px) !important;
+radio[pane=splash-pane4] {
+    -moz-image-region: rect(0px, 172px, 32px, 140px);
 }
 
+/* Settings menu icon */
 #splash-settings-button image {
     list-style-image: url("chrome://splash/content/images/arrow.gif");
     margin-left: 5px;
