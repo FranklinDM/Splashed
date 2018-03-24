@@ -81,27 +81,6 @@ var splashOpt = {
         }
     },
 
-    openURL: function (myLink) {
-        var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-            .getService(Components.interfaces.nsIWindowMediator);
-
-        var browserWindow = wm.getMostRecentWindow("navigator:browser");
-
-        if (browserWindow) {
-            var browserWindow = browserWindow.getBrowser();
-            var newTab = browserWindow.addTab(myLink, null, null);
-            browserWindow.selectedTab = newTab;
-        } else {
-            var ioService = Components.classes["@mozilla.org/network/io-service;1"]
-                .getService(Components.interfaces.nsIIOService);
-            var uri = ioService.newURI(myLink, null, null);
-            var extProtocolSvc = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
-                .getService(Components.interfaces.nsIExternalProtocolService);
-
-            extProtocolSvc.loadUrl(uri);
-        }
-    },
-
     previewSplashScreen: function () {
         this.playSound(this.prefBranch.getBoolPref("soundEnabled"));
         openDialog("chrome://splash/content/splash.xul", "SplashScreen", "chrome,centerscreen,alwaysRaised,modal=yes");

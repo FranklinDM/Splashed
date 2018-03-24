@@ -35,8 +35,28 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
         title="&windowTitle.label;"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-    <script type="application/x-javascript"
-            src="chrome://splash/content/splash.js" />
+    <script>
+    function openURL(link) {
+        var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+            .getService(Components.interfaces.nsIWindowMediator);
+
+        var browserWindow = wm.getMostRecentWindow("navigator:browser");
+
+        if (browserWindow) {
+            var browserWindow = browserWindow.getBrowser();
+            var newTab = browserWindow.addTab(link, null, null);
+            browserWindow.selectedTab = newTab;
+        } else {
+            var ioService = Components.classes["@mozilla.org/network/io-service;1"]
+                .getService(Components.interfaces.nsIIOService);
+            var uri = ioService.newURI(link, null, null);
+            var extProtocolSvc = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+                .getService(Components.interfaces.nsIExternalProtocolService);
+
+            extProtocolSvc.loadUrl(uri);
+        }
+    }
+	</script>
 
     <vbox style="background-color: white; border: 1px solid gray; padding: 8px; margin: 4px; ">
         <hbox>
@@ -56,22 +76,22 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                class="header" />
         <description value="FranklinDM"
                      class="url"
-                     onclick="splash.openURL('https://franklindm.github.io/');"/>
+                     onclick="openURL('https://franklindm.github.io/');"/>
 
         <label value="&authL.label;"
                class="header" />
         <description value="Aldreneo and mrtech"
                      class="url"
-                     onclick="splash.openURL('http://splash.mozdev.org/');"/>
+                     onclick="openURL('http://splash.mozdev.org/');"/>
 
         <label value="&contrib.label;"
                class="header" />
         <description value="Pike" />
         <label value="mcdavis941 (Images)"
                class="url"
-               onclick="splash.openURL('http://www.knology.net/~mcdavis941/411design/');"/>
+               onclick="openURL('http://www.knology.net/~mcdavis941/411design/');"/>
         <label value="badassfeline (More Images)"
                class="url"
-               onclick="splash.openURL('http://www.badassfeline.co.uk/');"/>
+               onclick="openURL('http://www.badassfeline.co.uk/');"/>
     </vbox>
 </dialog>
