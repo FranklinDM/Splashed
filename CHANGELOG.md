@@ -7,6 +7,16 @@
 * Fix #3 - Better handling of splash preview in options window
   - No longer stretches the preview, more accurate size = more clear image
   - Instead of resizing the window (the image might be large), show scrollbars instead
+* Fix missing splash image when using in combination with ABPrime
+  - Set a default value for "src" attribute of the Splash image element
+  - See: https://forum.palemoon.org/viewtopic.php?f=46&p=135956
+* Changes under the hood (no effect in functionality)
+  - Move Options window's functions to its own file
+    - Main splash window no longer has to load a bunch of functions that it doesn't need
+  - Stop relying on globally declared preference branch
+    - Has the possibility of being overridden by another add-on (and cause adverse effects)
+  - Remove useFlex preference
+  - Consistent usage of spaces in source files
 
 ### 1.1.1
 * Provide support for Basilisk and SeaMonkey
