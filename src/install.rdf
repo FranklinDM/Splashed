@@ -19,7 +19,7 @@
             <Description>
                 <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
                 <em:minVersion>25.0.0</em:minVersion>
-                <em:maxVersion>27.*</em:maxVersion>
+                <em:maxVersion>28.*</em:maxVersion>
             </Description>
             <!-- Thunderbird/FossaMail -->
             <Description>
@@ -30,7 +30,7 @@
             <!-- Basilisk -->
             <Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-                <em:minVersion>52.0</em:minVersion>
+                <em:minVersion>38.0</em:minVersion>
                 <em:maxVersion>55.*</em:maxVersion>
             </Description>
             <!-- SeaMonkey -->
