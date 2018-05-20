@@ -39,14 +39,14 @@ var splash = {
         // custom handling for background transparency
         // Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)
         // When the background is set to transparent, other browsers don't show the window or show a black square with nothing inside it
-        switch (splash.getAppName()) {
+/*        switch (splash.getAppName()) {
         case "Pale Moon":
         case "FossaMail":
             splashWindow.setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
             break;
-        default:
+        default:*/
             splashWindow.setAttribute("style", prefBranch.getCharPref("windowStyle"));
-        }
+        //}
 
         // If the imageURL is the default value and we are running Thunderbird,
         // we need to change the default about image location
