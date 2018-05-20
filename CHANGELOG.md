@@ -1,5 +1,14 @@
 # Changelog
 
+### 1.1.3
+* Disable background transparency for splash (temporarily)
+  - This causes issues for the Pale Moon 28 and mostly, all the other supported applications no longer support making XUL windows transparent via CSS (or perhaps, it was busted by Mozilla at some point).
+  - If 'transparent' was set as the background color of the splash screen, it will only show either an invisible window or a black box.
+  - This is yet to be filed, I have not yet made a test extension to show this (aside from this extension).
+  - Pale Moon 27 and FossaMail 27/38 are the only applications that are not exhibiting this bug.
+* Add preliminary support for Pale Moon 28+
+* Lower the minimum supported version for Basilisk/Firefox
+
 ### 1.1.2
 * Use HTML5 color picker and update code on disabling elements
   - This also removes the integrated color picker which was made by Andrea Binello since it is no longer needed
