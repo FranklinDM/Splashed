@@ -25,28 +25,44 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+const Ci = Components.interfaces;
+const Cc = Components.classes;
+const Cu = Components.utils;
+
+Cu.import("resource://gre/modules/Services.jsm");
+
 var splash = {
     init: function () {
-        var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+        var prefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService);
         var prefBranch = prefService.getBranch("extensions.splash.");
         var splashWindow = document.getElementById("splashscreen"),
         splashImg = document.getElementById("splash.image"),
         splashBox = document.getElementById("splashBox"),
         splashTxt = document.getElementById("splash.text"),
         splashProgMeter = document.getElementById("splash.progressMeter"),
-        splashURL;
+        splashURL,
+        useTransparency = true;
 
         // custom handling for background transparency
         // Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)
         // When the background is set to transparent, other browsers don't show the window or show a black square with nothing inside it
-/*        switch (splash.getAppName()) {
+        switch (splash.getAppName()) {
         case "Pale Moon":
-        case "FossaMail":
-            splashWindow.setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
+            if (Services.vc.compare(Services.appinfo.version, 28) > 0 || Services.vc.compare(Services.appinfo.version, "28.0.0a1") >= 0)
+                useTransparency = false;
             break;
-        default:*/
+        case "FossaMail":
+            break;
+        default:
+            useTransparency = false;
+            break;
+        }
+
+        if (useTransparency) {
+            splashWindow.setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
+        } else {
             splashWindow.setAttribute("style", prefBranch.getCharPref("windowStyle"));
-        //}
+        }
 
         // If the imageURL is the default value and we are running Thunderbird,
         // we need to change the default about image location
@@ -63,8 +79,9 @@ var splash = {
 
         var bgColor = prefBranch.getCharPref("bgcolor");
         if (bgColor) {
-            bgColor = "background-color: " + bgColor;
-            splashBox.setAttribute("style", bgColor)
+            if (!useTransparency && bgColor.toLowerCase() == "transparent")
+                bgColor = "-moz-Dialog";
+            splashBox.setAttribute("style", "background-color: " + bgColor)
         }
 
         var trans = prefBranch.getBoolPref("trans");
@@ -85,9 +102,8 @@ var splash = {
 
             var textOverride = prefBranch.getCharPref("textOverride");
             if (textOverride) {
-                var appInfo = Components.classes['@mozilla.org/xre/app-info;1'].getService(Components.interfaces.nsIXULAppInfo);
-                textOverride = textOverride.replace(/{appVersion}/ig, appInfo.version);
-                textOverride = textOverride.replace(/{buildID}/ig, appInfo.appBuildID);
+                textOverride = textOverride.replace(/{appVersion}/ig, Services.appinfo.version);
+                textOverride = textOverride.replace(/{buildID}/ig, Services.appinfo.appBuildID);
                 textOverride = textOverride.replace(/{userAgent}/ig, navigator.userAgent);
 
                 splashTxt.value = textOverride;
@@ -104,10 +120,10 @@ var splash = {
 
     getAppName: function () {
         var myBrandingPath = null;
-        var myStringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"]
-            .getService(Components.interfaces.nsIStringBundleService);
+        var myStringBundleService = Cc["@mozilla.org/intl/stringbundle;1"]
+            .getService(Ci.nsIStringBundleService);
 
-        if (typeof Components.interfaces.nsIXULAppInfo == "undefined") {
+        if (typeof Ci.nsIXULAppInfo == "undefined") {
             myBrandingPath = "chrome://global/locale/brand.properties"
         } else {
             myBrandingPath = "chrome://branding/locale/brand.properties"
