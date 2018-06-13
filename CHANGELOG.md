@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.1.4
+* Allow background transparency for Pale Moon 27 (and lower) and FossaMail
+  - This also adds checks for the background color.
+  - If the user placed "transparent" as the value and transparency is not supported by the application, it will be ignored and instead, the splash will use -moz-Dialog as color.
+
 ### 1.1.3
 * Disable background transparency for splash (temporarily)
   - This causes issues for the Pale Moon 28 and mostly, all the other supported applications no longer support making XUL windows transparent via CSS (or perhaps, it was busted by Mozilla at some point).
