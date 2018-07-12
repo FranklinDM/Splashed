@@ -27,11 +27,12 @@
                 <em:minVersion>27.0.0</em:minVersion>
                 <em:maxVersion>50.*</em:maxVersion>
             </Description>
-            <!-- Basilisk -->
+            <!-- Firefox/Basilisk -->
             <Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                 <em:minVersion>38.0</em:minVersion>
                 <em:maxVersion>55.*</em:maxVersion>
+                <em:basilisk>true</em:basilisk>
             </Description>
             <!-- SeaMonkey -->
             <Description>

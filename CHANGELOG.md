@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.1.4.1
+* Declare Basilisk element true in its target application block
+
 ### 1.1.4
 * Allow background transparency for Pale Moon 27 (and lower) and FossaMail
   - This also adds checks for the background color.
