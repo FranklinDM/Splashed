@@ -42,7 +42,6 @@ var splash = {
         splashTxt = document.getElementById("splash.text"),
         splashProgMeter = document.getElementById("splash.progressMeter"),
         splashURL,
-        alwaysOnTop = prefBranch.getBoolPref("alwaysOnTop"),
         useTransparency = true;
 
         // custom handling for background transparency
@@ -59,9 +58,6 @@ var splash = {
             useTransparency = false;
             break;
         }
-
-        if (alwaysOnTop)
-            splash.setAlwaysOnTop(true);
 
         if (useTransparency) {
             splashWindow.setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
@@ -199,5 +195,10 @@ var splash = {
 
             lib.close();
         } catch (e) {}
+    },
+    
+    determineOnTop: function () {
+        if (Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.splash.").getBoolPref("alwaysOnTop"))
+            splash.setAlwaysOnTop(true);
     }
 };
