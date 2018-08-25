@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.1.5
+* Allow the splash window to be always on top (Windows only)
+
 ### 1.1.4.1
 * Declare Basilisk element true in its target application block
 
