@@ -40,3 +40,4 @@
 <!ENTITY splash.txtcolor "Kulay ng Teksto:">
 <!ENTITY splash.textStyle "Estilo ng Teksto:">
 <!ENTITY splash.reset "I-reset ang lahat">
+<!ENTITY splash.alwaysontop "Splash ay dapat always on top (Windows lámang)">

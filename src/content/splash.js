@@ -30,6 +30,7 @@ const Cc = Components.classes;
 const Cu = Components.utils;
 
 Cu.import("resource://gre/modules/Services.jsm");
+Cu.import("resource://gre/modules/ctypes.jsm");
 
 var splash = {
     init: function () {
@@ -41,6 +42,7 @@ var splash = {
         splashTxt = document.getElementById("splash.text"),
         splashProgMeter = document.getElementById("splash.progressMeter"),
         splashURL,
+        alwaysOnTop = prefBranch.getBoolPref("alwaysOnTop"),
         useTransparency = true;
 
         // custom handling for background transparency
@@ -57,6 +59,9 @@ var splash = {
             useTransparency = false;
             break;
         }
+
+        if (alwaysOnTop)
+            splash.setAlwaysOnTop(true);
 
         if (useTransparency) {
             splashWindow.setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
@@ -145,5 +150,54 @@ var splash = {
             splashDefaultURL = "chrome://branding/content/about.png";
         }
         return splashDefaultURL;
+    },
+
+    setAlwaysOnTop: function (topmost) {
+        try {
+            let lib = ctypes.open("user32.dll");
+            let getActiveWindow = 0;
+
+            try {
+                getActiveWindow = lib.declare("GetActiveWindow", ctypes.winapi_abi, ctypes.int32_t);
+            } catch (e) {
+                getActiveWindow = lib.declare("GetActiveWindow", ctypes.stdcall_abi, ctypes.int32_t);
+            }
+
+            if (getActiveWindow != 0) {
+                let setWindowPos = 0;
+                try {
+                    setWindowPos = lib.declare("SetWindowPos",
+                            ctypes.winapi_abi,
+                            ctypes.bool,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.uint32_t);
+                } catch (e) {
+                    setWindowPos = lib.declare("SetWindowPos",
+                            ctypes.stdcall_abi,
+                            ctypes.bool,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.int32_t,
+                            ctypes.uint32_t);
+                }
+
+                // Determine whether to set the window as always on top
+                let HWND = -2;
+                if (topmost)
+                    HWND = -1;
+
+                setWindowPos(getActiveWindow(), HWND, 0, 0, 0, 0, 19);
+            }
+
+            lib.close();
+        } catch (e) {}
     }
-}
+};

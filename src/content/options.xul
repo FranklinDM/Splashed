@@ -119,6 +119,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         name="extensions.splash.transvalue_mtr"
                         instantApply="true"
                         type="string"/>
+            <preference id="pref_splash.alwaysontop"
+                        name="extensions.splash.alwaysOnTop"
+                        instantApply="true"
+                        type="bool"/>
         </preferences>
 
         <groupbox flex="1">
@@ -129,6 +133,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             <checkbox id="splash.closeWithMainWindow"
                       preference="pref_splash.closeWithMainWindow"
                       label="&splash.closeWithMainWindow;"/>
+            <checkbox id="splash.alwaysontop"
+                      preference="pref_splash.alwaysontop"
+                      label="&splash.alwaysontop;"/>
             <hbox id="splash.timeout.opt"
                   align="center">
                 <label control="splash.timeout"

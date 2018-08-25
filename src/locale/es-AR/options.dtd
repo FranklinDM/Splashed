@@ -40,3 +40,4 @@
 <!ENTITY splash.txtcolor "Text Color:">
 <!ENTITY splash.textStyle "Text Style:">
 <!ENTITY splash.reset "Reset All">
+<!ENTITY splash.alwaysontop "Splash should be always on top (Windows only)">

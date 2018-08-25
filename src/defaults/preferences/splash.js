@@ -6,6 +6,7 @@ pref("extensions.splash.timeout", 3000);
 pref("extensions.splash.closeWithMainWindow", false);
 pref("extensions.splash.bgcolor", "#FFFFFF");
 pref("extensions.splash.windowStyle", "padding: 0px;");
+pref("extensions.splash.alwaysOnTop", false);
 
 pref("extensions.splash.soundEnabled", false);
 pref("extensions.splash.soundURL", "");
