@@ -28,6 +28,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 <overlay id="splashoverlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script type="application/x-javascript"
+            src="chrome://splash/content/splash.js" />
     <script>
         <![CDATA[
             (function () {
@@ -44,6 +46,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                 let prefBranch = prefService.getBranch("extensions.splash.");
                 if (prefBranch.getBoolPref("closeWithMainWindow")) {
                   setTimeout(closeSplash, 500);
+                  splash.setAlwaysOnTop(false);
                 }
             })();
         ]]>
