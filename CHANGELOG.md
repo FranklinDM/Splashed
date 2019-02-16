@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.1.6
+* Update install manifest to use separate target application blocks
+* Attempt to solve #6 - set always on top to false as soon as main window is open
+
 ### 1.1.5
 * Allow the splash window to be always on top (Windows only)
 
