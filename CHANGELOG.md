@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.1.7
+* Initial support for Pale Moon 29
+
 ### 1.1.6
 * Update install manifest to use separate target application blocks
 * Attempt to solve #6 - set always on top to false as soon as main window is open
