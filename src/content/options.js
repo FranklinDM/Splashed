@@ -215,7 +215,6 @@ var splashOpt = {
 
     importData: function (bReset) {
         var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-        var useOld = true;
 
         // Initialize file picker window
         fp.init(window, "", Components.interfaces.nsIFilePicker.modeOpen);
@@ -239,63 +238,44 @@ var splashOpt = {
             var pattern = input.split(linebreak);
         }
 
-        // If file was empty/cancelled, return
+        // Return if file is empty or user cancelled the file picker window
         if (!pattern)
-            return;
-
-        // Check if imported preferences file uses v1 format
-        if (!pattern[1].includes('Splashed')) {
+        {
             alert(this.mStrings.getString('prefs.invalid'));
             return;
         }
 
-        // If exported preferences is of v2 format, don't use old parser
-        if (pattern[1].includes('v2')) {
-            useOld = false;
-        }
-
         // Confirm if user really wants to proceed with import
         if (!confirm(this.mStrings.getString('prefs.import')))
+        {
             return;
+        }
 
-        if (useOld) {
-            var mIOService = Components.classes["@mozilla.org/network/io-service;1"]
-                .getService(Components.interfaces.nsIIOService);
-            var mFileProtocolHandler = mIOService.getProtocolHandler("file")
-                .QueryInterface(Components.interfaces.nsIFileProtocolHandler);
-            var mURL = mFileProtocolHandler.newFileURI(fp.file)
-                .QueryInterface(Components.interfaces.nsIURL);
+        var contents = [];
+        for (let i = 4; i < pattern.length; i++) {
+            var index = pattern[i].indexOf("=");
 
-            var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].
-                getService(Components.interfaces.mozIJSSubScriptLoader);
-            loader.loadSubScript(mURL.spec);
-        } else {
-            var contents = [];
-            for (let i = 4; i < pattern.length; i++) {
-                var index = pattern[i].indexOf("=");
+            if (index > 0) {
+                contents[i] = [];
+                contents[i].push(pattern[i].substring(0, index));
+                contents[i].push(pattern[i].substring(index + 1, pattern[i].length));
+            }
+        }
 
-                if (index > 0) {
-                    contents[i] = [];
-                    contents[i].push(pattern[i].substring(0, index));
-                    contents[i].push(pattern[i].substring(index + 1, pattern[i].length));
+        for (let i = 4; i < contents.length; i++) {
+            try {
+                switch (this.prefBranch.getPrefType(contents[i][0])) {
+                case this.prefBranch.PREF_STRING:
+                    this.prefBranch.setCharPref(contents[i][0], contents[i][1]);
+                    break;
+                case this.prefBranch.PREF_BOOL:
+                    this.prefBranch.setBoolPref(contents[i][0], /true/i.test(contents[i][1]));
+                    break;
+                case this.prefBranch.PREF_INT:
+                    this.prefBranch.setIntPref(contents[i][0], contents[i][1]);
+                    break;
                 }
-            }
-
-            for (let i = 4; i < contents.length; i++) {
-                try {
-                    switch (this.prefBranch.getPrefType(contents[i][0])) {
-                    case this.prefBranch.PREF_STRING:
-                        this.prefBranch.setCharPref(contents[i][0], contents[i][1]);
-                        break;
-                    case this.prefBranch.PREF_BOOL:
-                        this.prefBranch.setBoolPref(contents[i][0], /true/i.test(contents[i][1]));
-                        break;
-                    case this.prefBranch.PREF_INT:
-                        this.prefBranch.setIntPref(contents[i][0], contents[i][1]);
-                        break;
-                    }
-                } catch (e) {}
-            }
+            } catch (e) {}
         }
 
         this.initSettings();
@@ -335,6 +315,3 @@ var splashOpt = {
         }
     }
 }
-
-// For compatibility
-var prefBranch = splashOpt.prefBranch;
