@@ -40,21 +40,11 @@ var splash = {
         splashImg = document.getElementById("splash.image"),
         splashBox = document.getElementById("splashBox"),
         splashTxt = document.getElementById("splash.text"),
-        splashProgMeter = document.getElementById("splash.progressMeter"),
-        splashURL;
+        splashProgMeter = document.getElementById("splash.progressMeter");
 
         splashWindow.setAttribute("style", prefBranch.getCharPref("windowStyle"));
 
-        // If the imageURL is the default value and we are running Thunderbird,
-        // we need to change the default about image location
-        if (prefBranch.prefHasUserValue("imageURL")) {
-            splashURL = prefBranch.getCharPref("imageURL");
-        } else {
-            splashURL = splash.getDefaultImage();
-            prefBranch.setCharPref("imageURL", splashURL);
-        }
-
-        splashImg.src = splashURL;
+        splashImg.src = prefBranch.getCharPref("imageURL");
         splashImg.height = prefBranch.getIntPref("windowHeight");
         splashImg.width = prefBranch.getIntPref("windowWidth");
 
@@ -106,35 +96,6 @@ var splash = {
         }
 
         setTimeout(window.close, prefBranch.getIntPref("timeout"));
-    },
-
-    getAppName: function () {
-        var myBrandingPath = null;
-        var myStringBundleService = Cc["@mozilla.org/intl/stringbundle;1"]
-            .getService(Ci.nsIStringBundleService);
-
-        if (typeof Ci.nsIXULAppInfo == "undefined") {
-            myBrandingPath = "chrome://global/locale/brand.properties"
-        } else {
-            myBrandingPath = "chrome://branding/locale/brand.properties"
-        }
-
-        var myBrandStrings = myStringBundleService.createBundle(myBrandingPath);
-
-        return myBrandStrings.GetStringFromName("brandShortName");
-    },
-
-    getDefaultImage: function () {
-        var splashDefaultURL;
-
-        switch (splash.getAppName()) {
-        case "Thunderbird":
-            splashDefaultURL = "chrome://branding/content/about-thunderbird.png";
-            break;
-        default:
-            splashDefaultURL = "chrome://branding/content/about.png";
-        }
-        return splashDefaultURL;
     },
 
     setAlwaysOnTop: function (topmost) {

@@ -40,14 +40,7 @@ var splashOpt = {
     },
 
     initSettings: function () {
-        var splashURL;
-        if (this.prefBranch.prefHasUserValue("imageURL")) {
-            splashURL = this.prefBranch.getCharPref("imageURL");
-        } else {
-            splashURL = splash.getDefaultImage();
-        }
-
-        document.getElementById("splash.previewImage").src = splashURL;
+        document.getElementById("splash.previewImage").src = this.prefBranch.getCharPref("imageURL");
 
         this.updateColorPicker('bg');
         this.updateColorPicker('txt');
@@ -139,9 +132,8 @@ var splashOpt = {
     },
 
     setDefaultImage: function () {
-        var defaultImage = splash.getDefaultImage();
-        this.prefBranch.setCharPref('imageURL', defaultImage)
-        document.getElementById("splash.previewImage").src = defaultImage;
+        this.prefBranch.clearUserPref("imageURL");
+        document.getElementById("splash.previewImage").src = this.prefBranch.getCharPref("imageURL");
         this.getDimensions();
     },
 
