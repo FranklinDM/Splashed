@@ -41,29 +41,9 @@ var splash = {
         splashBox = document.getElementById("splashBox"),
         splashTxt = document.getElementById("splash.text"),
         splashProgMeter = document.getElementById("splash.progressMeter"),
-        splashURL,
-        useTransparency = true;
+        splashURL;
 
-        // custom handling for background transparency
-        // Pale Moon & FossaMail don't exhibit the transparency bug (yet to be filed)
-        // When the background is set to transparent, other browsers don't show the window or show a black square with nothing inside it
-        switch (splash.getAppName()) {
-        case "Pale Moon":
-            if (Services.vc.compare(Services.appinfo.version, 28) > 0 || Services.vc.compare(Services.appinfo.version, "28.0.0a1") >= 0)
-                useTransparency = false;
-            break;
-        case "FossaMail":
-            break;
-        default:
-            useTransparency = false;
-            break;
-        }
-
-        if (useTransparency) {
-            splashWindow.setAttribute("style", "background-color: transparent;" + prefBranch.getCharPref("windowStyle"));
-        } else {
-            splashWindow.setAttribute("style", prefBranch.getCharPref("windowStyle"));
-        }
+        splashWindow.setAttribute("style", prefBranch.getCharPref("windowStyle"));
 
         // If the imageURL is the default value and we are running Thunderbird,
         // we need to change the default about image location
@@ -80,8 +60,17 @@ var splash = {
 
         var bgColor = prefBranch.getCharPref("bgcolor");
         if (bgColor) {
-            if (!useTransparency && bgColor.toLowerCase() == "transparent")
+            // XXX: Disallow setting a transparent background color for the splash screen window
+            /*
+             * This is a result of a still-unfixed bug affecting UXP wherein
+             * setting a chromeless window's background color to transparent
+             * will result to either the splash screen not being displayed or
+             * a black box filling in the supposed location of the splash screen.
+             */
+            if (bgColor.toLowerCase() == "transparent")
+            {
                 bgColor = "-moz-Dialog";
+            }
             splashBox.setAttribute("style", "background-color: " + bgColor)
         }
 
