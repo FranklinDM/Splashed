@@ -80,7 +80,7 @@ var splash = {
 
             splashTxt.setAttribute("style", prefBranch.getCharPref("textStyle") + txColor);
 
-            var textOverride = prefBranch.getCharPref("textOverride");
+            var textOverride = prefBranch.getComplexValue("textOverride", Components.interfaces.nsISupportsString).data;
             if (textOverride) {
                 textOverride = textOverride.replace(/{appVersion}/ig, Services.appinfo.version);
                 textOverride = textOverride.replace(/{buildID}/ig, Services.appinfo.appBuildID);
