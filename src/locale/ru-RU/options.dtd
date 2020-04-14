@@ -1,0 +1,43 @@
+<!ENTITY splash.title "Настройки заставки">
+<!ENTITY splash.panel_general "Общие">
+<!ENTITY splash.panel_image "Картинка">
+<!ENTITY splash.panel_misc "Остальное">
+<!ENTITY splash.panel_text "Текст">
+<!ENTITY splash.startuptweaks "Настройки запуска">
+<!ENTITY splash.enabled "Показывать заставку при запуске">
+<!ENTITY splash.closeWithMainWindow "Закрывать, когда главное окно загрузится">
+<!ENTITY splash.timeout "Закрывать через:">
+<!ENTITY splash.msec "миллисекунд">
+<!ENTITY splash.background "Фон заставки">
+<!ENTITY splash.bgcolor "Цвет: ">
+<!ENTITY splash.windowStyle "Стиль окна:">
+<!ENTITY splash.settings "Настройки">
+<!ENTITY splash.export "Экспортировать настройки">
+<!ENTITY splash.import "Импортировать настройки">
+<!ENTITY splash.copy "Копировать настройки в буфер обмена">
+<!ENTITY splash.imageParameters "Параметры изображения">
+<!ENTITY splash.imageURL "URL к картинке (напр.: file:///c:/image.png):">
+<!ENTITY splash.browse "Обзор...">
+<!ENTITY splash.default "По умолчанию">
+<!ENTITY splash.default_key "П">
+<!ENTITY splash.imageDemensions "Размер изображения:">
+<!ENTITY splash.preview "Предпросмотр">
+<!ENTITY splash.sound "Звук">
+<!ENTITY splash.soundEnabled "Проиграть звук при запуске">
+<!ENTITY splash.soundURL "URL к звуку (напр.: file:///c:/sound.wav):">
+<!ENTITY splash.play "Слушать">
+<!ENTITY splash.play_key "С">
+<!ENTITY splash.trans "Прозрачность">
+<!ENTITY splash.usetrans "Прозрачность (от 0 до 1. Например: &apos;.4&apos;)">
+<!ENTITY splash.transval1 "Картинка">
+<!ENTITY splash.transval2 "Текст">
+<!ENTITY splash.transval3 "Окно">
+<!ENTITY splash.transval4 "Прогресс">
+<!ENTITY splash.textSettings "Настройки текста">
+<!ENTITY splash.textHide "Скрыть текст полностью">
+<!ENTITY splash.progressMeterHide "Скрыть прогресс-бар">
+<!ENTITY splash.textOverride "Заменить текст &quot;Загрузка...&quot; (оставьте пустым для текста по умолчанию):">
+<!ENTITY splash.txtcolor "Цвет текста:">
+<!ENTITY splash.textStyle "Стиль текста:">
+<!ENTITY splash.reset "Сбросить всё">
+<!ENTITY splash.alwaysontop "Заставка поверх других окон (толко для Windows)">
