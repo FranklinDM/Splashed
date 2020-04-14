@@ -1,43 +1,43 @@
-<!ENTITY splash.title "Íàñòðîéêè çàñòàâêè">
-<!ENTITY splash.panel_general "Îáùèå">
-<!ENTITY splash.panel_image "Êàðòèíêà">
-<!ENTITY splash.panel_misc "Îñòàëüíîå">
-<!ENTITY splash.panel_text "Òåêñò">
-<!ENTITY splash.startuptweaks "Íàñòðîéêè çàïóñêà">
-<!ENTITY splash.enabled "Ïîêàçûâàòü çàñòàâêó ïðè çàïóñêå">
-<!ENTITY splash.closeWithMainWindow "Çàêðûâàòü, êîãäà ãëàâíîå îêíî çàãðóçèòñÿ">
-<!ENTITY splash.timeout "Çàêðûâàòü ÷åðåç:">
-<!ENTITY splash.msec "ìèëëèñåêóíä">
-<!ENTITY splash.background "Ôîí çàñòàâêè">
-<!ENTITY splash.bgcolor "Öâåò: ">
-<!ENTITY splash.windowStyle "Ñòèëü îêíà:">
-<!ENTITY splash.settings "Íàñòðîéêè">
-<!ENTITY splash.export "Ýêñïîðòèðîâàòü íàñòðîéêè">
-<!ENTITY splash.import "Èìïîðòèðîâàòü íàñòðîéêè">
-<!ENTITY splash.copy "Êîïèðîâàòü íàñòðîéêè â áóôåð îáìåíà">
-<!ENTITY splash.imageParameters "Ïàðàìåòðû èçîáðàæåíèÿ">
-<!ENTITY splash.imageURL "URL ê êàðòèíêå (íàïð.: file:///c:/image.png):">
-<!ENTITY splash.browse "Îáçîð...">
-<!ENTITY splash.default "Ïî óìîë÷àíèþ">
-<!ENTITY splash.default_key "Ï">
-<!ENTITY splash.imageDemensions "Ðàçìåð èçîáðàæåíèÿ:">
-<!ENTITY splash.preview "Ïðåäïðîñìîòð">
-<!ENTITY splash.sound "Çâóê">
-<!ENTITY splash.soundEnabled "Ïðîèãðàòü çâóê ïðè çàïóñêå">
-<!ENTITY splash.soundURL "URL ê çâóêó (íàïð.: file:///c:/sound.wav):">
-<!ENTITY splash.play "Ñëóøàòü">
-<!ENTITY splash.play_key "Ñ">
-<!ENTITY splash.trans "Ïðîçðà÷íîñòü">
-<!ENTITY splash.usetrans "Ïðîçðà÷íîñòü (îò 0 äî 1. Íàïðèìåð: &apos;.4&apos;)">
-<!ENTITY splash.transval1 "Êàðòèíêà">
-<!ENTITY splash.transval2 "Òåêñò">
-<!ENTITY splash.transval3 "Îêíî">
-<!ENTITY splash.transval4 "Ïðîãðåññ">
-<!ENTITY splash.textSettings "Íàñòðîéêè òåêñòà">
-<!ENTITY splash.textHide "Ñêðûòü òåêñò ïîëíîñòüþ">
-<!ENTITY splash.progressMeterHide "Ñêðûòü ïðîãðåññ-áàð">
-<!ENTITY splash.textOverride "Çàìåíèòü òåêñò &quot;Çàãðóçêà...&quot; (îñòàâüòå ïóñòûì äëÿ òåêñòà ïî óìîë÷àíèþ):">
-<!ENTITY splash.txtcolor "Öâåò òåêñòà:">
-<!ENTITY splash.textStyle "Ñòèëü òåêñòà:">
-<!ENTITY splash.reset "Ñáðîñèòü âñ¸">
-<!ENTITY splash.alwaysontop "Çàñòàâêà ïîâåðõ äðóãèõ îêîí (òîëêî äëÿ Windows)">
+<!ENTITY splash.title "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð·Ð°ÑÑ‚Ð°Ð²ÐºÐ¸">
+<!ENTITY splash.panel_general "ÐžÐ±Ñ‰Ð¸Ðµ">
+<!ENTITY splash.panel_image "ÐšÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ°">
+<!ENTITY splash.panel_misc "ÐžÑÑ‚Ð°Ð»ÑŒÐ½Ð¾Ðµ">
+<!ENTITY splash.panel_text "Ð¢ÐµÐºÑÑ‚">
+<!ENTITY splash.startuptweaks "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð·Ð°Ð¿ÑƒÑÐºÐ°">
+<!ENTITY splash.enabled "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð·Ð°ÑÑ‚Ð°Ð²ÐºÑƒ Ð¿Ñ€Ð¸ Ð·Ð°Ð¿ÑƒÑÐºÐµ">
+<!ENTITY splash.closeWithMainWindow "Ð—Ð°ÐºÑ€Ñ‹Ð²Ð°Ñ‚ÑŒ, ÐºÐ¾Ð³Ð´Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ðµ Ð¾ÐºÐ½Ð¾ Ð·Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑÑ">
+<!ENTITY splash.timeout "Ð—Ð°ÐºÑ€Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‡ÐµÑ€ÐµÐ·:">
+<!ENTITY splash.msec "Ð¼Ð¸Ð»Ð»Ð¸ÑÐµÐºÑƒÐ½Ð´">
+<!ENTITY splash.background "Ð¤Ð¾Ð½ Ð·Ð°ÑÑ‚Ð°Ð²ÐºÐ¸">
+<!ENTITY splash.bgcolor "Ð¦Ð²ÐµÑ‚: ">
+<!ENTITY splash.windowStyle "Ð¡Ñ‚Ð¸Ð»ÑŒ Ð¾ÐºÐ½Ð°:">
+<!ENTITY splash.settings "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸">
+<!ENTITY splash.export "Ð­ÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸">
+<!ENTITY splash.import "Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸">
+<!ENTITY splash.copy "ÐšÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð² Ð±ÑƒÑ„ÐµÑ€ Ð¾Ð±Ð¼ÐµÐ½Ð°">
+<!ENTITY splash.imageParameters "ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ">
+<!ENTITY splash.imageURL "URL Ðº ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐµ (Ð½Ð°Ð¿Ñ€.: file:///c:/image.png):">
+<!ENTITY splash.browse "ÐžÐ±Ð·Ð¾Ñ€...">
+<!ENTITY splash.default "ÐŸÐ¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ">
+<!ENTITY splash.default_key "ÐŸ">
+<!ENTITY splash.imageDemensions "Ð Ð°Ð·Ð¼ÐµÑ€ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ:">
+<!ENTITY splash.preview "ÐŸÑ€ÐµÐ´Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€">
+<!ENTITY splash.sound "Ð—Ð²ÑƒÐº">
+<!ENTITY splash.soundEnabled "ÐŸÑ€Ð¾Ð¸Ð³Ñ€Ð°Ñ‚ÑŒ Ð·Ð²ÑƒÐº Ð¿Ñ€Ð¸ Ð·Ð°Ð¿ÑƒÑÐºÐµ">
+<!ENTITY splash.soundURL "URL Ðº Ð·Ð²ÑƒÐºÑƒ (Ð½Ð°Ð¿Ñ€.: file:///c:/sound.wav):">
+<!ENTITY splash.play "Ð¡Ð»ÑƒÑˆÐ°Ñ‚ÑŒ">
+<!ENTITY splash.play_key "Ð¡">
+<!ENTITY splash.trans "ÐŸÑ€Ð¾Ð·Ñ€Ð°Ñ‡Ð½Ð¾ÑÑ‚ÑŒ">
+<!ENTITY splash.usetrans "ÐŸÑ€Ð¾Ð·Ñ€Ð°Ñ‡Ð½Ð¾ÑÑ‚ÑŒ (Ð¾Ñ‚ 0 Ð´Ð¾ 1. ÐÐ°Ð¿Ñ€Ð¸Ð¼ÐµÑ€: &apos;.4&apos;)">
+<!ENTITY splash.transval1 "ÐšÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ°">
+<!ENTITY splash.transval2 "Ð¢ÐµÐºÑÑ‚">
+<!ENTITY splash.transval3 "ÐžÐºÐ½Ð¾">
+<!ENTITY splash.transval4 "ÐŸÑ€Ð¾Ð³Ñ€ÐµÑÑ">
+<!ENTITY splash.textSettings "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ñ‚ÐµÐºÑÑ‚Ð°">
+<!ENTITY splash.textHide "Ð¡ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ‚ÐµÐºÑÑ‚ Ð¿Ð¾Ð»Ð½Ð¾ÑÑ‚ÑŒÑŽ">
+<!ENTITY splash.progressMeterHide "Ð¡ÐºÑ€Ñ‹Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð³Ñ€ÐµÑÑ-Ð±Ð°Ñ€">
+<!ENTITY splash.textOverride "Ð—Ð°Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑÑ‚ &quot;Ð—Ð°Ð³Ñ€ÑƒÐ·ÐºÐ°...&quot; (Ð¾ÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ Ð¿ÑƒÑÑ‚Ñ‹Ð¼ Ð´Ð»Ñ Ñ‚ÐµÐºÑÑ‚Ð° Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ):">
+<!ENTITY splash.txtcolor "Ð¦Ð²ÐµÑ‚ Ñ‚ÐµÐºÑÑ‚Ð°:">
+<!ENTITY splash.textStyle "Ð¡Ñ‚Ð¸Ð»ÑŒ Ñ‚ÐµÐºÑÑ‚Ð°:">
+<!ENTITY splash.reset "Ð¡Ð±Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ Ð²ÑÑ‘">
+<!ENTITY splash.alwaysontop "Ð—Ð°ÑÑ‚Ð°Ð²ÐºÐ° Ð¿Ð¾Ð²ÐµÑ€Ñ… Ð´Ñ€ÑƒÐ³Ð¸Ñ… Ð¾ÐºÐ¾Ð½ (Ñ‚Ð¾Ð»ÐºÐ¾ Ð´Ð»Ñ Windows)">
