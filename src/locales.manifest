@@ -3,6 +3,7 @@
 locale	splash	en-US	locale/en-US/
 locale	splash	es-AR	locale/es-AR/
 locale	splash	es-ES	locale/es-ES/
+locale	splash	ru-RU	locale/ru-RU/
 locale	splash	tl		locale/tl/
 
 # unused locales (not updated)
@@ -18,7 +19,6 @@ locale	splash	tl		locale/tl/
 #locale	splash	nl-NL	locale/nl-NL/
 #locale	splash	pl-PL	locale/pl-PL/
 #locale	splash	pt-BR	locale/pt-BR/
-#locale	splash	ru-RU	locale/ru-RU/
 #locale	splash	sk-SK	locale/sk-SK/
 #locale	splash	sv-SE	locale/sv-SE/
 #locale	splash	tr-TR	locale/tr-TR/
