@@ -1,7 +1,6 @@
 pref("extensions.splashed@franklindm.description", "chrome://splash/locale/splash.properties");
 
 pref("extensions.splash.enabled", true);
-pref("extensions.splash.notOnURL", true);
 pref("extensions.splash.timeout", 3000);
 pref("extensions.splash.closeWithMainWindow", false);
 pref("extensions.splash.bgcolor", "#FFFFFF");

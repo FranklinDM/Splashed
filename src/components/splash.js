@@ -24,16 +24,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 
-const nsICommandLineHandler = Components.interfaces.nsICommandLineHandler;
-const nsISupportsString     = Components.interfaces.nsISupportsString;
-const nsIWindowWatcher      = Components.interfaces.nsIWindowWatcher;
-const nsIIOService          = Components.interfaces.nsIIOService;
-const nsISound              = Components.interfaces.nsISound;
-const nsIPrefService        = Components.interfaces.nsIPrefService;
-const prefService           = Components.classes["@mozilla.org/preferences-service;1"].getService(nsIPrefService);
-const prefBranch            = prefService.getBranch("extensions.splash.");
+const Ci = Components.interfaces;
+const Cc = Components.classes;
+const Cu = Components.utils;
+
+Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 
 function SplashCmdLineHandler() {}
 
@@ -42,11 +38,7 @@ SplashCmdLineHandler.prototype = {
     classID: Components.ID("{924217E9-F8FE-4B92-B8E1-F781D4ABB31E}"),
     contractID: "@mozilla.org/commandlinehandler/general-startup;1?type=splash",
     chromeUrlForTask: "chrome://splash/content/splash.xul",
-    helpText: "Start with Splash.",
-    handlesArgs: true,
-    defaultArgs: "",
-    openWindowWithArgs: true,
-    firstTime: true,
+    splashShown: false,
 
     /* Needed for XPCOMUtils NSGetModule */
     _xpcom_categories: [{
@@ -56,54 +48,45 @@ SplashCmdLineHandler.prototype = {
     ],
 
     /* nsISupports */
-    QueryInterface: XPCOMUtils.generateQI([nsICommandLineHandler]),
+    QueryInterface: XPCOMUtils.generateQI([Ci.nsICommandLineHandler]),
 
     /* nsICommandLineHandler */
     handle: function handler_handle(cmdLine) {
-        var showSplash = false;
-
-        if (this.firstTime) {
-            // There are two cases in which to show the splash screen:
-            // 1) extensions.splash.enabled is set to True
-            // 2) The -splash flag is included in the command line arguments
-            // But don't show the splash screen if the browser was invoked by an external URL
-            // Unless extensions.splash.notOnURL is set to False
-            if (cmdLine.findFlag("url", false) == -1 | !prefBranch.getBoolPref("notOnURL")) {
-                if (prefBranch.getBoolPref("enabled")) {
-                    showSplash = true;
-                } else if (cmdLine.findFlag("splash", false) != -1) {
-                    showSplash = true;
-                }
-            }
+        let prefBranch = Cc["@mozilla.org/preferences-service;1"]
+                            .getService(Ci.nsIPrefService)
+                            .getBranch("extensions.splash.");
+        let splashEnabled = prefBranch.getBoolPref("enabled");
+        
+        if (this.splashShown || !splashEnabled) {
+            return;
         }
 
-        if (showSplash) {
-            var isEnabled = prefBranch.getBoolPref("soundEnabled");
-            var soundURL = prefBranch.getComplexValue("soundURL", nsISupportsString).data;
+        let soundEnabled = prefBranch.getBoolPref("soundEnabled");
+        let soundURL = prefBranch.getComplexValue("soundURL", Ci.nsISupportsString).data;
 
-            if (soundURL && isEnabled) {
-                var gSound = Components.classes["@mozilla.org/sound;1"].createInstance(nsISound);
-
-                gSound.init();
-
-                var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(nsIIOService);
-                var url = ioService.newURI(soundURL, null, null);
-
-                gSound.play(url);
-            }
-
-            var wwatch = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(nsIWindowWatcher);
-            var myModal = "modal=" + (prefBranch.getBoolPref("closeWithMainWindow") ? "no" : "yes");
-
-            wwatch.openWindow(null, this.chromeUrlForTask, "_blank", "chrome,centerscreen,alwaysRaised=yes," + myModal, null);
-            this.firstTime = false;
+        if (soundEnabled && soundURL) {
+            let gSound = Cc["@mozilla.org/sound;1"].createInstance(Ci.nsISound);
+            gSound.init();
+            let ioService = Cc["@mozilla.org/network/io-service;1"]
+                               .getService(Ci.nsIIOService);
+            let soundURI = ioService.newURI(soundURL, null, null);
+            gSound.play(soundURI);
         }
+
+        let windowWatcher = Cc["@mozilla.org/embedcomp/window-watcher;1"]
+                               .getService(Ci.nsIWindowWatcher);
+        let windowModal = "modal=" + (prefBranch.getBoolPref("closeWithMainWindow") ? "no" : "yes");
+        let windowFeatures = "chrome,centerscreen,alwaysRaised=yes," + windowModal;
+        windowWatcher.openWindow(null, this.chromeUrlForTask, "_blank", windowFeatures, null);
+        
+        this.splashShown = true;
     },
 
     helpInfo: "  Splash \n"
 };
 
-if (XPCOMUtils.generateNSGetFactory)
+if (XPCOMUtils.generateNSGetFactory) {
     var NSGetFactory = XPCOMUtils.generateNSGetFactory([SplashCmdLineHandler]);
-else
+} else {
     var NSGetModule = XPCOMUtils.generateNSGetModule([SplashCmdLineHandler]);
+}
