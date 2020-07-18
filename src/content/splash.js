@@ -147,3 +147,7 @@ var splash = {
         } catch (e) {}
     }
 };
+
+window.addEventListener("load", splash.init, false);
+window.addEventListener("click", window.close, false);
+window.addEventListener("focus", splash.setTopmost, false);
