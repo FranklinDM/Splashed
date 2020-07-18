@@ -33,22 +33,24 @@ Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://gre/modules/ctypes.jsm");
 
 var splash = {
+    prefBranch: Cc["@mozilla.org/preferences-service;1"]
+                    .getService(Ci.nsIPrefService)
+                    .getBranch("extensions.splash."),
+    
     init: function () {
-        var prefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService);
-        var prefBranch = prefService.getBranch("extensions.splash.");
-        var splashWindow = document.getElementById("splashscreen"),
-        splashImg = document.getElementById("splash.image"),
-        splashBox = document.getElementById("splashBox"),
-        splashTxt = document.getElementById("splash.text"),
-        splashProgMeter = document.getElementById("splash.progressMeter");
+        let splashWindow = document.getElementById("splashscreen");
+        let splashImg = document.getElementById("splash.image");
+        let splashBox = document.getElementById("splashBox");
+        let splashTxt = document.getElementById("splash.text");
+        let splashProgMeter = document.getElementById("splash.progressMeter");
 
-        splashWindow.setAttribute("style", prefBranch.getCharPref("windowStyle"));
+        splashWindow.setAttribute("style", splash.prefBranch.getCharPref("windowStyle"));
 
-        splashImg.src = prefBranch.getCharPref("imageURL");
-        splashImg.height = prefBranch.getIntPref("windowHeight");
-        splashImg.width = prefBranch.getIntPref("windowWidth");
+        splashImg.src = splash.prefBranch.getCharPref("imageURL");
+        splashImg.height = splash.prefBranch.getIntPref("windowHeight");
+        splashImg.width = splash.prefBranch.getIntPref("windowWidth");
 
-        var bgColor = prefBranch.getCharPref("bgcolor");
+        let bgColor = splash.prefBranch.getCharPref("bgcolor");
         if (bgColor) {
             // XXX: Disallow setting a transparent background color for the splash screen window
             /*
@@ -57,30 +59,29 @@ var splash = {
              * will result to either the splash screen not being displayed or
              * a black box filling in the supposed location of the splash screen.
              */
-            if (bgColor.toLowerCase() == "transparent")
-            {
+            if (bgColor.toLowerCase() == "transparent") {
                 bgColor = "-moz-Dialog";
             }
             splashBox.setAttribute("style", "background-color: " + bgColor)
         }
 
-        var trans = prefBranch.getBoolPref("trans");
+        let trans = splash.prefBranch.getBoolPref("trans");
         if (trans) {
-            splashImg.style.opacity = prefBranch.getCharPref("transvalue_img");
-            splashTxt.style.opacity = prefBranch.getCharPref("transvalue_txt");
-            splashBox.style.opacity = prefBranch.getCharPref("transvalue_box");
-            splashProgMeter.style.opacity = prefBranch.getCharPref("transvalue_mtr");
+            splashImg.style.opacity = splash.prefBranch.getCharPref("transvalue_img");
+            splashTxt.style.opacity = splash.prefBranch.getCharPref("transvalue_txt");
+            splashBox.style.opacity = splash.prefBranch.getCharPref("transvalue_box");
+            splashProgMeter.style.opacity = splash.prefBranch.getCharPref("transvalue_mtr");
         }
 
-        if (!prefBranch.getBoolPref("textHide")) {
-            var txColor = prefBranch.getCharPref("txtcolor");
+        if (!splash.prefBranch.getBoolPref("textHide")) {
+            let txColor = splash.prefBranch.getCharPref("txtcolor");
             if (txColor) {
                 txColor = ";color: " + txColor;
             }
 
-            splashTxt.setAttribute("style", prefBranch.getCharPref("textStyle") + txColor);
+            splashTxt.setAttribute("style", splash.prefBranch.getCharPref("textStyle") + txColor);
 
-            var textOverride = prefBranch.getComplexValue("textOverride", Ci.nsISupportsString).data;
+            let textOverride = splash.prefBranch.getComplexValue("textOverride", Ci.nsISupportsString).data;
             if (textOverride) {
                 textOverride = textOverride.replace(/{appVersion}/ig, Services.appinfo.version);
                 textOverride = textOverride.replace(/{buildID}/ig, Services.appinfo.appBuildID);
@@ -91,14 +92,18 @@ var splash = {
             splashTxt.hidden = false;
         }
 
-        if (!prefBranch.getBoolPref("progressMeterHide")) {
+        if (!splash.prefBranch.getBoolPref("progressMeterHide")) {
             splashProgMeter.hidden = false;
         }
 
-        setTimeout(window.close, prefBranch.getIntPref("timeout"));
+        setTimeout(window.close, splash.prefBranch.getIntPref("timeout"));
     },
 
-    setAlwaysOnTop: function (topmost) {
+    setTopmost: function () {
+        if (!splash.prefBranch.getBoolPref("alwaysOnTop")) {
+            return;
+        }
+        
         try {
             let lib = ctypes.open("user32.dll");
             let getActiveWindow = 0;
@@ -135,20 +140,10 @@ var splash = {
                             ctypes.uint32_t);
                 }
 
-                // Determine whether to set the window as always on top
-                let HWND = -2;
-                if (topmost)
-                    HWND = -1;
-
-                setWindowPos(getActiveWindow(), HWND, 0, 0, 0, 0, 19);
+                setWindowPos(getActiveWindow(), -1, 0, 0, 0, 0, 19);
             }
 
             lib.close();
         } catch (e) {}
-    },
-    
-    determineOnTop: function () {
-        if (Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService).getBranch("extensions.splash.").getBoolPref("alwaysOnTop"))
-            splash.setAlwaysOnTop(true);
     }
 };
