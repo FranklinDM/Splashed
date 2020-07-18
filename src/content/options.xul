@@ -40,10 +40,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             onload="splashOpt.initSettings();"
             persist="lastSelected screenX screenY"
             type="prefwindow"
-            centerWindowOnScreen="true"
             xmlns:html="http://www.w3.org/1999/xhtml"
             xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-    <script type="application/x-javascript"
+    <script type="application/javascript"
             src="chrome://splash/content/options.js" />
 
     <stringbundleset id="splashSet">
