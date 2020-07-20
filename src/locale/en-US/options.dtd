@@ -3,7 +3,6 @@
 <!ENTITY splash.panel_image "Image">
 <!ENTITY splash.panel_misc "Miscellaneous">
 <!ENTITY splash.panel_text "Text">
-<!ENTITY splash.startuptweaks "Startup Tweaks">
 <!ENTITY splash.enabled "Show Splash on Startup">
 <!ENTITY splash.closeWithMainWindow "Close splash when main window loads">
 <!ENTITY splash.timeout "Auto-close Timeout:">
@@ -15,7 +14,6 @@
 <!ENTITY splash.export "Export Settings">
 <!ENTITY splash.import "Import Settings">
 <!ENTITY splash.copy "Copy Settings to Clipboard">
-<!ENTITY splash.imageParameters "Image Parameters">
 <!ENTITY splash.imageURL "Image URL (ex: file:///c:/image.png):">
 <!ENTITY splash.browse "Browse...">
 <!ENTITY splash.default "Default">
@@ -33,7 +31,6 @@
 <!ENTITY splash.transval2 "Text">
 <!ENTITY splash.transval3 "Main Box">
 <!ENTITY splash.transval4 "Progress Bar">
-<!ENTITY splash.textSettings "Text Settings">
 <!ENTITY splash.textHide "Hide splash text completely">
 <!ENTITY splash.progressMeterHide "Hide progress meter">
 <!ENTITY splash.textOverride "Override &quot;loading...&quot; text (leave blank for default):">

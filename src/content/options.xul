@@ -44,13 +44,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <script type="application/javascript"
             src="chrome://splash/content/options.js" />
-
     <stringbundleset id="splashSet">
         <stringbundle id="splashStrings"
                       src="chrome://splash/locale/splash.properties" />
     </stringbundleset>
-
-
     <popupset>
         <menupopup id="splash-settings-popup"
                    position="before_start">
@@ -71,7 +68,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                       oncommand="splashOpt.exportData('copy');" />
         </menupopup>
     </popupset>
-
+    <!-- General -->
     <prefpane id="splash-pane1"
               label="&splash.panel_general;">
         <preferences>
@@ -121,9 +118,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         instantApply="true"
                         type="bool"/>
         </preferences>
-
-        <groupbox flex="1">
-            <caption label="&splash.startuptweaks;" />
+        <vbox flex="1">
             <checkbox id="splash.enabled"
                       preference="pref_splash.enabled"
                       label="&splash.enabled;" />
@@ -144,8 +139,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                          type="number"/>
                 <label value="&splash.msec;"/>
             </hbox>
-        </groupbox>
-
+        </vbox>
         <groupbox flex="1">
             <caption label="&splash.background;" />
             <hbox align="center">
@@ -168,7 +162,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                      rows="4" />
         </groupbox>
     </prefpane>
-
+    <!-- Image -->
     <prefpane id="splash-pane2"
               label="&splash.panel_image;">
         <preferences>
@@ -185,9 +179,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         instantApply="true"
                         type="int"/>
         </preferences>
-
-        <groupbox flex="1">
-            <caption label="&splash.imageParameters;" />
+        <vbox flex="1">
             <label control="splash.imageURL"
                    value="&splash.imageURL;"/>
             <hbox>
@@ -213,7 +205,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                          readonly="true"
                          size="2" />
             </hbox>
-        </groupbox>
+        </vbox>
         <groupbox flex="1">
             <caption label="&splash.preview;" />
             <vbox align="center"
@@ -225,7 +217,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             </vbox>
         </groupbox>
     </prefpane>
-
+    <!-- Text -->
     <prefpane id="splash-pane4"
               label="&splash.panel_text;">
         <preferences>
@@ -251,9 +243,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         instantApply="true"
                         type="string"/>
         </preferences>
-
-        <groupbox>
-            <caption label="&splash.textSettings;" />
+        <vbox flex="1">
             <checkbox id="splash.textHide"
                       preference="pref_splash.textHide"
                       label="&splash.textHide;" />
@@ -287,9 +277,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                          multiline="true"
                          rows="4" />
             </vbox>
-        </groupbox>
+        </vbox>
     </prefpane>
-
+    <!-- Sound -->
     <prefpane id="splash-pane3"
               label="&splash.panel_misc;">
         <preferences>
@@ -323,13 +313,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         instantApply="true"
                         type="string"/>
         </preferences>
-
         <groupbox>
             <caption label="&splash.sound;" />
             <checkbox id="splash.soundEnabled"
                       preference="pref_splash.soundEnabled"
                       label="&splash.soundEnabled;" />
-            <separator />
             <label control="splash.soundURL"
                    value="&splash.soundURL;"/>
             <hbox>
@@ -343,9 +331,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                         label="&splash.play;"
                         accesskey="&splash.play_key;" />
             </hbox>
-            <separator />
         </groupbox>
-
         <groupbox>
             <caption label="&splash.trans;" />
             <checkbox id="splash.trans"
@@ -396,7 +382,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
                 </rows>
             </grid>
         </groupbox>
-
     </prefpane>
 </prefwindow>
 

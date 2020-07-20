@@ -3,7 +3,6 @@
 <!ENTITY splash.panel_image "Картинка">
 <!ENTITY splash.panel_misc "Остальное">
 <!ENTITY splash.panel_text "Текст">
-<!ENTITY splash.startuptweaks "Настройки запуска">
 <!ENTITY splash.enabled "Показывать заставку при запуске">
 <!ENTITY splash.closeWithMainWindow "Закрывать, когда главное окно загрузится">
 <!ENTITY splash.timeout "Закрывать через:">
@@ -15,7 +14,6 @@
 <!ENTITY splash.export "Экспортировать настройки">
 <!ENTITY splash.import "Импортировать настройки">
 <!ENTITY splash.copy "Копировать настройки в буфер обмена">
-<!ENTITY splash.imageParameters "Параметры изображения">
 <!ENTITY splash.imageURL "URL к картинке (напр.: file:///c:/image.png):">
 <!ENTITY splash.browse "Обзор...">
 <!ENTITY splash.default "По умолчанию">
@@ -33,7 +31,6 @@
 <!ENTITY splash.transval2 "Текст">
 <!ENTITY splash.transval3 "Окно">
 <!ENTITY splash.transval4 "Прогресс">
-<!ENTITY splash.textSettings "Настройки текста">
 <!ENTITY splash.textHide "Скрыть текст полностью">
 <!ENTITY splash.progressMeterHide "Скрыть прогресс-бар">
 <!ENTITY splash.textOverride "Заменить текст &quot;Загрузка...&quot; (оставьте пустым для текста по умолчанию):">
