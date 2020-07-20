@@ -1,5 +1,19 @@
 # Changelog
 
+### 1.2.0
+* Thanks to AHOHNMYC!
+  - Reinstate and update Russian translation
+  - Fix broken display of non-ASCII custom splash text
+* Use upscaled extension icon (32x32 -> 64x64)
+* Remove support for old (and insecure) exported preferences format
+* Remove support for Pale Moon 27 and older
+* Remove custom about window
+* Fix broken auto-close timeout for SeaMonkey and Borealis
+* Simplify command line handler component logic
+  - Remove support for -splash flag 
+  - Remove show splash when opening external links feature (broken due to typo)
+* Further extension code cleanup and minor under-the-hood changes
+
 ### 1.1.7
 * Initial support for Pale Moon 29
 
