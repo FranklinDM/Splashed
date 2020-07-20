@@ -7,13 +7,19 @@
         <em:description>Adds a splash screen on startup while you wait.</em:description>
         <em:type>2</em:type>
         <em:creator>FranklinDM</em:creator>
-        <em:aboutURL>chrome://splash/content/about.xul</em:aboutURL>
-        <!-- optional items -->
         <em:homepageURL>https://github.com/FranklinDM/Splashed/wiki</em:homepageURL>
         <em:iconURL>chrome://splash/content/images/icon.png</em:iconURL>
         <em:optionsURL>chrome://splash/content/options.xul</em:optionsURL>
-
-        <em:contributor>aldreneo and mrtech (creators of Splash!)</em:contributor>
+        
+        <!-- Contributors -->
+        <em:contributor>Aldreneo and mrtech (creators of Splash!)</em:contributor>
+        <em:contributor>Pike</em:contributor>
+        <em:contributor>mcdavis941 (Images)</em:contributor>
+        <em:contributor>badassfeline (More Images)</em:contributor>
+        
+        <!-- Translators -->
+        <em:translator>AHOHNMYC (Russian)</em:translator>
+        <em:translator>FranklinDM (Tagalog/Filipino)</em:translator>
 
         <!-- Pale Moon -->
         <em:targetApplication>
