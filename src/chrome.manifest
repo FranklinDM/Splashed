@@ -1,4 +1,5 @@
 content	splash content/
+skin splash global skin/
 
 # Splash startup component
 category command-line-handler m-splash @mozilla.org/commandlinehandler/general-startup;1?type=splash

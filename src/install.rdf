@@ -8,7 +8,7 @@
         <em:type>2</em:type>
         <em:creator>FranklinDM</em:creator>
         <em:homepageURL>https://github.com/FranklinDM/Splashed/wiki</em:homepageURL>
-        <em:iconURL>chrome://splash/content/images/icon.png</em:iconURL>
+        <em:iconURL>chrome://splash/skin/icon.png</em:iconURL>
         <em:optionsURL>chrome://splash/content/options.xul</em:optionsURL>
         
         <!-- Contributors -->
