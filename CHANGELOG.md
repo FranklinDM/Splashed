@@ -2,6 +2,7 @@
 
 ### 1.2.1
 * Revert incorrect removal of default splash image source
+* Fix broken close splash on click with Basilisk
 
 ### 1.2.0
 * Thanks to AHOHNMYC!
