@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2.2
+* Fix undefined Ci shorthand in overlay
+
 ### 1.2.1
 * Revert incorrect removal of default splash image source
 * Fix broken close splash on click with Basilisk
