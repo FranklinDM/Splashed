@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2.1
+* Revert incorrect removal of default splash image source
+
 ### 1.2.0
 * Thanks to AHOHNMYC!
   - Reinstate and update Russian translation
