@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 (function () {
     var prefBranch = Components.classes["@mozilla.org/preferences-service;1"]
-                        .getService(Ci.nsIPrefService)
+                        .getService(Components.interfaces.nsIPrefService)
                         .getBranch("extensions.splash.");
 
     if (prefBranch.getBoolPref("closeWithMainWindow")) {
