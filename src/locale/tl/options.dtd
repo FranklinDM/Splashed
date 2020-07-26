@@ -3,7 +3,7 @@
 <!ENTITY splash.panel_image "Imahen">
 <!ENTITY splash.panel_misc "Iba pa">
 <!ENTITY splash.panel_text "Teksto">
-<!ENTITY splash.enabled "Ipakita ang Splash kapag binuksan ang browser">
+<!ENTITY splash.enabled "Ipakita ang Splash kapag binuksan ang application">
 <!ENTITY splash.closeWithMainWindow "Isara ang Splash kapang naiload na ang main window">
 <!ENTITY splash.timeout "Auto-close Timeout:">
 <!ENTITY splash.msec "mga milisegundo">
