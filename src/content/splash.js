@@ -38,6 +38,7 @@ var splash = {
                     .getBranch("extensions.splash."),
     
     init: function () {
+        this.OS = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime).OS;
         let splashWindow = document.getElementById("splashscreen");
         let splashImg = document.getElementById("splash.image");
         let splashBox = document.getElementById("splashBox");
@@ -101,6 +102,10 @@ var splash = {
     },
 
     updateWindowState: function () {
+        if (this.OS != "WINNT") {
+            return;
+        }
+
         try {
             let lib = ctypes.open("user32.dll");
             let getActiveWindow = 0;
