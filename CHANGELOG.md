@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2.3
+* Remove unused space around splash window frame on Windows
+
 ### 1.2.2
 * Fix undefined Ci shorthand in overlay
 
