@@ -148,7 +148,9 @@ var splash = {
                     hWndInsertAfter = -1;
                 }
                 
-                // XXX: workaround for incorrect sizing in windows with hidden chrome
+                // XXX: Window widget code (nsWindow.cpp) on Windows performs incorrect sizing
+                //      if the the window frame is hidden and has to be manually set or else a
+                //      black background appears on the unused space after calling window.sizeToContent().
                 setWindowPos(getActiveWindow(), hWndInsertAfter, 0, 0, document.width, document.height, 18);
             }
 
