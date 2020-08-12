@@ -97,13 +97,10 @@ var splash = {
         }
 
         setTimeout(window.close, splash.prefBranch.getIntPref("timeout"));
+        window.sizeToContent();
     },
 
-    setTopmost: function () {
-        if (!splash.prefBranch.getBoolPref("alwaysOnTop")) {
-            return;
-        }
-        
+    updateWindowState: function () {
         try {
             let lib = ctypes.open("user32.dll");
             let getActiveWindow = 0;
@@ -140,7 +137,14 @@ var splash = {
                             ctypes.uint32_t);
                 }
 
-                setWindowPos(getActiveWindow(), -1, 0, 0, 0, 0, 19);
+                // Determine if the window should be topmost
+                let hWndInsertAfter = -2;
+                if (splash.prefBranch.getBoolPref("alwaysOnTop")) {
+                    hWndInsertAfter = -1;
+                }
+                
+                // XXX: workaround for incorrect sizing in windows with hidden chrome
+                setWindowPos(getActiveWindow(), hWndInsertAfter, 0, 0, document.width, document.height, 18);
             }
 
             lib.close();
