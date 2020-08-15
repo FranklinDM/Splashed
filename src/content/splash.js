@@ -97,6 +97,9 @@ var splash = {
         }
 
         setTimeout(window.close, splash.prefBranch.getIntPref("timeout"));
+        // XXX: Calling sizeToContent on Windows causes the window frame to
+        //      be visible for a split second. Might consider computing the
+        //      correct window size manually in the future as a workaround.
         window.sizeToContent();
     },
 
@@ -135,7 +138,7 @@ var splash = {
             
             // XXX: Window widget code (nsWindow.cpp) on Windows performs incorrect sizing
             //      if the the window frame is hidden and has to be manually set or else a
-            //      black background appears on the unused space after calling window.sizeToContent().
+            //      black background appears on the unused space after calling sizeToContent.
             setWindowPos(hWnd, hWndInsertAfter, 0, 0, document.width, document.height, 18);
 
             lib.close();
