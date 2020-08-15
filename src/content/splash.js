@@ -107,11 +107,10 @@ var splash = {
 
         try {
             let lib = ctypes.open("user32.dll");
-            let getActiveWindow = lib.declare("GetActiveWindow", ctypes.winapi_abi, ctypes.int32_t);
             let setWindowPos = lib.declare("SetWindowPos",
                             ctypes.winapi_abi,
                             ctypes.bool,
-                            ctypes.int32_t,
+                            ctypes.voidptr_t,
                             ctypes.int32_t,
                             ctypes.int32_t,
                             ctypes.int32_t,
@@ -119,6 +118,15 @@ var splash = {
                             ctypes.int32_t,
                             ctypes.uint32_t);
 
+            let baseWindow = window.QueryInterface(Ci.nsIInterfaceRequestor)
+                              .getInterface(Ci.nsIWebNavigation)
+                              .QueryInterface(Ci.nsIDocShellTreeItem)
+                              .treeOwner
+                              .QueryInterface(Ci.nsIInterfaceRequestor)
+                              .getInterface(Ci.nsIBaseWindow);
+            let hWndString = baseWindow.nativeHandle;
+            let hWnd = ctypes.voidptr_t(ctypes.UInt64(hWndString));
+            
             // Determine if the window should be topmost
             let hWndInsertAfter = -2;
             if (splash.prefBranch.getBoolPref("alwaysOnTop")) {
@@ -128,7 +136,7 @@ var splash = {
             // XXX: Window widget code (nsWindow.cpp) on Windows performs incorrect sizing
             //      if the the window frame is hidden and has to be manually set or else a
             //      black background appears on the unused space after calling window.sizeToContent().
-            setWindowPos(getActiveWindow(), hWndInsertAfter, 0, 0, document.width, document.height, 18);
+            setWindowPos(hWnd, hWndInsertAfter, 0, 0, document.width, document.height, 18);
 
             lib.close();
         } catch (e) {}
