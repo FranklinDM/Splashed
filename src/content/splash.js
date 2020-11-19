@@ -136,10 +136,13 @@ var splash = {
                 hWndInsertAfter = -1;
             }
             
+            let splashWidth = parseInt(document.width * window.devicePixelRatio);
+            let splashHeight = parseInt(document.height * window.devicePixelRatio);
+            
             // XXX: Window widget code (nsWindow.cpp) on Windows performs incorrect sizing
             //      if the the window frame is hidden and has to be manually set or else a
             //      black background appears on the unused space after calling sizeToContent.
-            setWindowPos(hWnd, hWndInsertAfter, 0, 0, document.width, document.height, 18);
+            setWindowPos(hWnd, hWndInsertAfter, 0, 0, splashWidth, splashHeight, 18);
 
             lib.close();
         } catch (e) {}
