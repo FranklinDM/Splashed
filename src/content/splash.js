@@ -148,3 +148,5 @@ var splash = {
         } catch (e) {}
     }
 };
+
+window.addEventListener("activate", splash.updateWindowState, false);
