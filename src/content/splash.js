@@ -103,8 +103,9 @@ var splash = {
         window.sizeToContent();
     },
 
+    isWindowUpdated: false,
     updateWindowState: function () {
-        if (Services.appinfo.OS != "WINNT") {
+        if (Services.appinfo.OS != "WINNT" || splash.isWindowUpdated) {
             return;
         }
 
@@ -146,6 +147,8 @@ var splash = {
 
             lib.close();
         } catch (e) {}
+        
+        splash.isWindowUpdated = true;
     }
 };
 
