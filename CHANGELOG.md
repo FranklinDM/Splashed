@@ -1,5 +1,12 @@
 # Changelog
 
+### 1.3.0
+* Retrieve splash window handle using nsIBaseWindow instead of using WinAPI GetActiveWindow
+  - This should prevent cases where the main application window becomes always on top instead of the splash window
+* Take device pixel ratio into account when resizing the splash window on Windows
+* Use window `activate` event instead of `focus`
+* Prevent unnecessary updating of splash window state
+
 ### 1.2.3
 * Remove unused space around splash window frame on Windows
 
