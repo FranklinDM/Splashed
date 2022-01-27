@@ -36,7 +36,7 @@ var splash = {
     prefBranch: Cc["@mozilla.org/preferences-service;1"]
                     .getService(Ci.nsIPrefService)
                     .getBranch("extensions.splash."),
-    
+
     init: function () {
         let splashWindow = document.getElementById("splashscreen");
         let splashImg = document.getElementById("splash.image");
@@ -143,3 +143,4 @@ var splash = {
 };
 
 window.addEventListener("activate", splash.updateWindowState, false);
+window.addEventListener("DOMContentLoaded", splash.init, false);
