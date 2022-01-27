@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.4.0
+* Include workaround for transparent splash windows
+  - Transparent backgrounds for the splash window can now be set again, by changing splash background color to `transparent` and adding `background: transparent;` to the window style.
+
 ### 1.3.0
 * Retrieve splash window handle using nsIBaseWindow instead of using WinAPI GetActiveWindow
   - This should prevent cases where the main application window becomes always on top instead of the splash window
