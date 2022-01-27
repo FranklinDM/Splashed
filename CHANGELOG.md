@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.4.1
+* Simplify preview image handling in options window
+* Use DOMContentLoaded event for splash initialization
+  - Removes workaround included in the previous version.
+
 ### 1.4.0
 * Include workaround for transparent splash windows
   - Transparent backgrounds for the splash window can now be set again, by changing splash background color to `transparent` and adding `background: transparent;` to the window style.
