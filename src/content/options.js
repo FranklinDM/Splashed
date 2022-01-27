@@ -39,8 +39,11 @@ var splashOpt = {
         return this.prefService.getBranch("splash.");
     },
 
+    previewImage: null,
+
     initSettings: function () {
-        document.getElementById("splash.previewImage").src = this.prefBranch.getCharPref("imageURL");
+        splashOpt.previewImage = document.getElementById("splash.previewImage");
+        splashOpt.previewImage.src = this.prefBranch.getCharPref("imageURL");
 
         this.updateColorPicker('bg');
         this.updateColorPicker('txt');
@@ -88,9 +91,7 @@ var splashOpt = {
             }
         }
 
-        document.getElementById("splash.previewImage").src = document.getElementById("splash.imageURL").value;
-
-        this.getDimensions();
+        splashOpt.previewImage.src = document.getElementById("splash.imageURL").value;
     },
 
     getSoundFile: function () {
@@ -107,20 +108,16 @@ var splashOpt = {
         var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
         fp.init(window, this.mStrings.getString("splash_select_image"), fp.modeOpen);
         fp.appendFilters(fp.filterImages);
-        var previewImage = document.getElementById("splash.previewImage");
 
         if (fp.show() == fp.returnOK) {
             document.getElementById("pref_splash.imageURL").value = fp.fileURL.spec;
-            document.getElementById("splash.previewImage").src = fp.fileURL.spec;
-            this.getDimensions();
+            splashOpt.previewImage.src = fp.fileURL.spec;
         }
     },
 
     getDimensions: function () {
-        var previewImage = document.getElementById("splash.previewImage");
-
-        var height = previewImage.height;
-        var width = previewImage.width;
+        var height = splashOpt.previewImage.height;
+        var width = splashOpt.previewImage.width;
 
         // Set text box values
         document.getElementById("splash.windowWidth").value = width;
@@ -133,8 +130,7 @@ var splashOpt = {
 
     setDefaultImage: function () {
         this.prefBranch.clearUserPref("imageURL");
-        document.getElementById("splash.previewImage").src = this.prefBranch.getCharPref("imageURL");
-        this.getDimensions();
+        splashOpt.previewImage.src = this.prefBranch.getCharPref("imageURL");
     },
 
     exportData: function (mode) {

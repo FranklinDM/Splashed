@@ -185,6 +185,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
             <hbox>
                 <textbox preference="pref_splash.imageURL"
                          id="splash.imageURL"
+                         onchange="splashOpt.previewImage.src = event.target.value;"
                          flex="1" />
                 <button onclick="splashOpt.getImageFile();"
                         label="&splash.browse;"
