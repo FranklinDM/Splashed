@@ -52,16 +52,6 @@ var splash = {
 
         let bgColor = splash.prefBranch.getCharPref("bgcolor");
         if (bgColor) {
-            // XXX: Disallow setting a transparent background color for the splash screen window
-            /*
-             * This is a result of a still-unfixed bug affecting UXP wherein
-             * setting a chromeless window's background color to transparent
-             * will result to either the splash screen not being displayed or
-             * a black box filling in the supposed location of the splash screen.
-             */
-            if (bgColor.toLowerCase() == "transparent") {
-                bgColor = "-moz-Dialog";
-            }
             splashBox.setAttribute("style", "background-color: " + bgColor)
         }
 

@@ -29,6 +29,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE window SYSTEM "chrome://splash/locale/splash.dtd">
 
+<!--
+    XXX: The window's background is set to transparent initially in the 
+         overlay to work around issues caused by bug #1239743, which
+         broke setting a transparent window background via JS.
+-->
 <window id="splashscreen"
         title="&title.label;"
         windowtype="splash:window"
@@ -36,6 +41,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
         onload="splash.init();"
         onclick="window.close();"
         flex="1"
+        style="background: transparent;"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
     <script type="application/javascript"
