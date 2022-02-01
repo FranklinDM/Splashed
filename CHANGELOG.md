@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.4.2
+* Update install manifest
+
 ### 1.4.1
 * Simplify preview image handling in options window
 * Use DOMContentLoaded event for splash initialization
