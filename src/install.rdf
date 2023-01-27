@@ -35,13 +35,9 @@
             <!-- Applications using Firefox GUID -->
             <Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-                <!--
-                    Pale Moon 30 and above will stop using its own GUID to
-                    "further improve extension compatibility"
-                 -->
-                <em:minVersion>30.0.0a1</em:minVersion>
-                <em:maxVersion>30.*</em:maxVersion>
-                <!-- Formerly used to detect Basilisk in the Add-ons Site -->
+                <em:minVersion>52.0.0</em:minVersion>
+                <em:maxVersion>52.*</em:maxVersion>
+                <!-- Used to detect Basilisk in the Add-ons Site -->
                 <em:basilisk>true</em:basilisk>
             </Description>
         </em:targetApplication>
