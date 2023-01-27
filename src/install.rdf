@@ -69,5 +69,13 @@
                 <em:maxVersion>1.*</em:maxVersion>
             </Description>
         </em:targetApplication>
+        <em:targetApplication>
+            <!-- Epyrus -->
+            <Description>
+                <em:id>{29877c1d-27df-4421-9a79-382c31470151}</em:id>
+                <em:minVersion>2.0.0a1</em:minVersion>
+                <em:maxVersion>2.*</em:maxVersion>
+            </Description>
+        </em:targetApplication>
     </Description>
 </RDF>
