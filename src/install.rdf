@@ -3,7 +3,7 @@
     <Description about="urn:mozilla:install-manifest">
         <!-- General -->
         <em:id>splashed@franklindm</em:id>
-        <em:version>dev-build</em:version>
+        <em:version>1.4.4</em:version>
         <em:type>2</em:type>
         <em:iconURL>chrome://splash/skin/icon.png</em:iconURL>
         <em:homepageURL>https://github.com/FranklinDM/Splashed/wiki</em:homepageURL>
